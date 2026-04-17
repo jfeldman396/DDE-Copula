@@ -8,7 +8,7 @@ addpath('/Users/jfeldm01/Library/CloudStorage/OneDrive-Kearney/Documents/Deep-Di
 K2_true = 3;
 K1_true = 10;
 
-J = 50; 
+J = 150; 
 
 %% ------------------------------------------------------------
 % Construct true loading matrices
@@ -29,7 +29,7 @@ for i = 1:(length(idx) - 1)
     end
 end
 
-B1_sub = sim_block_loadings(J, K1_true,5,10,5,0,1); % change first 5 to 10 when J = 100
+B1_sub = sim_block_loadings(J, K1_true,15,10,5,0,1); % first entry by J: J = 50 -> 5, J = 100 -> 10, J = 150 -> 15
 
 K1_max = floor(J/3);
 K2_max = floor(K1_max/3);
@@ -150,7 +150,7 @@ for aa = 1:6
 
 end
 
-save("J50_overspecified")
+% save("J50_overspecified")
 
 %-------------------------------------------
 
