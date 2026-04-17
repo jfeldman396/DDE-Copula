@@ -30,7 +30,7 @@ for i = 1:(length(idx) - 1)
     end
 end
 
-B1_sub = sim_block_loadings(J, K1_true,10,10,5,0,1); % change first 5 to 10 when J = 100
+B1_sub = sim_block_loadings(J, K1_true,10,10,5,0,1); 
 
 K1_max = floor(J/3);
 K2_max = floor(K1_max/3);

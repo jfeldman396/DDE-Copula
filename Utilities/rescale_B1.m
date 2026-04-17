@@ -26,7 +26,7 @@ function [B1_scaled, gamma_scaled, mu_used, sd_used] = rescale_B1(prop_true, B2,
     K1 = size(B2,1);
     p  = size(B1,1);
 
-  
+
 
     gamma_vec = gamma_vec(:);
 

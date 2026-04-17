@@ -446,7 +446,7 @@ while iter_indicator
         ind_inact{d} = find(z_cusp{d} <= 1:K(d));
     end
 
-    num_act
+    
     for d = 1:D
         B_update{d}(:,2:end) = thres(B_update{d}(:,2:end), tau);
     end
@@ -495,7 +495,7 @@ while iter_indicator
     gamma = gamma_update;
     prop = prop_update;
 
-    B{2}
+  
 
     if stop_now
         for d = 1:D

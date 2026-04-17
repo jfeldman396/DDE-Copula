@@ -29,7 +29,7 @@ for i = 1:(length(idx) - 1)
     end
 end
 
-B1_sub = sim_block_loadings(J, K1_true,15,10,5,0,1); % first entry by J: J = 50 -> 5, J = 100 -> 10, J = 150 -> 15
+B1_sub = sim_block_loadings(J, K1_true,10,10,5,0,1); % first entry by J: J = 50 -> 5, J = 100 -> 10, J = 150 -> 15
 
 K1_max = floor(J/3);
 K2_max = floor(K1_max/3);

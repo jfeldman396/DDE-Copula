@@ -24,9 +24,8 @@ clear; clc;
 %% ------------------------------------------------------------
 % Add paths
 % -------------------------------------------------------------
-addpath('/Users/jrf70/Documents/CopDDE_psych/CopDDESims');
-addpath('/Users/jrf70/Documents/CopDDE_psych/CopDDESims/MiscCode');
-addpath('/Users/jrf70/Documents/CopDDE_psych/CopDDESims/Utilities');
+addpath('/Users/jfeldm01/Library/CloudStorage/OneDrive-Kearney/Documents/Deep-Discrete-Encoders-main/CopDDE/Utilities/')
+addpath('/Users/jfeldm01/Library/CloudStorage/OneDrive-Kearney/Documents/Deep-Discrete-Encoders-main/CopDDE//Algorithms/')
 
 %% ------------------------------------------------------------
 % True model dimensions
@@ -58,8 +57,8 @@ for i = 1:(length(idx) - 1)
     end
 end
 
-B2_sub = sim_block_loadings(K1_true, K2_true, 3, 4, 2, -2, 2);
-B1_sub = sim_block_loadings(J, K1_true, 3, 10, 4, -4, 1);
+B2_sub = sim_block_loadings(K1_true, K2_true, 8, 4, 4/3, 0,1);
+B1_sub = sim_block_loadings(J, K1_true,10,10,5,0,1);
 
 B3_true = [-2 * ones(K2_true,1), B3_sub];
 B2_true = [-2 * ones(K1_true,1), B2_sub];
@@ -90,9 +89,8 @@ lambdas = randi([1, 10], 1, J);
 %% ------------------------------------------------------------
 % Simulation settings
 % -------------------------------------------------------------
-C_sims     = 200;
-n_vec      = [1000, 2000, 4000, 8000];
-n_parallel = 12;
+C_sims     = 100;
+n_vec      = [4000, 8000,12000,16000];
 
 % Initial layer sizes for fitting
 K_cell_init = cell(1,D);
@@ -104,11 +102,11 @@ epsilon_init = 1e-4;
 
 % Fitter controls
 model = struct();
-model.C        = 20;                 % MC draws inside SAEM step
-model.it       = 100;                % max iterations
-model.temp     = 0.10;               % initial temperature
-model.tau      = 0.01;               % threshold level
-model.t_spike  = [0.05, 0.05, 0.05]; % layer-specific spike scales
+model.C        = 1;                 % MC draws inside SAEM step
+model.it       = 50;                % max iterations
+model.temp     = .7;               % initial temperature
+model.tau      = .3;               % threshold level
+model.t_spike  = [0.05, 0.1, 0.1]; % layer-specific spike scales
 model.nonlcon  = [];                 % set [] if unused
 
 %% ------------------------------------------------------------
@@ -131,11 +129,11 @@ for aa = 1:numel(n_vec)
         % 1) Simulate data from true model
         % -----------------------------------------------------
         [X, Z_true, A_true] = generate_X_cop_D( ...
-            Nsim, lambdas, prop_true, D, B_cell_true, gamma_true, true);
+            Nsim, lambdas, prop_true, D, B_cell_true, gamma_true);
 
         % Optional rescaling diagnostic for layer 1
         [B1_true_scale, gamma_true_scale] = ...
-            rescale_B1(prop_true, B2_true, B1_true_unscale, gamma_true, Z_true, true);
+            rescale_B1(prop_true, B2_true, B1_true_unscale, gamma_true,true, Z_true);
 
         B1_true_scale_aug = [B1_true_scale, zeros(J, floor(J/3) - K1_true)]; %#ok<NASGU>
 
