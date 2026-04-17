@@ -68,7 +68,7 @@ results = cell(length(n_vec), C);
 for aa = 1:4
     N = n_vec(aa);
     epsilon = 0.0001;
-    tau = 3*N^(-0.3);
+    tau = max(.3,3*N^(-0.3));
     
     
     for c= 1:C
