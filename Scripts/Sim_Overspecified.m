@@ -113,7 +113,7 @@ for aa = 1:6
 
         %% CSP
         t = tic;
-        [num_act1_CSP(aa,c),num_act2_CSP(aa,c), theta, theta2,gamma_CSP,p,q,A1_sample_long, A2_sample_long,Z,prop_CSP, B1_CSP, B2_CSP, A1_new, A2_new, it_num] = get_SAEM_RL_CSP(X, Z_init, R, Rlevels, prop_in, gamma_in,B1_in, B2_in, A1_in, A2_in, 1, 50,.02,.04,.7,tau); % change to .05 and .1 for J = 100
+        [num_act1_CSP(aa,c),num_act2_CSP(aa,c), theta, theta2,gamma_CSP,p,q,A1_sample_long, A2_sample_long,Z,prop_CSP, B1_CSP, B2_CSP, A1_new, A2_new, it_num] = get_SAEM_RL_CSP(X, Z_init, R, Rlevels, prop_in, gamma_in,B1_in, B2_in, A1_in, A2_in, 1, 50,.05,.1,.7,tau); % t1 = .02,.05,.05, t2 = .04,.1,.1, J =50,100,150 
         time_CSP(aa,c) = toc(t);
         
         [num_act1_CSP(aa,c),num_act2_CSP(aa,c)]
@@ -121,7 +121,7 @@ for aa = 1:6
     
         %% CSP with VI
         t = tic;
-        [num_act1_Gibbs(aa,c),num_act2_Gibbs(aa,c), theta, theta2,gamma_Gibbs,p,q,A1_sample_long, A2_sample_long,Z,prop_Gibbs, B1_Gibbs, B2_Gibbs, A1_new, A2_new, it_num] = get_SAEM_RL_CSP_Gibbs(X, Z_init, R, Rlevels, prop_in, gamma_in,B1_in, B2_in, A1_in, A2_in, 1, 50,.02,.04,.7,tau);
+        [num_act1_Gibbs(aa,c),num_act2_Gibbs(aa,c), theta, theta2,gamma_Gibbs,p,q,A1_sample_long, A2_sample_long,Z,prop_Gibbs, B1_Gibbs, B2_Gibbs, A1_new, A2_new, it_num] = get_SAEM_RL_CSP_Gibbs(X, Z_init, R, Rlevels, prop_in, gamma_in,B1_in, B2_in, A1_in, A2_in, 1, 50,.05,.1,.7,tau);
         time_Gibbs(aa,c) = toc(t);
 
         [B1_final_Gibbs(:,:,aa,c),B2_final_Gibbs(:,:,aa,c),~] = format_estimates(B1_true_aug_unscale, B2_true_aug, B1_Gibbs, B2_Gibbs,gamma_Gibbs,prop_Gibbs,true,Z,true);
