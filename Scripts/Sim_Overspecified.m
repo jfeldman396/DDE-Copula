@@ -553,3 +553,98 @@ end
 
 cb = colorbar;
 cb.FontSize = 20;
+
+
+
+% ================================
+% Entry-wise MSE line plot (with jitter)
+% ================================
+
+% Sample sizes
+n = [500 1000 2000 4000 8000 16000];
+
+% MSE values
+MSE_B1 = [mean(MSE_B1s_CSP,2), mean(MSE_B1s_Gibbs,2), ...
+          mean(MSE_B1s_noCSP,2), mean(MSE_B1s_pois,2)];
+
+% Extract methods
+CSP   = MSE_B1(:,1);
+Gibbs = MSE_B1(:,2);
+SAEM  = MSE_B1(:,3);
+Poiss = MSE_B1(:,4);
+
+% --- JITTER (multiplicative for log scale) ---
+jitter = [0.97, 0.99, 1.01, 1.03];  % small offsets
+
+n_CSP   = n * jitter(1);
+n_Gibbs = n * jitter(2);
+n_SAEM  = n * jitter(3);
+n_Poiss = n * jitter(4);
+
+% Plot
+figure;
+hold on;
+
+plot(n_CSP,   CSP,   '-o', 'LineWidth', 2.5, 'MarkerSize', 15);
+plot(n_Gibbs, Gibbs, '-s', 'LineWidth', 2.5, 'MarkerSize', 15);
+plot(n_SAEM,  SAEM,  '-d', 'LineWidth', 2.5, 'MarkerSize', 15);
+plot(n_Poiss, Poiss, '-^', 'LineWidth', 2.5, 'MarkerSize', 15);
+
+xlabel('Sample Size (n)', 'FontSize', 40);
+ylabel('Average Entry-wise MSE', 'FontSize',40);
+title('J = 50: B^{(1)} Entry-wise MSE vs Sample Size', 'FontSize',40);
+
+% Log scale with clean ticks
+set(gca, 'XScale', 'log');
+xticks(n);
+xticklabels(string(n));
+
+set(gca, 'FontSize', 40);
+
+legend({'RL CSP','RL Gibbs','RL SAEM','Poisson DDE'}, ...
+       'Location','east', 'FontSize', 20);
+
+grid on;
+box on;
+axis tight;
+
+%%%% B2
+% Sample sizes
+
+% MSE values (rows = n, cols = methods)
+MSE_B2 = [mean(MSE_B2s_CSP,2), mean(MSE_B2s_Gibbs,2),mean(MSE_B2s_noCSP,2), mean(MSE_B2s_pois,2)];
+
+% Extract methods
+CSP   = MSE(:,1);
+Gibbs = MSE(:,2);
+SAEM  = MSE(:,3);   % noCSP
+Poiss = MSE(:,4);
+
+% Plot
+figure;
+hold on;
+
+plot(n, CSP,   '-o', 'LineWidth', 2.5, 'MarkerSize', 15);
+plot(n, Gibbs, '-s', 'LineWidth', 2.5, 'MarkerSize', 15);
+plot(n, SAEM,  '-d', 'LineWidth', 2.5, 'MarkerSize', 15);
+plot(n, Poiss, '-^', 'LineWidth', 2.5, 'MarkerSize', 15);
+
+xlabel('Sample Size (n)', 'FontSize',40);
+ylabel('Average Entry-wise MSE', 'FontSize', 40);
+title('J = 50: B^{(2)} Entry-wise MSE vs Sample Size', 'FontSize',40);
+
+% Log scale with explicit ticks
+set(gca, 'XScale', 'log');
+xticks(n);
+xticklabels(string(n));
+
+% Increase font size
+set(gca, 'FontSize', 40);
+
+% Move legend lower
+legend({'RL CSP','RL Gibbs','RL SAEM','Poisson DDE'}, ...
+       'Location','east', 'FontSize', 20);
+
+grid on;
+box on;
+axis tight;
