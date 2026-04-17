@@ -200,11 +200,11 @@ disp(['Best average pMSE: ', num2str(best_avg_pMSE)])
 %% Find anchor items for B1 among active nodes only
 top_N = 5;
 
-J = size(B1_CSP, 1);
-K1_full = size(B1_CSP, 2) - 1;   % total non-intercept columns
+J = size(best_B1_CSP, 1);
+K1_full = size(best_B1_CSP, 2) - 1;   % total non-intercept columns
 
-% Active non-intercept columns of B1_CSP
-active_cols_B1 = find(any(B1_CSP(:, 2:end) ~= 0, 1)) + 1;   % shift by 1 for intercept
+% Active non-intercept columns of best_B1_CSP
+active_cols_B1 = find(any(best_B1_CSP(:, 2:end) ~= 0, 1)) + 1;   % shift by 1 for intercept
 K1_active = length(active_cols_B1);
 
 top_items_B1   = strings(K1_active, top_N);
@@ -212,16 +212,16 @@ top_index_B1   = zeros(K1_active, top_N);
 top_tmp_values = zeros(K1_active, top_N);
 
 for kk = 1:K1_active
-    k_col = active_cols_B1(kk);   % actual column index in B1_CSP
+    k_col = active_cols_B1(kk);   % actual column index in best_B1_CSP
     tmp = zeros(J,1);
 
     other_cols = setdiff(active_cols_B1, k_col);
 
     for j = 1:J
         if isempty(other_cols)
-            tmp(j) = max(0, B1_CSP(j, k_col));
+            tmp(j) = max(0, best_B1_CSP(j, k_col));
         else
-            tmp(j) = max(0, min(B1_CSP(j, k_col) - B1_CSP(j, other_cols)));
+            tmp(j) = max(0, min(best_B1_CSP(j, k_col) - best_B1_CSP(j, other_cols)));
         end
     end
 
@@ -245,11 +245,11 @@ end
 %% Find anchor items for B2 among active nodes only
 top_N = 3;
 
-K1_rows = size(B2_CSP, 1);
-K2_full = size(B2_CSP, 2) - 1;   % total non-intercept columns
+K1_rows = size(best_B2_CSP, 1);
+K2_full = size(best_B2_CSP, 2) - 1;   % total non-intercept columns
 
-% Active non-intercept columns of B2_CSP
-active_cols_B2 = find(any(B2_CSP(:, 2:end) ~= 0, 1)) + 1;   % shift by 1 for intercept
+% Active non-intercept columns of best_B2_CSP
+active_cols_B2 = find(any(best_B2_CSP(:, 2:end) ~= 0, 1)) + 1;   % shift by 1 for intercept
 K2_active = length(active_cols_B2);
 
 top_items_B2      = strings(K2_active, top_N);
@@ -257,16 +257,16 @@ top_index_B2      = zeros(K2_active, top_N);
 top_tmp_values_B2 = zeros(K2_active, top_N);
 
 for kk = 1:K2_active
-    k_col = active_cols_B2(kk);   % actual column index in B2_CSP
+    k_col = active_cols_B2(kk);   % actual column index in best_B2_CSP
     tmp = zeros(K1_rows,1);
 
     other_cols = setdiff(active_cols_B2, k_col);
 
     for j = 1:K1_rows
         if isempty(other_cols)
-            tmp(j) = max(0, B2_CSP(j, k_col));
+            tmp(j) = max(0, best_B2_CSP(j, k_col));
         else
-            tmp(j) = max(0, min(B2_CSP(j, k_col) - B2_CSP(j, other_cols)));
+            tmp(j) = max(0, min(best_B2_CSP(j, k_col) - best_B2_CSP(j, other_cols)));
         end
     end
 
@@ -290,16 +290,16 @@ end
 % -----------------------------------------
 % Build predictors
 % -----------------------------------------
-A1_mean = mean(A1_sample_long, 3);
-A2_mean = mean(A2_sample_long, 3);
+A1_mean =best_A1;
+A2_mean = best_A2;
 
-% Active nodes based on nonzero columns in B1_CSP and B2_CSP
-active_A1 = find(any(B1_CSP(:, 2:end) ~= 0, 1));   % indices 1,...,K1
-active_A2 = find(any(B2_CSP(:, 2:end) ~= 0, 1));   % indices 1,...,K2
+% Active nodes based on nonzero columns in best_B1_CSP and best_B2_CSP
+active_A1 = find(any(best_B1_CSP(:, 2:end) ~= 0, 1));   % indices 1,...,K1
+active_A2 = find(any(best_B2_CSP(:, 2:end) ~= 0, 1));   % indices 1,...,K2
 
 % Keep only active columns
-A1_mean_active = A1_mean(:, active_A1);
-A2_mean_active = A2_mean(:, active_A2);
+A1_mean_active = A1_mean(:, active_A1+1);
+A2_mean_active = A2_mean(:, active_A2+1);
 
 % Build tables
 A1_tbl = array2table(A1_mean_active, ...
@@ -308,13 +308,20 @@ A1_tbl = array2table(A1_mean_active, ...
 A2_tbl = array2table(A2_mean_active, ...
     'VariableNames', strcat('A2_', string(active_A2)));
 
-vars_to_add = {'gender','race','educ','marstat','employ','faminc_new'};
+vars_to_add = {'gender','race','educ','marstat','employ'};
 X_extra = B5(:, vars_to_add);
+
+X_extra = varfun(@categorical, X_extra);
 
 X_tree = [A1_tbl, A2_tbl, X_extra];
 
 % Response (EDIT THIS)
 y = B5.pid3;   % e.g., categorical(B5.outcome)
+
+idx = y == 1 | y== 2;
+
+y = y(idx);
+X_tree = X_tree(idx,:);
 
 % -----------------------------------------
 % Train / test split
@@ -338,7 +345,7 @@ view(tree_model, 'Mode', 'graph');
 % -----------------------------------------
 % Predict + evaluate
 % -----------------------------------------
-y_pred = predict(tree_model, X_test);
+[probs,y_pred] = predict(tree_model, X_test);
 
 % Classification accuracy
 accuracy = mean(y_pred == y_test);

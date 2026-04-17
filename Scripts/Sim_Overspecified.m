@@ -592,7 +592,7 @@ plot(n_Poiss, Poiss, '-^', 'LineWidth', 2.5, 'MarkerSize', 15);
 
 xlabel('Sample Size (n)', 'FontSize', 40);
 ylabel('Average Entry-wise MSE', 'FontSize',40);
-title('J = 50: B^{(1)} Entry-wise MSE vs Sample Size', 'FontSize',40);
+title('J = 100: B^{(1)} Entry-wise MSE vs Sample Size', 'FontSize',40);
 
 % Log scale with clean ticks
 set(gca, 'XScale', 'log');
@@ -631,7 +631,7 @@ plot(n, Poiss, '-^', 'LineWidth', 2.5, 'MarkerSize', 15);
 
 xlabel('Sample Size (n)', 'FontSize',40);
 ylabel('Average Entry-wise MSE', 'FontSize', 40);
-title('J = 50: B^{(2)} Entry-wise MSE vs Sample Size', 'FontSize',40);
+title('J = 100: B^{(2)} Entry-wise MSE vs Sample Size', 'FontSize',40);
 
 % Log scale with explicit ticks
 set(gca, 'XScale', 'log');
