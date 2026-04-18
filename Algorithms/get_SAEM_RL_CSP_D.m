@@ -387,7 +387,7 @@ while iter_indicator
         
         Zj = Z(:,j);
     
-        f_loglik = F_1_SAEM(Zj, A_sample_long{1}, N, K(1), C, temp, gamma(j));
+        f_loglik = F_1_SAEM_cop(Zj, A_sample_long{1}, N, K(1), C, temp, gamma(j));
     
         W1 = [0, 1 ./ theta{1}(j,:)];
     
@@ -419,7 +419,7 @@ while iter_indicator
     
             A_child_k = reshape(A_sample_long{d-1}(:,k+1,:), [N, C]);
     
-            f_loglik = F_2_SAEM(A_child_k, A_sample_long{d}, N, K(d), C, temp);
+            f_loglik = F_2_SAEM_cop(A_child_k, A_sample_long{d}, N, K(d), C, temp);
     
             Wd = [0, 1 ./ theta{d}(k,:)];
     

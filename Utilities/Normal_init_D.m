@@ -5,7 +5,7 @@ function [prop_ini, B_cell_ini, gamma_ini, A_cell_ini] = Normal_init_D(X, D, K_c
 
     %% 1st layer
     % svd
-    K1 = K_cell{1}; B1 = B_cell{1}; K1_max = K1;
+    K1 = K_cell{1};  K1_max = K1;
     X_centered = X- ones(N,1) * mean(X);
     [~, ~, V] = svd(X_centered, "econ");
 
@@ -37,7 +37,7 @@ function [prop_ini, B_cell_ini, gamma_ini, A_cell_ini] = Normal_init_D(X, D, K_c
 
     %% d-th layer
     for d =2:D
-        [A_cell_ini{d}, B_cell_ini{d}] = binary_init(N, K_cell{d-1}, K_cell{d}, A_cell_ini{d-1}, B_cell{d}, 2, epsilon);
+        [A_cell_ini{d}, B_cell_ini{d}] = binary_init(N, K_cell{d-1}, K_cell{d}, A_cell_ini{d-1}, 2, epsilon);
     end
 
     prop_ini = mean(A_cell_ini{D} > 0);

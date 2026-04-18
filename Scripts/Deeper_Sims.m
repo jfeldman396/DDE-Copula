@@ -57,8 +57,8 @@ for i = 1:(length(idx) - 1)
     end
 end
 
-B2_sub = sim_block_loadings(K1_true, K2_true, 8, 4, 4/3, 0,1);
-B1_sub = sim_block_loadings(J, K1_true,10,10,5,0,1);
+B2_sub = sim_block_loadings_test(K1_true, K2_true,K2_true, 3, 4, 4/3, 0,1);
+B1_sub = sim_block_loadings_test(J, K1_true,K1_true,5,10,5,0,1);
 
 B3_true = [-2 * ones(K2_true,1), B3_sub];
 B2_true = [-2 * ones(K1_true,1), B2_sub];
@@ -101,13 +101,13 @@ K_cell_init{3} = 5;
 epsilon_init = 1e-4;
 
 % Fitter controls
-model = struct();
-model.C        = 1;                 % MC draws inside SAEM step
-model.it       = 50;                % max iterations
-model.temp     = .7;               % initial temperature
-model.tau      = .3;               % threshold level
-model.t_spike  = [0.05, 0.1, 0.1]; % layer-specific spike scales
-model.nonlcon  = [];                 % set [] if unused
+
+C        = 1;                 % MC draws inside SAEM step
+it       = 50;                % max iterations
+temp     = .7;               % initial temperature
+tau      = .3;               % threshold level
+t_spike  = [0.01, 0.02, 0.01]; % layer-specific spike scales
+
 
 %% ------------------------------------------------------------
 % Preallocate output
@@ -164,49 +164,13 @@ for aa = 1:numel(n_vec)
             end
         end
 
-        %% ----------------------------------------------------
-        % 4) Compute max-ranks for possible latent Gaussian init
-        % -----------------------------------------------------
-        Ranks = NaN(Nsim, J);
-
-        for j = 1:J
-            yj = X(:, j);
-            idx_nonan = find(~isnan(yj));
-
-            if isempty(idx_nonan)
-                continue;
-            end
-
-            vals = yj(idx_nonan);
-            [vals_sorted, ord] = sort(vals, 'ascend');
-
-            d0 = [true; diff(vals_sorted) ~= 0];
-            groupStart = find(d0);
-            groupEnd   = [groupStart(2:end)-1; numel(vals_sorted)];
-
-            ranks_nonan = zeros(numel(vals_sorted), 1);
-
-            for g = 1:numel(groupStart)
-                s = groupStart(g);
-                e = groupEnd(g);
-                ranks_nonan(s:e) = e;   % max rank within tie block
-            end
-
-            orig_nonan_pos = idx_nonan(ord);
-            Ranks(orig_nonan_pos, j) = ranks_nonan;
-        end
-
-        Nobs = sum(~isnan(Ranks), 1); %#ok<NASGU>
-
+      
         %% ----------------------------------------------------
         % 5) Initialize latent Gaussian Z
         % -----------------------------------------------------
         % Option A: mixture-based init
-        Z_init = simulate_gaussian_mixture(X, J, c);
+        Z_init = simulate_gaussian_mixture(X, J);
 
-        % Option B: rank-based init
-        % U = Ranks ./ (Nsim + 1);
-        % Z_init = norminv(U);
 
         %% ----------------------------------------------------
         % 6) Initialize D-layer model parameters
@@ -217,21 +181,12 @@ for aa = 1:numel(n_vec)
         %% ----------------------------------------------------
         % 7) Fit D-layer model
         % -----------------------------------------------------
-        % Assumed signature:
-        % fit_Dlayer_DDE_SAEM_RL_depCUSP( ...
-        %     X, Z_init, R, Rlevels, prop_init, gamma_init, ...
-        %     B_cell_init, A_cell_init, model)
 
-        fit_out = fit_Dlayer_DDE_SAEM_RL_depCUSP( ...
-            X, ...
-            Z_init, ...
-            R, ...
-            Rlevels, ...
-            prop_init, ...
-            gamma_init, ...
-            B_cell_init, ...
-            A_cell_init, ...
-            model);
+
+        fit_out = get_SAEM_RL_CSP_D( ...
+    X, Z_init, R, Rlevels, ...
+    prop_init, gamma_init, B_cell_init, A_cell_init, ...
+    1, 50, t_spike, temp, tau)
 
         %% ----------------------------------------------------
         % 8) Store results
