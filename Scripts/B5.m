@@ -313,7 +313,7 @@ X_extra = B5(:, vars_to_add);
 
 X_extra = varfun(@categorical, X_extra);
 
-X_tree = [A1_tbl, A2_tbl, X_extra];
+X_tree = [A1_tbl, A2_tbl];
 
 % Response (EDIT THIS)
 y = B5.pid3;   % e.g., categorical(B5.outcome)
@@ -345,7 +345,7 @@ view(tree_model, 'Mode', 'graph');
 % -----------------------------------------
 % Predict + evaluate
 % -----------------------------------------
-[probs,y_pred] = predict(tree_model, X_test);
+y_pred= predict(tree_model, X_test);
 
 % Classification accuracy
 accuracy = mean(y_pred == y_test);
