@@ -313,12 +313,12 @@ X_extra = B5(:, vars_to_add);
 
 X_extra = varfun(@categorical, X_extra);
 
-X_tree = [A1_tbl, A2_tbl];
+X_tree = [A1_tbl, A2_tbl, X_extra];
 
 % Response (EDIT THIS)
-y = B5.presvote16post;   % e.g., categorical(B5.outcome)
+y = B5.ideo5;   % e.g., categorical(B5.outcome)
 
-idx = y == 1 | y== 2;
+idx = y == 1 | y== 5;
 
 y = y(idx);
 X_tree = X_tree(idx,:);
@@ -359,11 +359,8 @@ confusionchart(y_test, y_pred);
 
 %%------------
 
-y = B5.ideo5;   % e.g., categorical(B5.outcome)
 
-idx = y == 1 | y== 5;
-
-A1_mean_sub = A1_mean_active(idx,:)
+A1_mean_sub = A1_mean_active(idx,:);
 y_sub = y(idx);
 
 [val, ord]= sort(y_sub);
@@ -443,9 +440,9 @@ tiledlayout(1,3,'Padding','compact','TileSpacing','compact');
 ax1 = nexttile;
 imagesc(A1_mean_sub);
 set(gca,'YDir','normal');
-xlabel('Columns of A','FontSize',18);
+xlabel('Latent Dimensions','FontSize',18);
 ylabel('Observations','FontSize',18);
-title('A','FontSize',20);
+title('Noisy A1','FontSize',20);
 colormap(ax1, graymap);
 colorbar;
 set(gca,'FontSize',14);
@@ -454,9 +451,9 @@ set(gca,'FontSize',14);
 ax1 = nexttile;
 imagesc(A_avg_expanded);   % <-- this is the key change
 set(gca,'YDir','normal');
-xlabel('Columns of A','FontSize',18);
+xlabel('Columns of A1','FontSize',18);
 ylabel('Observations','FontSize',18);
-title('Avg(A | segments of B)','FontSize',20);
+title('Avg(A1 | Political Ideology)','FontSize',20);
 colormap(ax1, graymap);
 colorbar;
 set(gca,'FontSize',14);
@@ -477,11 +474,10 @@ colorbar;
 ax2 = nexttile;
 imagesc(y_sub);
 set(gca,'YDir','normal');
-xlabel('Columns of B','FontSize',18);
-ylabel('Observations','FontSize',18);
-title('B','FontSize',20);
+xlabel('','FontSize',18);
+ylabel('','FontSize',18);
+title('Conservative/Liberal','FontSize',20);
 colormap(ax2, rbmap);
-colorbar;
 set(gca,'FontSize',14);
 
 % 9. Print info
