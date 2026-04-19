@@ -38,7 +38,7 @@ K1_true = 10;
 
 J = 120;
 
-B3_sub = 3*ones(3,1);
+B3_sub = 4*ones(3,1);
 B2_sub = zeros(K1_true, K2_true);
 
 max_val = 4;
@@ -66,6 +66,9 @@ B1_true_unscale = [ ...
      -2 * ones(floor(J/3),1); ...
      -2 * ones(J - 2*floor(J/3),1)], ...
     B1_sub];
+
+B2_true_aug = zeros(K_cell_init{1}, K_cell_init{2} + 1);
+B2_true_aug(1:K1_true, 1:K2_true + 1) = B2_true;
 
 % Optional support indicators
 G1 = [(B1_sub ~= 0), zeros(J, floor(J/3) - K1_true)];
@@ -102,9 +105,8 @@ epsilon_init = 1e-4;
 
 C        = 1;                 % MC draws inside SAEM step
 it       = 50;                % max iterations
-temp     = .7;               % initial temperature
-            % threshold level
-t_spike  = [0.02, 0.04, 0.01]; % layer-specific spike scales
+temp     = .8;               % initial temperature           
+t_spike  = [0.05, 0.05, 0.005]; % layer-specific spike scales
 
 
 %% ------------------------------------------------------------
@@ -118,8 +120,8 @@ RESULTS = cell(numel(n_vec), C_sims);
 for aa = 1:numel(n_vec)
 
     Nsim = n_vec(aa);
-
-    parfor (c = 1:C_sims, n_parallel)
+    tau = 3*N^-.3
+    for c = 1:C_sims
 
         rng(50 + c);
 
@@ -134,6 +136,9 @@ for aa = 1:numel(n_vec)
             rescale_B1(prop_true, B2_true, B1_true_unscale, gamma_true,true, Z_true);
 
         B1_true_scale_aug = [B1_true_scale, zeros(J, floor(J/3) - K1_true)]; %#ok<NASGU>
+
+
+
 
         %% ----------------------------------------------------
         % 2) Build rank-likelihood object R
@@ -182,9 +187,12 @@ for aa = 1:numel(n_vec)
 
 
         fit_out = get_SAEM_RL_CSP_D( ...
-    X, Z_init, R, Rlevels, ...
-    prop_init, gamma_init, B_cell_init, A_cell_init, ...
-    1, 50, t_spike, temp, tau)
+        X, Z_init, R, Rlevels, ...
+        prop_init, gamma_init, B_cell_init, A_cell_init, ...
+        1, 50, t_spike, temp, tau);
+
+        fit_out.num_act
+
 
         RESULTS{aa, c} = fit_out;
     end
@@ -192,3 +200,24 @@ for aa = 1:numel(n_vec)
     fprintf('Finished sample size %d\n', Nsim);
 end
 
+num_act1 = zeros(aa, C_sims); num_act2 = zeros(aa,C_sims); num_act3= zeros(aa,C_sims);
+
+for aa = 1:3
+    for c = 1:C_sims
+        num_act1(aa,c) = RESULTS{aa,c}.num_act(1);
+        num_act2(aa,c) = RESULTS{aa,c}.num_act(2);
+        num_act3(aa,c) = RESULTS{aa,c}.num_act(3);
+    end
+end
+
+B1_D = zeros(J,K_cell_init{1} + 1,aa,C_sims); B2_D = zeros(K_cell_init{1}, K_cell_init{2}+1, aa, C_sims); B3_D = zeros(K_cell_init{2}, K_cell_init{3}+1, aa, C_sims)
+
+for aa = 1:4
+    for c = 1:C_sims
+        [B1_D(:,:,aa,c), B2_D(:,:,aa,c)] = format_estimates(B1_true_scale_aug, B2_true_aug,...
+            RESULTS{aa,c}.B{1},RESULTS{aa,c}.B{2},RESULTS{aa,c}.gamma,RESULTS{aa,c}.prop,true, RESULTS{aa,c}.Z, true);
+        B3_D(:,:,aa,c) = RESULTS{aa,c}.B{3};
+    end
+end
+
+        

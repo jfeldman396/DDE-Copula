@@ -316,7 +316,7 @@ X_extra = varfun(@categorical, X_extra);
 X_tree = [A1_tbl, A2_tbl];
 
 % Response (EDIT THIS)
-y = B5.pid3;   % e.g., categorical(B5.outcome)
+y = B5.presvote16post;   % e.g., categorical(B5.outcome)
 
 idx = y == 1 | y== 2;
 
@@ -353,3 +353,139 @@ fprintf('Test Accuracy: %.4f\n', accuracy);
 
 % Confusion matrix
 confusionchart(y_test, y_pred);
+
+
+
+
+%%------------
+
+y = B5.ideo5;   % e.g., categorical(B5.outcome)
+
+idx = y == 1 | y== 5;
+
+A1_mean_sub = A1_mean_active(idx,:)
+y_sub = y(idx);
+
+[val, ord]= sort(y_sub);
+
+A1_mean_sub = A1_mean_sub(ord,:);
+y_sub = y_sub(ord,:);
+
+
+
+% ============================================
+% Plot A, segment-wise average of A, and B
+% with aligned segment ordering
+%
+% Left plot:   grayscale heatmap of A
+% Middle plot: grayscale heatmap of Avg(A | segments of B)
+% Right plot:  red-blue heatmap of B
+% ============================================
+
+% Assumptions:
+%   A is N x K1
+%   B is N x K2 (or N x 1)
+%
+% Example:
+%   A = A1_new;
+%   B = A2_new;
+
+% ----------------------------
+% 1. Define groups from B
+% ============================================
+% Align Avg(A | segments of B) with B
+% ============================================
+
+% A: N x K1
+% B: N x K2 (or N x 1)
+
+% 1. Define groups from B
+[group, ~] = findgroups(y_sub);
+
+% 2. Compute average of A within each group
+A_avg = splitapply(@(X) mean(X,1), A1_mean_sub, group);
+
+% 3. Order groups by their vertical location in the data
+group_row_mean = splitapply(@mean, (1:length(group))', group);
+[~, sort_idx] = sort(group_row_mean);
+
+A_avg = A_avg(sort_idx, :);
+
+% 4. Group sizes in the same order
+group_counts = splitapply(@numel, group, group);
+group_counts = group_counts(sort_idx);
+
+% 5. Expand A_avg so each segment gets repeated by its size
+A_avg_expanded = repelem(A_avg, group_counts, 1);
+
+% 6. Boundary locations in observation units
+boundaries = cumsum(group_counts);
+boundaries = boundaries(1:end-1) + 0.5;
+
+% 7. Colormaps
+graymap = gray(256);
+
+nC = 256;
+blue  = [0 0 1];
+white = [1 1 1];
+red   = [1 0 0];
+rbmap = [linspace(blue(1),white(1),nC/2)', ...
+         linspace(blue(2),white(2),nC/2)', ...
+         linspace(blue(3),white(3),nC/2)';
+         linspace(white(1),red(1),nC/2)', ...
+         linspace(white(2),red(2),nC/2)', ...
+         linspace(white(3),red(3),nC/2)'];
+
+% 8. Plot
+figure;
+tiledlayout(1,3,'Padding','compact','TileSpacing','compact');
+
+ax1 = nexttile;
+imagesc(A1_mean_sub);
+set(gca,'YDir','normal');
+xlabel('Columns of A','FontSize',18);
+ylabel('Observations','FontSize',18);
+title('A','FontSize',20);
+colormap(ax1, graymap);
+colorbar;
+set(gca,'FontSize',14);
+
+% ---- Middle-style plot: expanded Avg(A | B) ----
+ax1 = nexttile;
+imagesc(A_avg_expanded);   % <-- this is the key change
+set(gca,'YDir','normal');
+xlabel('Columns of A','FontSize',18);
+ylabel('Observations','FontSize',18);
+title('Avg(A | segments of B)','FontSize',20);
+colormap(ax1, graymap);
+colorbar;
+set(gca,'FontSize',14);
+hold on;
+for y = boundaries
+    yline(y,'k-','LineWidth',1.5);
+end
+hold off;
+% sharpen contrast
+lo = prctile(A_avg_expanded(:), 5);
+hi = prctile(A_avg_expanded(:), 95);
+caxis([lo hi]);
+
+colormap(gray(256));
+colorbar;
+
+% ---- B ----
+ax2 = nexttile;
+imagesc(y_sub);
+set(gca,'YDir','normal');
+xlabel('Columns of B','FontSize',18);
+ylabel('Observations','FontSize',18);
+title('B','FontSize',20);
+colormap(ax2, rbmap);
+colorbar;
+set(gca,'FontSize',14);
+
+% 9. Print info
+disp('Group sizes:')
+disp(group_counts)
+disp('Boundary locations:')
+disp(boundaries)
