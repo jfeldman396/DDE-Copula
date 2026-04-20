@@ -32,30 +32,32 @@ addpath('/Users/jfeldm01/Library/CloudStorage/OneDrive-Kearney/Documents/Deep-Di
 % -------------------------------------------------------------
 D = 3;
 
-K3_true = 1;
-K2_true = 3;
-K1_true = 10;
+K3_true = 2;
+K2_true = 6;
+K1_true = 18;
 
-J = 120;
+J = 108;
 
-B3_sub = 4*ones(3,1);
-B2_sub = zeros(K1_true, K2_true);
+
+B3_sub = zeros(K2_true, K3_true);
 
 max_val = 4;
-idx = floor(linspace(1, K1_true, 4));
+idx = floor(linspace(1, K2_true, K3_true + 1));
 for i = 1:(length(idx) - 1)
     if mod(i,2) == 0
-        B2_sub(idx(i):idx(i+1), i)   = max_val;
-        B2_sub(idx(i):idx(i+1), i-1) = -max_val/3;
+        B3_sub(idx(i):idx(i+1), i)   = max_val;
+        B3_sub(idx(i):idx(i+1), i-1) = -max_val/3;
     else
-        B2_sub(idx(i):idx(i+1), i) = max_val;
+        B3_sub(idx(i):idx(i+1), i) = max_val;
         if i < length(idx) - 2
-            B2_sub(idx(i):idx(i+1), i+1) = -max_val/3;
+            B3_sub(idx(i):idx(i+1), i+1) = -max_val/3;
         end
     end
 end
 
-B1_sub = sim_block_loadings(J, K1_true,12,10,5,0,1); % first entry by J: J = 50 -> 5, J = 100 -> 10, J = 150 -> 15
+B2_sub = sim_block_loadings(K1_true, K2_true,K1_true/K2_true,4,4/3,0,1); % first entry by J: J = 50 -> 5, J = 100 -> 10, J = 150 -> 15
+
+B1_sub = sim_block_loadings(J, K1_true,J/K1_true,10,5,0,1); % first entry by J: J = 50 -> 5, J = 100 -> 10, J = 150 -> 15
 
 
 B3_true = [-2 * ones(K2_true,1), B3_sub];
@@ -67,8 +69,7 @@ B1_true_unscale = [ ...
      -2 * ones(J - 2*floor(J/3),1)], ...
     B1_sub];
 
-B2_true_aug = zeros(K_cell_init{1}, K_cell_init{2} + 1);
-B2_true_aug(1:K1_true, 1:K2_true + 1) = B2_true;
+
 
 % Optional support indicators
 G1 = [(B1_sub ~= 0), zeros(J, floor(J/3) - K1_true)];
@@ -91,13 +92,16 @@ lambdas = randi([1, 10], 1, J);
 % Simulation settings
 % -------------------------------------------------------------
 C_sims     = 100;
-n_vec      = [4000, 8000,12000,16000];
+n_vec      = [500 1000 2000 4000 8000 16000];
 
 % Initial layer sizes for fitting
 K_cell_init = cell(1,D);
-K_cell_init{1} = 40;
-K_cell_init{2} = 13;
-K_cell_init{3} = 4;
+K_cell_init{1} = floor(J/3);
+K_cell_init{2} = floor(J/9);
+K_cell_init{3} = floor(J/27);
+
+B2_true_aug = zeros(K_cell_init{1}, K_cell_init{2} + 1);
+B2_true_aug(1:K1_true, 1:K2_true + 1) = B2_true;
 
 epsilon_init = 1e-4;
 
@@ -105,8 +109,8 @@ epsilon_init = 1e-4;
 
 C        = 1;                 % MC draws inside SAEM step
 it       = 50;                % max iterations
-temp     = .8;               % initial temperature           
-t_spike  = [0.05, 0.05, 0.005]; % layer-specific spike scales
+temp     = .9;               % initial temperature           
+t_spike  = [0.01, 0.03, 0.005]; % layer-specific spike scales
 
 
 %% ------------------------------------------------------------
@@ -117,11 +121,11 @@ RESULTS = cell(numel(n_vec), C_sims);
 %% ------------------------------------------------------------
 % Main simulation loop
 % -------------------------------------------------------------
-for aa = 1:numel(n_vec)
+for aa = numel(n_vec):-1:1
 
     Nsim = n_vec(aa);
-    tau = 3*N^-.3
-    for c = 1:C_sims
+    tau = max(.3,3*Nsim^-.3);
+    for c = 80:C_sims
 
         rng(50 + c);
 
@@ -192,6 +196,7 @@ for aa = 1:numel(n_vec)
         1, 50, t_spike, temp, tau);
 
         fit_out.num_act
+        fit_out.B{3}
 
 
         RESULTS{aa, c} = fit_out;
@@ -202,7 +207,7 @@ end
 
 num_act1 = zeros(aa, C_sims); num_act2 = zeros(aa,C_sims); num_act3= zeros(aa,C_sims);
 
-for aa = 1:3
+for aa = numel(n_vec):-1:1
     for c = 1:C_sims
         num_act1(aa,c) = RESULTS{aa,c}.num_act(1);
         num_act2(aa,c) = RESULTS{aa,c}.num_act(2);
@@ -210,7 +215,7 @@ for aa = 1:3
     end
 end
 
-B1_D = zeros(J,K_cell_init{1} + 1,aa,C_sims); B2_D = zeros(K_cell_init{1}, K_cell_init{2}+1, aa, C_sims); B3_D = zeros(K_cell_init{2}, K_cell_init{3}+1, aa, C_sims)
+B1_D = zeros(J,K_cell_init{1} + 1,aa,C_sims); B2_D = zeros(K_cell_init{1}, K_cell_init{2}+1, aa, C_sims); B3_D = zeros(K_cell_init{2}, K_cell_init{3}+1, aa, C_sims);
 
 for aa = 1:4
     for c = 1:C_sims

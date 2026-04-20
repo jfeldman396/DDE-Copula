@@ -54,7 +54,7 @@ B1_true_aug_scale(:,1:K1_true+1)= B1_true_scale;
 B2_true = B2_true_aug(1:K1_true, 1:K2_true + 1);
 lambdas = randi([1, 10], 1, J);
 %% main simulation
-C = 100; n_vec = [500 1000 2000 4000 8000,16000]; n_parallel = 6;
+C = 100; n_vec = [500 1000 2000 4000 8000 16000]; n_parallel = 6;
 
 
 B1_final_CSP = zeros(J, K1_max+1, length(n_vec), C); B2_final_CSP = zeros(K1_max, K2_max + 1,length(n_vec), C);

@@ -361,11 +361,13 @@ confusionchart(y_test, y_pred);
 
 
 A1_mean_sub = A1_mean_active(idx,:);
+A2_mean_sub = A2_mean_active(idx,:);
 y_sub = y(idx);
 
 [val, ord]= sort(y_sub);
 
 A1_mean_sub = A1_mean_sub(ord,:);
+A2_mean_sub = A2_mean_sub(ord,:);
 y_sub = y_sub(ord,:);
 
 
@@ -440,9 +442,9 @@ tiledlayout(1,3,'Padding','compact','TileSpacing','compact');
 ax1 = nexttile;
 imagesc(A1_mean_sub);
 set(gca,'YDir','normal');
-xlabel('Latent Dimensions','FontSize',18);
+xlabel('A_k^{(1)}','FontSize',18);
 ylabel('Observations','FontSize',18);
-title('Noisy A1','FontSize',20);
+title('Noisy A^{(1)}','FontSize',20);
 colormap(ax1, graymap);
 colorbar;
 set(gca,'FontSize',14);
@@ -451,9 +453,9 @@ set(gca,'FontSize',14);
 ax1 = nexttile;
 imagesc(A_avg_expanded);   % <-- this is the key change
 set(gca,'YDir','normal');
-xlabel('Columns of A1','FontSize',18);
+xlabel('A_k^{(1)}','FontSize',18);
 ylabel('Observations','FontSize',18);
-title('Avg(A1 | Political Ideology)','FontSize',20);
+title('Avg(A_k^{(1)} | Political Ideology)','FontSize',20);
 colormap(ax1, graymap);
 colorbar;
 set(gca,'FontSize',14);
@@ -474,14 +476,10 @@ colorbar;
 ax2 = nexttile;
 imagesc(y_sub);
 set(gca,'YDir','normal');
-xlabel('','FontSize',18);
+xlabel('','FontSize',18)
+xticks([]);
 ylabel('','FontSize',18);
 title('Conservative/Liberal','FontSize',20);
 colormap(ax2, rbmap);
 set(gca,'FontSize',14);
 
-% 9. Print info
-disp('Group sizes:')
-disp(group_counts)
-disp('Boundary locations:')
-disp(boundaries)

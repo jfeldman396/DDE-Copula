@@ -447,14 +447,15 @@ while iter_indicator
     end
 
     
-    for d = 1:D
-        B_update{d}(:,2:end) = thres(B_update{d}(:,2:end), tau);
+    for d = 1:D-1
+        B_update{d}(:,2:end) = thres(B_update{d}(:,2:end), tau); %% don't threshold the third layer.
     end
 
     % If a node in layer d is inactive, zero out rows of B{d+1}
     for d = 1:D-1
         B_update{d+1}(ind_inact{d}, :) = 0;
     end
+
 
     %% =======================================================
     % 8) Temperature schedule
