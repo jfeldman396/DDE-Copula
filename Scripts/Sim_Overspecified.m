@@ -502,7 +502,7 @@ end
 figure;
 imagesc(B1_true_full);
     caxis([-clim clim]);
-    title('J = 100: B^{(1)} True', 'FontSize', 20)
+    title('J = 150: B^{(1)} True', 'FontSize', 20)
     xlabel('K_1'); ylabel('J')
     set(gca, 'FontSize', 40); colorbar;
 
@@ -591,7 +591,7 @@ end
 figure;
 imagesc(B2_true_full);
     caxis([-clim clim]);
-    title('J = 100: B^{(2)} True', 'FontSize', 20)
+    title('J = 50: B^{(2)} True', 'FontSize', 20)
     xlabel('K_2'); ylabel('K_1')
     set(gca, 'FontSize', 40); colorbar;
 
@@ -656,10 +656,10 @@ axis tight;
 MSE_B2 = [mean(MSE_B2s_CSP,2), mean(MSE_B2s_Gibbs,2),mean(MSE_B2s_noCSP,2), mean(MSE_B2s_pois,2)];
 
 % Extract methods
-CSP   = MSE(:,1);
-Gibbs = MSE(:,2);
-SAEM  = MSE(:,3);   % noCSP
-Poiss = MSE(:,4);
+CSP   = MSE_B2(:,1);
+Gibbs = MSE_B2(:,2);
+SAEM  = MSE_B2(:,3);   % noCSP
+Poiss = MSE_B2(:,4);
 
 % Plot
 figure;
