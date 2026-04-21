@@ -436,20 +436,34 @@ for aa = 1:n_aa
     B1_avg{4,aa} = mean(B1_final_pois(:,:,aa,:), 4);
 end
 
-% color scale
+% Select only n = 1000, 4000, 16000
+keep_idx = ismember(n_vec, [1000 4000 16000]);
+n_vec_sub = n_vec(keep_idx);
+n_aa_sub = sum(keep_idx);
+
+% color scale using all methods, all n
 all_vals = B1_true_full(:);
 for m = 1:n_methods
     for aa = 1:n_aa
         all_vals = [all_vals; B1_avg{m,aa}(:)];
     end
 end
-clim = max(abs(all_vals));
+all_vals = all_vals(:);
+lo = prctile(all_vals, 2);
+hi = prctile(all_vals, 98);
+clim = max(abs([lo hi]));
 
-figure;
-tiledlayout(n_methods, n_aa+1, 'Padding','compact','TileSpacing','compact');
+figure('Units','pixels','Position',[100 100 1800 900]);
+tiledlayout(n_methods, n_aa_sub + 1, 'Padding','compact','TileSpacing','compact');
 
 for m = 1:n_methods
+    aa_counter = 1;
+
     for aa = 1:n_aa
+        if ~keep_idx(aa)
+            continue
+        end
+
         nexttile
         imagesc(B1_avg{m,aa});
         caxis([-clim clim]);
@@ -457,20 +471,20 @@ for m = 1:n_methods
 
         title(sprintf('n=%d', n_vec(aa)), 'FontSize', 20)
 
-        if aa==1
-            ylabel(methods{m}, 'FontSize', 20)
+        if aa_counter == 1
+            ylabel({methods{m}; 'J'}, 'FontSize', 20)
         end
 
-        % axis labels (only bottom row to avoid clutter)
         if m == n_methods
             xlabel('K_1', 'FontSize', 20)
         end
-        if aa == 1
-            ylabel({methods{m}; 'J'}, 'FontSize', 20)
-        end
+
+        set(gca, 'FontSize', 25)
+
+        aa_counter = aa_counter + 1;
     end
 
-    % truth column
+    % Truth column
     nexttile
     imagesc(B1_true_full);
     caxis([-clim clim]);
@@ -480,14 +494,20 @@ for m = 1:n_methods
     if m == n_methods
         xlabel('K_1', 'FontSize', 20)
     end
-    if m == 1
-        ylabel('J', 'FontSize', 20)
-    end
+
+    set(gca, 'FontSize', 25)
 end
 
+%truth
+figure;
+imagesc(B1_true_full);
+    caxis([-clim clim]);
+    title('J = 100: B^{(1)} True', 'FontSize', 20)
+    xlabel('K_1'); ylabel('J')
+    set(gca, 'FontSize', 40); colorbar;
 
-cb = colorbar;
-cb.FontSize = 20;
+%--------------------------
+
 
 
 
@@ -510,49 +530,70 @@ for m = 1:n_methods
 end
 clim = max(abs(all_vals));
 
-figure;
-tiledlayout(n_methods, n_aa+1, 'Padding','compact','TileSpacing','compact');
+% Select indices corresponding to n = 1000, 4000, 16000
+keep_idx = ismember(n_vec, [1000 4000 16000]);
+all_vals = all_vals(:);
+low  = prctile(all_vals, 5);
+high = prctile(all_vals, 95);
+clim = max(abs([low, high]));
+
+n_vec_sub = n_vec(keep_idx);
+n_aa_sub  = sum(keep_idx);
+
+figure('Units','pixels','Position',[100 100 1800 900]);
+tiledlayout(n_methods, n_aa_sub + 1, ...
+    'Padding','compact','TileSpacing','compact');
 
 for m = 1:n_methods
+    aa_counter = 1;
+
     for aa = 1:n_aa
+        if ~keep_idx(aa)
+            continue
+        end
+
         nexttile
         imagesc(B2_avg{m,aa});
         caxis([-clim clim]);
         axis tight
 
-        title(sprintf('n=%d', n_vec(aa)), 'FontSize', 20)
+        title(sprintf('n=%d', n_vec(aa)), 'FontSize', 22, 'FontWeight','bold')
 
-        if aa==1
-            ylabel(methods{m}, 'FontSize', 20)
+        if aa_counter == 1
+            ylabel({methods{m}; 'K_1'}, 'FontSize', 22)
         end
 
-        % axis labels (bottom row only)
         if m == n_methods
-            xlabel('K_2', 'FontSize', 20)
+            xlabel('K_2', 'FontSize', 22)
         end
-        if aa == 1
-            ylabel({methods{m}; 'K_1'}, 'FontSize', 20)
-        end
+
+        set(gca,'FontSize',25)
+
+        aa_counter = aa_counter + 1;
     end
 
-    % truth column
+    % Truth column
     nexttile
     imagesc(B2_true_full);
     caxis([-clim clim]);
     axis tight
-    title('Truth', 'FontSize', 20)
+
+    title('Truth', 'FontSize', 22, 'FontWeight','bold')
 
     if m == n_methods
-        xlabel('K_2', 'FontSize', 20)
+        xlabel('K_2', 'FontSize', 22)
     end
-    if m == 1
-        ylabel('K_1', 'FontSize', 20)
-    end
+
+    set(gca,'FontSize',25)
 end
 
-
-cb = colorbar;
-cb.FontSize = 20;
+%truth
+figure;
+imagesc(B2_true_full);
+    caxis([-clim clim]);
+    title('J = 100: B^{(2)} True', 'FontSize', 20)
+    xlabel('K_2'); ylabel('K_1')
+    set(gca, 'FontSize', 40); colorbar;
 
 
 
