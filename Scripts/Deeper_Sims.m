@@ -125,7 +125,7 @@ for aa = numel(n_vec):-1:1
 
     Nsim = n_vec(aa);
     tau = max(.3,3*Nsim^-.3);
-    for c = 80:C_sims
+    for c = 1:C_sims
 
         rng(50 + c);
 
