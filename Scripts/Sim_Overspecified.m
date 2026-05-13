@@ -1,7 +1,7 @@
-addpath('/Users/jfeldm01/Library/CloudStorage/OneDrive-Kearney/Documents/Deep-Discrete-Encoders-main/CopDDE/Utilities/')
-addpath('/Users/jfeldm01/Library/CloudStorage/OneDrive-Kearney/Documents/Deep-Discrete-Encoders-main/CopDDE//Algorithms/')
-addpath('/Users/jfeldm01/Library/CloudStorage/OneDrive-Kearney/Documents/Deep-Discrete-Encoders-main/utilities/')
-addpath('/Users/jfeldm01/Library/CloudStorage/OneDrive-Kearney/Documents/Deep-Discrete-Encoders-main/main algorithms/Poisson/')
+addpath('CopDDE/Utilities/')
+addpath('CopDDE//Algorithms/')
+addpath('Deep-Discrete-Encoders-main/utilities/')
+addpath('Deep-Discrete-Encoders-main/main algorithms/Poisson/')
 
 %%% add paths on your own
 
