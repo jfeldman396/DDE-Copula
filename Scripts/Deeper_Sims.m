@@ -24,8 +24,8 @@ clear; clc;
 %% ------------------------------------------------------------
 % Add paths
 % -------------------------------------------------------------
-addpath('/Users/jfeldm01/Library/CloudStorage/OneDrive-Kearney/Documents/Deep-Discrete-Encoders-main/CopDDE/Utilities/')
-addpath('/Users/jfeldm01/Library/CloudStorage/OneDrive-Kearney/Documents/Deep-Discrete-Encoders-main/CopDDE//Algorithms/')
+addpath('CopDDE/Utilities/')
+addpath('CopDDE//Algorithms/')
 
 %% ------------------------------------------------------------
 % True model dimensions
