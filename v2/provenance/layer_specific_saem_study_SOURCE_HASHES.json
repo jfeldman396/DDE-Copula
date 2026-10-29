@@ -1,0 +1,70 @@
+{
+  "original_manifest_sha256": "ed8fc5aff53a61279b418063b9631a6b11e4d57781f60fffa8c307c4bece85d1",
+  "note": "Only paths normalized to repository-relative paths; component hashes unchanged.",
+  "components": {
+    "lsa_fit": {
+      "file": "v2/CopDDE/LayerSpecificSAEM/lsa_fit.m",
+      "hash": {
+        "sha256": "6464c65b08e0fc1075c70f64203608acdc14b9a4664bdea4c18dc0a70d3ae7ba",
+        "bytes": 4447
+      },
+      "included_in_package": true
+    },
+    "lsa_stop": {
+      "file": "v2/CopDDE/LayerSpecificSAEM/lsa_stop.m",
+      "hash": {
+        "sha256": "890991f76ca25bc1f65bc366c0a5140b02d14fdb46329ec6ecc1200ba7a02b10",
+        "bytes": 733
+      },
+      "included_in_package": true
+    },
+    "lsa_protocol": {
+      "file": "v2/CopDDE/LayerSpecificSAEM/lsa_protocol.m",
+      "hash": {
+        "sha256": "f3c48b9687e2dfcf42d3317d7122e623449118e45b6a0311ec4a73621d46e5bb",
+        "bytes": 403
+      },
+      "included_in_package": true
+    },
+    "lsa_input": {
+      "file": "v2/CopDDE/LayerSpecificSAEM/lsa_input.m",
+      "hash": {
+        "sha256": "098d403f047ee29d45aa3cfd56b5b7dc720201d89a279215730addc1140d7f59",
+        "bytes": 1422
+      },
+      "included_in_package": true
+    },
+    "lsa_prefix": {
+      "file": "v2/CopDDE/LayerSpecificSAEM/lsa_prefix.m",
+      "hash": {
+        "sha256": "b0f193b0e42472e46e4a90772000f129fd90d3210d120cf540b9ac219fa446d7",
+        "bytes": 1249
+      },
+      "included_in_package": false
+    },
+    "foa_accumulate": {
+      "file": "v2/CopDDE/FullObjectivePilot/foa_accumulate.m",
+      "hash": {
+        "sha256": "8bd48841e993f4838f650733fa937c831b768fae12e0b8bfd160332ef68411cb",
+        "bytes": 923
+      },
+      "included_in_package": true
+    },
+    "foa_cm": {
+      "file": "v2/CopDDE/FullObjectivePilot/foa_cm.m",
+      "hash": {
+        "sha256": "8f2d508d85321b7dbe4eeb9e2813030ac5f6656cf9fdca250e59be4db913b094",
+        "bytes": 7018
+      },
+      "included_in_package": true
+    },
+    "foa_objective": {
+      "file": "v2/CopDDE/FullObjectivePilot/foa_objective.m",
+      "hash": {
+        "sha256": "62afd8ecff6967efd2232aa899a30bc452a9d70ad957453fc35e2a611ff97510",
+        "bytes": 189
+      },
+      "included_in_package": true
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "original_manifest_sha256": "f3753610938e5e71c4a811a8363115daeee48676da586ca929e4c4f25c0f240a",
+  "note": "Only paths normalized to repository-relative paths; component hashes unchanged.",
+  "components": {
+    "pfs_fit": {
+      "file": "v2/CopDDE/PaperFactorialStudy/pfs_fit.m",
+      "hash": {
+        "sha256": "f88e6c9a82ac84aae0d97940343cb59c6d77e315b1fed75ee8dfe9b1c68937fe",
+        "bytes": 3482
+      },
+      "included_in_package": false
+    },
+    "pfs_prefix": {
+      "file": "v2/CopDDE/PaperFactorialStudy/pfs_prefix.m",
+      "hash": {
+        "sha256": "c6e1510b175ab65780e52980b245dfbc3a2611357c5bd82ce3b50a033db42c47",
+        "bytes": 1041
+      },
+      "included_in_package": false
+    },
+    "pfs_arm": {
+      "file": "v2/CopDDE/PaperFactorialStudy/pfs_arm.m",
+      "hash": {
+        "sha256": "b4d3e51d13f7dc1b9e50a1d619e8f04c7b5ae46f7f9bafd99c656a36437ce569",
+        "bytes": 446
+      },
+      "included_in_package": true
+    },
+    "pfs_stop": {
+      "file": "v2/CopDDE/PaperFactorialStudy/pfs_stop.m",
+      "hash": {
+        "sha256": "88f7d3556cf1a34fdbd664cca6dfd95e14f3ad7b4ee9f1fbd0767c9451207ae8",
+        "bytes": 790
+      },
+      "included_in_package": false
+    },
+    "pfs_input": {
+      "file": "v2/CopDDE/PaperFactorialStudy/pfs_input.m",
+      "hash": {
+        "sha256": "ff5c646cadedfcc2b7d1c9aed1735b7c24318b2ecf4517c6ef55d70e8c4d28b6",
+        "bytes": 1253
+      },
+      "included_in_package": false
+    },
+    "pfs_protocol": {
+      "file": "v2/CopDDE/PaperFactorialStudy/pfs_protocol.m",
+      "hash": {
+        "sha256": "9b261be7b83d641cb9d68154aac1c28ef3ba772fe613a2f62d3fcdce24d8ef1d",
+        "bytes": 397
+      },
+      "included_in_package": false
+    },
+    "cmv_binary": {
+      "file": "v2/CopDDE/ConditionalVIPilot/cmv_binary.m",
+      "hash": {
+        "sha256": "ba53d50d3da16a4b0a96da5a03f64d25f808cca9797d0b5ab3431ea2c0c9a379",
+        "bytes": 8362
+      },
+      "included_in_package": true
+    },
+    "cma_column": {
+      "file": "v2/CopDDE/JointSamplerAcceleration/cma_column.m",
+      "hash": {
+        "sha256": "09011fd47c2d6fcc6a679c2656b65021804f59909e97f1677881876a689e56eb",
+        "bytes": 1822
+      },
+      "included_in_package": true
+    },
+    "dde_rank_gibbs": {
+      "file": "v2/CopDDE/ExactGibbs/dde_rank_gibbs.m",
+      "hash": {
+        "sha256": "90fee113abb2339334209cae5738055c9975ca0ca01913741864b34b59fa3b2b",
+        "bytes": 3400
+      },
+      "included_in_package": true
+    },
+    "sob_cm": {
+      "file": "v2/CopDDE/StochasticAveragingOvernight/sob_cm.m",
+      "hash": {
+        "sha256": "3ef2da722c2130c8539562a052dd3b88f4e1453b9e14b6512afe7fe708bcace4",
+        "bytes": 199
+      },
+      "included_in_package": true
+    },
+    "sao_cm": {
+      "file": "v2/CopDDE/StochasticObjectivePilot/sao_cm.m",
+      "hash": {
+        "sha256": "eda5118c2d2fba474e761fb3535b7a273882fe7600e6be37c4c5fa17e4cdeb1b",
+        "bytes": 7018
+      },
+      "included_in_package": true
+    },
+    "pcs_csp_update": {
+      "file": "v2/CopDDE/PaperCPSensitivity/pcs_csp_update.m",
+      "hash": {
+        "sha256": "68cab9d0bb0f40a5c64c3bb3dec064ff264cdfd0ecc8ab63e58573a03b9ca28d",
+        "bytes": 976
+      },
+      "included_in_package": true
+    },
+    "cms_beta": {
+      "file": "v2/CopDDE/ConditionalVIPilot/cms_beta.m",
+      "hash": {
+        "sha256": "85f5af9609490bea07d5e9ed6fbee896c52725ec15d36f5d56df5dffea9f8005",
+        "bytes": 253
+      },
+      "included_in_package": true
+    },
+    "cpd_weighted_l1_cm": {
+      "file": "v2/CopDDE/CPDiagnosticStudy/cpd_weighted_l1_cm.m",
+      "hash": {
+        "sha256": "ce1630f0e001531ad1e72d4f06625a9e86acaa010e922e1c796cf9da25cbeb85",
+        "bytes": 6328
+      },
+      "included_in_package": true
+    },
+    "psr_score": {
+      "file": "v2/CopDDE/SpectralPaperStudy/psr_score.m",
+      "hash": {
+        "sha256": "bb7bc2371fd858fe996ae3d9898d1b62944bed37ca4f2480fde7be4832aeb5f0",
+        "bytes": 1177
+      },
+      "included_in_package": true
+    },
+    "dde_spectral_widths": {
+      "file": "v2/CopDDE/Utilities/dde_spectral_widths.m",
+      "hash": {
+        "sha256": "73d5d99cbabf232d9c3aed27ff89631a3b02f36ee2bce8d7db641e99b07eab6e",
+        "bytes": 1417
+      },
+      "included_in_package": true
+    }
+  }
+}

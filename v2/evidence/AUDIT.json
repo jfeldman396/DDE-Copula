@@ -1,0 +1,13 @@
+{
+  "captured_utc": "2026-10-29T01:20:03.339239+00:00",
+  "primary_fits": 21600,
+  "complete_cases": 1800,
+  "cells": 216,
+  "cell_N": 100,
+  "summary_recomputed_matches": true,
+  "failed": 0,
+  "optimizer_flagged_fits": 45,
+  "source_hash_mismatches": [],
+  "stabilized_and_cap": 499,
+  "CPU_decomposition_max_abs_error": 1.0516032489249483e-12
+}

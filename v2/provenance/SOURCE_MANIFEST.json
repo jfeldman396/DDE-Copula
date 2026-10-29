@@ -1,0 +1,477 @@
+{
+  "baseline": "424427fe1bf06d06494172cf278deb7bd4b29463",
+  "files": [
+    {
+      "path": "v2/CopDDE/AdjacentRankPairStudy/agr_log_interval.m",
+      "source": "CopDDE/AdjacentRankPairStudy/agr_log_interval.m",
+      "sha256": "923959e3e083d7782701ff2186471a280fb9059355c0fab45226bed50b712a57",
+      "bytes": 1216
+    },
+    {
+      "path": "v2/CopDDE/AdjacentRankPairStudy/agr_slice.m",
+      "source": "CopDDE/AdjacentRankPairStudy/agr_slice.m",
+      "sha256": "ba051d11b74c46b753622f77f1d3b258ac81c4e71f3d3da07723746a7c8756fd",
+      "bytes": 897
+    },
+    {
+      "path": "v2/CopDDE/AdjacentRankPairStudy/agr_truncated_standard_normal.m",
+      "source": "CopDDE/AdjacentRankPairStudy/agr_truncated_standard_normal.m",
+      "sha256": "f10484e9887529afde5745ed868ec36160a00e79e343a664c37ae85c922e74eb",
+      "bytes": 1737
+    },
+    {
+      "path": "v2/CopDDE/BothLayerContinuation/bl_mix.m",
+      "source": "CopDDE/BothLayerContinuation/bl_mix.m",
+      "sha256": "cc14ba2920ee2d243a27fd79426773e4383bd10b19bf8bfa305778a95c321e91",
+      "bytes": 890
+    },
+    {
+      "path": "v2/CopDDE/CPDiagnosticStudy/cpd_metrics.m",
+      "source": "CopDDE/CPDiagnosticStudy/cpd_metrics.m",
+      "sha256": "6c4007ff76f03f53f41fb0f2a781daba12160ed0cad698d0e122c527766266be",
+      "bytes": 1187
+    },
+    {
+      "path": "v2/CopDDE/CPDiagnosticStudy/cpd_weighted_l1_cm.m",
+      "source": "CopDDE/CPDiagnosticStudy/cpd_weighted_l1_cm.m",
+      "sha256": "ce1630f0e001531ad1e72d4f06625a9e86acaa010e922e1c796cf9da25cbeb85",
+      "bytes": 6328
+    },
+    {
+      "path": "v2/CopDDE/ConditionalVIPilot/cms_beta.m",
+      "source": "CopDDE/ConditionalVIPilot/cms_beta.m",
+      "sha256": "85f5af9609490bea07d5e9ed6fbee896c52725ec15d36f5d56df5dffea9f8005",
+      "bytes": 253
+    },
+    {
+      "path": "v2/CopDDE/ConditionalVIPilot/cmv_binary.m",
+      "source": "CopDDE/ConditionalVIPilot/cmv_binary.m",
+      "sha256": "ba53d50d3da16a4b0a96da5a03f64d25f808cca9797d0b5ab3431ea2c0c9a379",
+      "bytes": 8362
+    },
+    {
+      "path": "v2/CopDDE/ConditionalVIPilot/cmv_cavi.m",
+      "source": "CopDDE/ConditionalVIPilot/cmv_cavi.m",
+      "sha256": "3a27b99b5ae159a3a3ac277829396b0ca004532f7196838fcf83eef12092a8ec",
+      "bytes": 1722
+    },
+    {
+      "path": "v2/CopDDE/ConditionalVIPilot/cmv_mix.m",
+      "source": "CopDDE/ConditionalVIPilot/cmv_mix.m",
+      "sha256": "33552545dda17fd551edbf083629ba98669a7d47a2808d7a5c63607073097ee1",
+      "bytes": 444
+    },
+    {
+      "path": "v2/CopDDE/ContinuationConfirmatory/cf_save.m",
+      "source": "CopDDE/ContinuationConfirmatory/cf_save.m",
+      "sha256": "091ed6ae8b537bae5493ca49e1a08fc887448c9e621a213c5186a78995989c6e",
+      "bytes": 109
+    },
+    {
+      "path": "v2/CopDDE/DependenceContinuation/dde_dependence_mixture.m",
+      "source": "CopDDE/DependenceContinuation/dde_dependence_mixture.m",
+      "sha256": "c4f29b49d26544363a6a352dbc5d4d1419dd1d06b641cee05e9fc37b43eee257",
+      "bytes": 491
+    },
+    {
+      "path": "v2/CopDDE/ExactGibbs/dde_assert_binary_model.m",
+      "source": "CopDDE/ExactGibbs/dde_assert_binary_model.m",
+      "sha256": "98983b2633a0e3ee3076389ccb33097e4c2c9962fbd8a4dafaa8668d7f3fc9db",
+      "bytes": 1315
+    },
+    {
+      "path": "v2/CopDDE/ExactGibbs/dde_assert_rank_consistency.m",
+      "source": "CopDDE/ExactGibbs/dde_assert_rank_consistency.m",
+      "sha256": "f39aba71a5aa11eba044fb867311206e9765665bf72dd8c3bce8b42ca06f5995",
+      "bytes": 630
+    },
+    {
+      "path": "v2/CopDDE/ExactGibbs/dde_logistic.m",
+      "source": "CopDDE/ExactGibbs/dde_logistic.m",
+      "sha256": "830acaf7ee34ba0b9394cc40f3f1eaa8bfe5a4a283a35595daecba3cbf66dbe6",
+      "bytes": 208
+    },
+    {
+      "path": "v2/CopDDE/ExactGibbs/dde_rank_gibbs.m",
+      "source": "CopDDE/ExactGibbs/dde_rank_gibbs.m",
+      "sha256": "90fee113abb2339334209cae5738055c9975ca0ca01913741864b34b59fa3b2b",
+      "bytes": 3400
+    },
+    {
+      "path": "v2/CopDDE/ExactGibbs/dde_softplus.m",
+      "source": "CopDDE/ExactGibbs/dde_softplus.m",
+      "sha256": "780af4330993555cee9c65250a43a44b6651584d2587059c9a7acf924320efca",
+      "bytes": 135
+    },
+    {
+      "path": "v2/CopDDE/ExactGibbs/evaluate_exact_gibbs_fit.m",
+      "source": "CopDDE/ExactGibbs/evaluate_exact_gibbs_fit.m",
+      "sha256": "abb514fb5ca67eb7c1a2156fb2f58868a6d99d5df1d29c20a94f97af6e4d1f63",
+      "bytes": 6010
+    },
+    {
+      "path": "v2/CopDDE/ExactGibbs/fullwidth_gibbs_file_hash.m",
+      "source": "CopDDE/ExactGibbs/fullwidth_gibbs_file_hash.m",
+      "sha256": "863f43e3f6640ac3dc720c65f810fae64cb522a228678bf785e555a1eafcff6e",
+      "bytes": 602
+    },
+    {
+      "path": "v2/CopDDE/FullObjectivePilot/foa_accumulate.m",
+      "source": "CopDDE/FullObjectivePilot/foa_accumulate.m",
+      "sha256": "8bd48841e993f4838f650733fa937c831b768fae12e0b8bfd160332ef68411cb",
+      "bytes": 923
+    },
+    {
+      "path": "v2/CopDDE/FullObjectivePilot/foa_cm.m",
+      "source": "CopDDE/FullObjectivePilot/foa_cm.m",
+      "sha256": "8f2d508d85321b7dbe4eeb9e2813030ac5f6656cf9fdca250e59be4db913b094",
+      "bytes": 7018
+    },
+    {
+      "path": "v2/CopDDE/FullObjectivePilot/foa_objective.m",
+      "source": "CopDDE/FullObjectivePilot/foa_objective.m",
+      "sha256": "62afd8ecff6967efd2232aa899a30bc452a9d70ad957453fc35e2a611ff97510",
+      "bytes": 189
+    },
+    {
+      "path": "v2/CopDDE/JointSamplerAcceleration/cma_column.m",
+      "source": "CopDDE/JointSamplerAcceleration/cma_column.m",
+      "sha256": "09011fd47c2d6fcc6a679c2656b65021804f59909e97f1677881876a689e56eb",
+      "bytes": 1822
+    },
+    {
+      "path": "v2/CopDDE/JointSamplerAcceleration/cma_conditional.m",
+      "source": "CopDDE/JointSamplerAcceleration/cma_conditional.m",
+      "sha256": "9446998972aa83ff75f7e698a6614bfc3d563d6cdac5df6dd087904f78fadf83",
+      "bytes": 268
+    },
+    {
+      "path": "v2/CopDDE/JointSamplerAcceleration/cma_logh.m",
+      "source": "CopDDE/JointSamplerAcceleration/cma_logh.m",
+      "sha256": "bfe48d3a608f6aa5633794bc2e8e5b4cd201cc862b7c1a6c43fd9d1354282573",
+      "bytes": 314
+    },
+    {
+      "path": "v2/CopDDE/LayerSpecificSAEM/lsa_fit.m",
+      "source": "CopDDE/LayerSpecificSAEM/lsa_fit.m",
+      "sha256": "6464c65b08e0fc1075c70f64203608acdc14b9a4664bdea4c18dc0a70d3ae7ba",
+      "bytes": 4447
+    },
+    {
+      "path": "v2/CopDDE/LayerSpecificSAEM/lsa_input.m",
+      "source": "CopDDE/LayerSpecificSAEM/lsa_input.m",
+      "sha256": "098d403f047ee29d45aa3cfd56b5b7dc720201d89a279215730addc1140d7f59",
+      "bytes": 1422
+    },
+    {
+      "path": "v2/CopDDE/LayerSpecificSAEM/lsa_protocol.m",
+      "source": "CopDDE/LayerSpecificSAEM/lsa_protocol.m",
+      "sha256": "f3c48b9687e2dfcf42d3317d7122e623449118e45b6a0311ec4a73621d46e5bb",
+      "bytes": 403
+    },
+    {
+      "path": "v2/CopDDE/LayerSpecificSAEM/lsa_stop.m",
+      "source": "CopDDE/LayerSpecificSAEM/lsa_stop.m",
+      "sha256": "890991f76ca25bc1f65bc366c0a5140b02d14fdb46329ec6ecc1200ba7a02b10",
+      "bytes": 733
+    },
+    {
+      "path": "v2/CopDDE/PaperCP/pcp_protocol.m",
+      "source": "CopDDE/PaperCP/pcp_protocol.m",
+      "sha256": "e5e61c21f5f907aca840b463e1f403ad843d14ec86d0756b8a26ba3ea6166131",
+      "bytes": 819
+    },
+    {
+      "path": "v2/CopDDE/PaperCP/pcp_truth.m",
+      "source": "CopDDE/PaperCP/pcp_truth.m",
+      "sha256": "57a25fec8319446ba2dede540ceafb0b0d449cde412bdd457cee0489b431d248",
+      "bytes": 1661
+    },
+    {
+      "path": "v2/CopDDE/PaperCPSensitivity/pcs_csp_update.m",
+      "source": "CopDDE/PaperCPSensitivity/pcs_csp_update.m",
+      "sha256": "68cab9d0bb0f40a5c64c3bb3dec064ff264cdfd0ecc8ab63e58573a03b9ca28d",
+      "bytes": 976
+    },
+    {
+      "path": "v2/CopDDE/PaperFactorialStudy/pfs_arm.m",
+      "source": "CopDDE/PaperFactorialStudy/pfs_arm.m",
+      "sha256": "b4d3e51d13f7dc1b9e50a1d619e8f04c7b5ae46f7f9bafd99c656a36437ce569",
+      "bytes": 446
+    },
+    {
+      "path": "v2/CopDDE/RandomBlockGibbs/rbg_config.m",
+      "source": "CopDDE/RandomBlockGibbs/rbg_config.m",
+      "sha256": "2465097755efeb27dba1d7cdf749c3b643b9fc895c05bd6cf40d4d4f7c01eca7",
+      "bytes": 1243
+    },
+    {
+      "path": "v2/CopDDE/SpectralPaperStudy/psr_blocks.m",
+      "source": "CopDDE/SpectralPaperStudy/psr_blocks.m",
+      "sha256": "93ad5084469fe132d3c4fe6dbe646accf30d6ec0896812fe74ec043f4b09b8b3",
+      "bytes": 226
+    },
+    {
+      "path": "v2/CopDDE/SpectralPaperStudy/psr_score.m",
+      "source": "CopDDE/SpectralPaperStudy/psr_score.m",
+      "sha256": "bb7bc2371fd858fe996ae3d9898d1b62944bed37ca4f2480fde7be4832aeb5f0",
+      "bytes": 1177
+    },
+    {
+      "path": "v2/CopDDE/StochasticAveragingOvernight/sob_cm.m",
+      "source": "CopDDE/StochasticAveragingOvernight/sob_cm.m",
+      "sha256": "3ef2da722c2130c8539562a052dd3b88f4e1453b9e14b6512afe7fe708bcace4",
+      "bytes": 199
+    },
+    {
+      "path": "v2/CopDDE/StochasticObjectivePilot/sao_cm.m",
+      "source": "CopDDE/StochasticObjectivePilot/sao_cm.m",
+      "sha256": "eda5118c2d2fba474e761fb3535b7a273882fe7600e6be37c4c5fa17e4cdeb1b",
+      "bytes": 7018
+    },
+    {
+      "path": "v2/CopDDE/Utilities/Normal_init_v2.m",
+      "source": "CopDDE/Utilities/Normal_init_v2.m",
+      "sha256": "46ec9dca618e1d599de15674cb8b949e5d6e1770a1a513f877c25ba104098e22",
+      "bytes": 3210
+    },
+    {
+      "path": "v2/CopDDE/Utilities/dde_spectral_widths.m",
+      "source": "CopDDE/Utilities/dde_spectral_widths.m",
+      "sha256": "73d5d99cbabf232d9c3aed27ff89631a3b02f36ee2bce8d7db641e99b07eab6e",
+      "bytes": 1417
+    },
+    {
+      "path": "v2/CopDDE/Utilities/format_estimates.m",
+      "source": "CopDDE/Utilities/format_estimates.m",
+      "sha256": "a45fe8bf17ff8ccb3909e16da99663b85534ccfd6fd9af8155340b6e2947a579",
+      "bytes": 1103
+    },
+    {
+      "path": "v2/CopDDE/Utilities/generate_X_Cop_marg_emp.m",
+      "source": "CopDDE/Utilities/generate_X_Cop_marg_emp.m",
+      "sha256": "828513ea5e3be54c52a5857af7c54c1a941f619a2cd8f9b63b1425b71a8921c5",
+      "bytes": 1960
+    },
+    {
+      "path": "v2/CopDDE/Utilities/logistic.m",
+      "source": "CopDDE/Utilities/logistic.m",
+      "sha256": "32cbf64e60a787160c8b073ccc179d20beae925442e59f26d500bba8f6b9590f",
+      "bytes": 78
+    },
+    {
+      "path": "v2/CopDDE/Utilities/logit.m",
+      "source": "CopDDE/Utilities/logit.m",
+      "sha256": "df141e66f81841e58134eda3ad6f9c4188d38bef1b7d6c915f480ce022b77f59",
+      "bytes": 73
+    },
+    {
+      "path": "v2/CopDDE/Utilities/munkres.m",
+      "source": "CopDDE/Utilities/munkres.m",
+      "sha256": "0c5eecb267d9ce719ed9af25f3f1584fb9cbb9f9601a6ef12d6b9bcbe1a957f8",
+      "bytes": 7137
+    },
+    {
+      "path": "v2/CopDDE/Utilities/rescale_B1.m",
+      "source": "CopDDE/Utilities/rescale_B1.m",
+      "sha256": "2f9c1758c03d6dc70d43af4ff255423304253eb55d25c5f4450969c4bb4eded7",
+      "bytes": 2885
+    },
+    {
+      "path": "v2/CopDDE/Utilities/sim_block_loadings.m",
+      "source": "CopDDE/Utilities/sim_block_loadings.m",
+      "sha256": "1713f57b047045cf4230c59215229b34a2699a4e3c68be05b641c4c864373232",
+      "bytes": 2033
+    },
+    {
+      "path": "v2/CopDDE/Utilities/simulate_gaussian_mixture.m",
+      "source": "CopDDE/Utilities/simulate_gaussian_mixture.m",
+      "sha256": "231dbb1b4b8ec51916ad74b80d5ef77922295f2c266f9389e926000d0f433e36",
+      "bytes": 3468
+    },
+    {
+      "path": "v2/CopDDE/Utilities/thres.m",
+      "source": "CopDDE/Utilities/thres.m",
+      "sha256": "e57aa99a1352eba1d721bc37610196b73d94018a2746e81cfe6b528f70d66361",
+      "bytes": 98
+    },
+    {
+      "path": "v2/CopDDE/WidthGraphRefinement/width_graph_config.m",
+      "source": "CopDDE/WidthGraphRefinement/width_graph_config.m",
+      "sha256": "bb03ea224644b501b7b4b1ec13eee14c1409641ae1fbfc99722f69b22a81cd7f",
+      "bytes": 1510
+    }
+  ],
+  "freeze_checks": [
+    {
+      "study": "paper_factorial_study",
+      "component": "pfs_fit",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "pfs_prefix",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "pfs_arm",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "pfs_stop",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "pfs_input",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "pfs_protocol",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "cmv_binary",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "cma_column",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "dde_rank_gibbs",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "sob_cm",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "sao_cm",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "pcs_csp_update",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "cms_beta",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "cpd_weighted_l1_cm",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "psr_score",
+      "match": true
+    },
+    {
+      "study": "paper_factorial_study",
+      "component": "dde_spectral_widths",
+      "match": true
+    },
+    {
+      "study": "full_objective_averaging_pilot",
+      "component": "foa_fit",
+      "match": true
+    },
+    {
+      "study": "full_objective_averaging_pilot",
+      "component": "foa_accumulate",
+      "match": true
+    },
+    {
+      "study": "full_objective_averaging_pilot",
+      "component": "foa_cm",
+      "match": true
+    },
+    {
+      "study": "full_objective_averaging_pilot",
+      "component": "foa_objective",
+      "match": true
+    },
+    {
+      "study": "layer_specific_saem_study",
+      "component": "lsa_fit",
+      "match": true
+    },
+    {
+      "study": "layer_specific_saem_study",
+      "component": "lsa_stop",
+      "match": true
+    },
+    {
+      "study": "layer_specific_saem_study",
+      "component": "lsa_protocol",
+      "match": true
+    },
+    {
+      "study": "layer_specific_saem_study",
+      "component": "lsa_input",
+      "match": true
+    },
+    {
+      "study": "layer_specific_saem_study",
+      "component": "lsa_prefix",
+      "match": true
+    },
+    {
+      "study": "layer_specific_saem_study",
+      "component": "foa_accumulate",
+      "match": true
+    },
+    {
+      "study": "layer_specific_saem_study",
+      "component": "foa_cm",
+      "match": true
+    },
+    {
+      "study": "layer_specific_saem_study",
+      "component": "foa_objective",
+      "match": true
+    }
+  ],
+  "products": [
+    {
+      "Name": "MATLAB",
+      "Version": "26.1",
+      "ProductNumber": 1,
+      "Certain": true
+    },
+    {
+      "Name": "Statistics and Machine Learning Toolbox",
+      "Version": "26.1",
+      "ProductNumber": 19,
+      "Certain": true
+    }
+  ],
+  "roots": [
+    "v2/CopDDE/LayerSpecificSAEM/lsa_fit.m",
+    "v2/CopDDE/LayerSpecificSAEM/lsa_input.m",
+    "v2/CopDDE/LayerSpecificSAEM/lsa_stop.m",
+    "v2/CopDDE/LayerSpecificSAEM/lsa_protocol.m",
+    "v2/CopDDE/PaperFactorialStudy/pfs_arm.m",
+    "v2/CopDDE/FullObjectivePilot/foa_accumulate.m",
+    "v2/CopDDE/FullObjectivePilot/foa_cm.m",
+    "v2/CopDDE/FullObjectivePilot/foa_objective.m",
+    "v2/CopDDE/JointSamplerAcceleration/cma_column.m",
+    "v2/CopDDE/ExactGibbs/dde_rank_gibbs.m",
+    "v2/CopDDE/ExactGibbs/dde_assert_rank_consistency.m",
+    "v2/CopDDE/SpectralPaperStudy/psr_score.m",
+    "v2/CopDDE/PaperCP/pcp_truth.m"
+  ],
+  "note": "Current estimator closure only. Historical freeze entries may name predecessor files intentionally not distributed."
+}

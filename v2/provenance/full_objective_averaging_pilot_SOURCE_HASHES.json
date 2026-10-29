@@ -1,0 +1,38 @@
+{
+  "original_manifest_sha256": "c73a0d386a6a62655901d8a637789efce99d66a6af0585b99d36172c0ac48a97",
+  "note": "Only paths normalized to repository-relative paths; component hashes unchanged.",
+  "components": {
+    "foa_fit": {
+      "file": "v2/CopDDE/FullObjectivePilot/foa_fit.m",
+      "hash": {
+        "sha256": "22e06715e31b87bd9109172e748b1026491085695d817b5d60b033b52e457219",
+        "bytes": 4398
+      },
+      "included_in_package": false
+    },
+    "foa_accumulate": {
+      "file": "v2/CopDDE/FullObjectivePilot/foa_accumulate.m",
+      "hash": {
+        "sha256": "8bd48841e993f4838f650733fa937c831b768fae12e0b8bfd160332ef68411cb",
+        "bytes": 923
+      },
+      "included_in_package": true
+    },
+    "foa_cm": {
+      "file": "v2/CopDDE/FullObjectivePilot/foa_cm.m",
+      "hash": {
+        "sha256": "8f2d508d85321b7dbe4eeb9e2813030ac5f6656cf9fdca250e59be4db913b094",
+        "bytes": 7018
+      },
+      "included_in_package": true
+    },
+    "foa_objective": {
+      "file": "v2/CopDDE/FullObjectivePilot/foa_objective.m",
+      "hash": {
+        "sha256": "62afd8ecff6967efd2232aa899a30bc452a9d70ad957453fc35e2a611ff97510",
+        "bytes": 189
+      },
+      "included_in_package": true
+    }
+  }
+}

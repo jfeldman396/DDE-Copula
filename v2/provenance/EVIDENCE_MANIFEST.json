@@ -1,0 +1,60 @@
+{
+  "captured_utc": "2026-10-29T01:20:03.339239+00:00",
+  "files": [
+    {
+      "path": "v2/evidence/AUDIT.json",
+      "source": "output/paper_evidence_20261029/AUDIT.json",
+      "sha256": "58efad05a2950503481960d91135474a29b946aaaf628d496928323729be5904",
+      "bytes": 347
+    },
+    {
+      "path": "v2/evidence/primary_all_settings.csv",
+      "source": "output/paper_evidence_20261029/primary_all_settings.csv",
+      "sha256": "a6a8f83b605f9f3926066d846c7a68343e50b179920ea933c206775337b71c4e",
+      "bytes": 31189
+    },
+    {
+      "path": "v2/evidence/primary_tempering_CP.csv",
+      "source": "output/paper_evidence_20261029/primary_tempering_CP.csv",
+      "sha256": "76f026c471efc43654c5e9cb9c1de9de0b4e62bf2e9f72c373b5dcc7654af6b2",
+      "bytes": 8073
+    },
+    {
+      "path": "v2/evidence/paired_tempering_CP.csv",
+      "source": "output/paper_evidence_20261029/paired_tempering_CP.csv",
+      "sha256": "b5a70ebca72d615dc834346b739f182299e8185d4a47590dd6c7d01b3d5dd63d",
+      "bytes": 14097
+    },
+    {
+      "path": "v2/evidence/matched_three_methods.csv",
+      "source": "output/paper_evidence_20261029/matched_three_methods.csv",
+      "sha256": "733c2581f64c57d821e91aad856449eb646811d6dd72a336378ff85e9b835be3",
+      "bytes": 30895
+    },
+    {
+      "path": "v2/evidence/optimizer_flagged_endpoints.csv",
+      "source": "output/paper_evidence_20261029/optimizer_flagged_endpoints.csv",
+      "sha256": "fae05667605d54e01875e819b19b61a988cb720a2828d580cc0a7a5c457bb435",
+      "bytes": 10069
+    },
+    {
+      "path": "v2/evidence/COMMON_SUMMARY.csv",
+      "source": "output/paper_evidence_20261029/snapshots/layer_specific_saem_study/COMMON_SUMMARY.csv",
+      "sha256": "6ea0f450f52960fd64956ccd24d1c74fc6481c81bbd45198c46e30d8097660ee",
+      "bytes": 49571
+    },
+    {
+      "path": "v2/evidence/UNCERTAINTY.csv",
+      "source": "output/paper_evidence_20261029/snapshots/layer_specific_saem_study/UNCERTAINTY.csv",
+      "sha256": "3173bb3993b74e1cb510c7017c0445df355a8c8ae1de3dbac0bf9cdb54cb6f73",
+      "bytes": 43238
+    },
+    {
+      "path": "v2/evidence/PAIRED.csv",
+      "source": "output/paper_evidence_20261029/snapshots/layer_specific_saem_study/PAIRED.csv",
+      "sha256": "4f293671dec4d39667ea1c10dca02e603edbee3eafa06ecac9c346b684df0b21",
+      "bytes": 134915
+    }
+  ],
+  "note": "Completed primary-study snapshot; endpoint MAT files and active mechanism diagnostics are excluded."
+}
