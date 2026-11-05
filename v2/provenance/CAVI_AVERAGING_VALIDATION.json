@@ -1,0 +1,1 @@
+{"arm":1,"iterations":85,"exact_parity":true,"fields":["A1","A2","Z","B1","B2","gamma","prop","active1","active2","state1","state2","iteration","history","accum","objective_accum"],"scope":"Fresh 85-iteration run through CAVI warmup and likelihood accumulation; exact production parity. Not a full-study statistical replication."}

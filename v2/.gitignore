@@ -1,3 +1,8 @@
 __pycache__/
 results/
 *.mat
+
+# Small synthetic truth fixtures required by run_cavi_case.
+!cavi/truth/truth_J50.mat
+!cavi/truth/truth_J100.mat
+!cavi/truth/truth_J150.mat

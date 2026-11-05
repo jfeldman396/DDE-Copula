@@ -1,0 +1,10 @@
+{
+  "scope": "Packaged summary script run independently on same audited snapshot; exact byte agreement for four outputs",
+  "outputs": [
+    "DEEP_CURRENT_DIMENSION_RECOVERY.csv",
+    "DEEP_CURRENT_MSE_SUMMARY.csv",
+    "DEEP_CURRENT_MSE_EXCLUSIONS.csv",
+    "DEEP_SUMMARY_STATUS.json"
+  ],
+  "source_checked_at": "2026-11-03T23:49:42.915999+00:00"
+}

@@ -1,0 +1,41 @@
+{
+  "description": "Unmodified CAVI kernels used for the completed two-layer study; additive to frozen v2 baseline",
+  "files": [
+    {
+      "path": "v2/cavi/full_cavi_fit.m",
+      "sha256": "25f752b4c62aba46c447a862606693aeae928435324614ab989aa58d8406c734",
+      "bytes": 4616
+    },
+    {
+      "path": "v2/cavi/full_cavi_binary.m",
+      "sha256": "0d357b53900bc678ad38472c5a3f4777e908ee619b828d7d7ccd267901d18d19",
+      "bytes": 7545
+    },
+    {
+      "path": "v2/cavi/pilot_mix.m",
+      "sha256": "fc0ea44768e65ebe22840c7a2683374c999de5a7f79934116c09a78c19603773",
+      "bytes": 573
+    },
+    {
+      "path": "v2/cavi/cmv_cavi.m",
+      "sha256": "d7ef10c67fb0aee9632f3b29b8d685039ff017b8f6ff94a632fec6216a23b73a",
+      "bytes": 3164
+    },
+    {
+      "path": "v2/cavi/truth/truth_J100.mat",
+      "sha256": "416d6a9e19036d3a38c49089ddd665d11f43508d057856064d17bb89c58716e4",
+      "bytes": 2032
+    },
+    {
+      "path": "v2/cavi/truth/truth_J150.mat",
+      "sha256": "b88017adecdd3400490551bf05248880334b3bafd6270d2d3042500d7a9bf9a4",
+      "bytes": 2498
+    },
+    {
+      "path": "v2/cavi/truth/truth_J50.mat",
+      "sha256": "7546b1a2ecfd96ae5c6f550216889bd4b31f5ceb741f947ab825444a9a6db31a",
+      "bytes": 1485
+    }
+  ],
+  "fixture_note": "Synthetic truth identical numerical values; Poisson rates stored as double for MATLAB poissinv compatibility; source path metadata anonymized."
+}

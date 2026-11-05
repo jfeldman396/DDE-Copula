@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-11-04T20:22:29.007425+00:00",
+  "missing_comparators": 0,
+  "identical_summary_files": [
+    "DEEP_REFIT_MSE_SUMMARY.csv",
+    "DEEP_REFIT_MSE_EXCLUSIONS.csv",
+    "DEEP_REFIT_SIGNAL_MSE_SUMMARY.csv",
+    "DEEP_REFIT_SIGNAL_MSE_EXCLUSIONS.csv",
+    "DEEP_REFIT_GRAPH_SUMMARY.csv"
+  ],
+  "errors": [],
+  "synthetic_missing_pair_test": "Passed: 15 refits retained; available/evaluated baselines14; unavailable metrics NaN."
+}
