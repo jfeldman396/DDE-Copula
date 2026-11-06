@@ -30,3 +30,20 @@ sequential positive-loading alignment, maximum-width zero padding, final-Z
 scaling for layer1, and per-replication truth-Z scaling. Intercepts are
 included. MSE on exact model-moment truth is a separate diagnostic.
 Eligibility and upper-IQR trimming are applied later by the analysis tools.
+
+Fresh synthetic inputs for the no-floor study:
+  input = create_deep_nofloor_input(500, 1, '/absolute/new_input.mat');
+Then pass that input file to run_deep_saved_case above. The output file must
+not exist. Supported n:500,1000,2000,4000,8000,16000; replications1:100.
+Archived truth includes the original random marginal lambda parameters.
+The historical fixed-width initialization call is preserved before gap+5
+reinitialization. A zero top-layer width raises Gap5:InvalidWidth; retain it
+as an initialization failure, not a fitted endpoint or missing comparator.
+The input tau field preserves original metadata; the fit wrapper explicitly
+uses tau=3*n^(-.3). The generator restores the caller's path and RNG state.
+
+Validation: fresh n500rep1 and n16000rep1 match archived data, ranks, latent
+truth, initial states/parameters, moments and seeds exactly. n500rep76
+reproduces the expected initialization failure. This checks three cases,
+not all600. See provenance/DEEP_INPUT_VALIDATION.json. To repeat with saved
+inputs available: validate_deep_input_generation(archivedInputDir,newOutputDir).

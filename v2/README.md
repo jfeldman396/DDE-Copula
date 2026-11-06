@@ -1,6 +1,12 @@
-# Current estimator and reproduction
+# Estimator packages and reproduction
 
-## Scope and versions
+## Manuscript revision entry points
+
+The revised manuscript uses the three-arm maxima/CAVI comparison described in [CAVI_README.md](CAVI_README.md), with `run_cavi_case` as its fresh-data entry point. The deeper no-floor sensitivity study has a [fresh-input generation, fitting and scoring interface](deep/README.txt). Comparator packaging remains pending.
+
+The CP-based 12-arm experiment documented below is the preserved predecessor study. Its 21,600-fit grid is not the revised manuscript grid; do not pool its outcomes with the CAVI or deeper studies. Source and validation manifests distinguish these implementations.
+
+## Preserved predecessor: scope and versions
 
 `CopDDE/LayerSpecificSAEM/lsa_fit.m` is the current estimator, preserved byte for byte (SHA-256 `6464c65b08e0fc1075c70f64203608acdc14b9a4664bdea4c18dc0a70d3ae7ba`). Its current dependency closure is included under the original relative folder names. Historical manifests document predecessor versions without distributing their experimental engines. `provenance/SOURCE_MANIFEST.json` identifies every copied source, its hash and static-analysis roots. The three study manifests retain all component hashes; their file paths alone were normalized to repository-relative paths. Their original manifest hashes are recorded.
 
