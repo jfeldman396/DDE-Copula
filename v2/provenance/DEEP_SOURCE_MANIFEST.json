@@ -18,6 +18,12 @@
       "sha256": "956d1bb70849bc26773f05311c643b294ad6695a68c805e550554c798d32e5b6",
       "bytes": 408,
       "source": "CopDDE/Reviewer1TuningShared/r1tune_beta.m"
+    },
+    {
+      "path": "v2/deep/dpr_metrics.m",
+      "sha256": "c310353a97ad6228c32462fa1fc093febfda5db10c5d8a52c64ffd39328acfa9",
+      "bytes": 1441,
+      "source": "CopDDE/DeeperPaperRerun/dpr_metrics.m"
     }
   ]
 }
