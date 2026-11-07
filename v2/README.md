@@ -2,7 +2,7 @@
 
 ## Manuscript revision entry points
 
-The revised manuscript uses the three-arm maxima/CAVI comparison described in [CAVI_README.md](CAVI_README.md), with `run_cavi_case` as its fresh-data entry point. The deeper no-floor sensitivity study has a [fresh-input generation, fitting and scoring interface](deep/README.txt). Comparator packaging remains pending.
+The revised manuscript uses the three-arm maxima/CAVI comparison described in [CAVI_README.md](CAVI_README.md), with `run_cavi_case` as its fresh-data entry point. The deeper no-floor sensitivity study has a [fresh-input generation, fitting and scoring interface](deep/README.txt). Saved-input comparator interfaces are available for [original truncated-lasso RL-SAEM](comparators/original_rl/README.txt) and [Poisson](comparators/poisson/README.txt), each with one full-case exact endpoint validation. These checks do not establish reproduction of every study endpoint.
 
 The CP-based 12-arm experiment documented below is the preserved predecessor study. Its 21,600-fit grid is not the revised manuscript grid; do not pool its outcomes with the CAVI or deeper studies. Source and validation manifests distinguish these implementations.
 
