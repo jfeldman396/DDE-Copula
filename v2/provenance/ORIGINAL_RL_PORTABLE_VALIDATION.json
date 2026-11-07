@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "J": 150,
+  "n": 500,
+  "replication": 1,
+  "scope": "Exact prop B1 B2 gamma Z iteration parity with completed original RL-SAEM endpoint; one full case only",
+  "checked_at": "2026-11-07T04:08:46.275396+00:00",
+  "source_hashes": {
+    "v2/run_original_rl_saved_case.m": "2dba9e5cf55c1f8fbb609da96fec9f1306894f2a068682aed84bf5329f1607cc",
+    "v2/verify_original_rl_sources.m": "a9fd910d503d31427c6ed323072353957f734c00dac09e42f584a5a13b14891a"
+  },
+  "limitations": [
+    "One completed J150 n500rep1 case, not all600.",
+    "Reproduces the documented rerun, not a claim of bitwise agreement with historical manuscript fits."
+  ]
+}
