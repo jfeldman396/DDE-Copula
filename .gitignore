@@ -5,3 +5,6 @@ Data/
 # Python caches and local regenerated figures
 __pycache__/
 reproduced/
+
+# Local reproduction environment
+.venv/

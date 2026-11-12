@@ -9,6 +9,7 @@ assert(~isfile(outputFile)&&~isfolder(outputFile),'V2:FreshOutput','Output must 
 verify_revision_sources;
 root=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','DDE');oldpath=path;oldrng=rng;
 cleanup=onCleanup(@()restore(oldpath,oldrng));
+addpath(fullfile(fileparts(fileparts(root)),'Utilities'));
 addpath(genpath(fullfile(root,'CopDDE')));
 addpath(fullfile(root,'deep','input_generation'),'-begin');
 truthFile=fullfile(root,'deep','input_generation','truth.mat');

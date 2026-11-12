@@ -10,6 +10,42 @@ The repository layout is:
   Scripts/              reproduction entry points and analysis
   Results/Publication/  current revision/supplement aggregates and figures
 
+QUICK START: ALL PACKAGED SAVED RESULTS
+
+From a new checkout:
+  git clone --branch estimation-v2 https://github.com/jfeldman396/DDE-Copula.git
+  cd DDE-Copula
+  python3 -m venv .venv
+  source .venv/bin/activate
+  python -m pip install -r Scripts/Publication/requirements-render.txt
+  python Scripts/reproduce.py --output-dir reproduced/revision
+
+Windows: activate the environment with .venv\Scripts\activate instead.
+Use a new destination for each run. This command validates the package,
+regenerates supported plots, recomputes J=100 timing statistics, exports
+all saved numerical inputs and copies preserved artwork. It starts no fits.
+If any command fails, the runner stops and does not write a success report.
+
+Open these outputs in reproduced/revision:
+  RESULT_INDEX.csv             every mapped result and its output/status
+  REPRODUCTION_REPORT.json     commands completed and scope of reproduction
+  native15_5/images/           all 12 shallow/comparator figures
+  summaries/                  three deep MSE plots, recovery/uncertainty
+                              CSVs, recomputed timing CSV, and Gaussian
+                              candidate summary + 300 per-replication scores
+  factor/                     Gaussian-vs-DDE loading figure
+  ivae/images/                iVAE-vs-DDE figures
+  numeric_inputs/             all 40 saved numerical/configuration files
+  document_figures/           all 39 figure references under document names
+
+Three different outcomes must not be confused:
+  rendered_from_saved_numbers: plots recomputed from bundled numerical values;
+  saved_numerical_table_inputs: saved estimates/counts exported without refits;
+  preserved_artwork_only: exact saved artwork copied, not newly calculated.
+No manuscript text, .tex files, raw survey data or respondent draws are exported.
+The document names/figure references correspond to the uploaded snapshots;
+later Overleaf changes are not automatically reflected in this inventory.
+
 1. INSTALL AND CHECK
 
   python -m pip install -r Scripts/Publication/requirements-render.txt
@@ -189,3 +225,107 @@ The full simulation grid has not been rerun for this trimming. MATLAB could
 not launch on this host; fitting wrappers have static dependency checks,
 not a fresh executable MATLAB validation. No convergence claim follows from
 these packaging checks.
+
+6. COMPLETE RESULT-BY-RESULT ROUTES AND CURRENT GAPS
+
+The one-command workflow above covers all bundled artifacts. It is NOT a
+command that independently regenerates every underlying experiment. These
+are the explicit routes and the remaining prerequisites for full refits.
+Paths below beginning data/ are under Results/Publication (and are copied
+under numeric_inputs/ by the one-command workflow).
+
+Result                         Saved route             Full-refit requirement
+-----------------------------  ----------------------  ---------------------------
+Shallow dimension recovery     Section 2B; data/dde/    run_cavi_case grid below;
+(three DDE arms, J=50/100/150)   MAIN_DIMENSION_RECOVERY  end-to-end aggregation of
+                               .csv                    new case outputs not supplied
+Shallow comparator MSE and     Section 2A; native15_5/  Matched saved 15/5 inputs;
+loading heatmaps (12 plots)     MSE_SUMMARY + matrices  run_native15_5_case (rl/poisson);
+                                                       complete paired-input producer
+                                                       and new-run collector not supplied
+J=100 MAP compute times         Section 2B; recomputes  Same software/hardware/worker
+                               all 600 timing records  setup required for comparable
+                                                       timing; exact repeats not claimed
+Deep no-floor recovery/MSE      Section 2B; data/deep/  Fresh input + run_deep_saved_case;
+                                                       score_deep_saved_case; historical
+                                                       endpoint collector route in
+                                                       Scripts/DDE/analysis/README.txt
+Gaussian selection/pMSE         summaries/gaussian_*;  External prepared survey MAT;
+and loading comparison         Section 2C              run_gaussian_study (six candidates)
+iVAE loading figures and        Section 2D; data/ivae/  External original survey CSV;
+loading/key-item table inputs   key_items.json, network train.py --train; original
+                               weights and matrices    figure renderer uses saved arrays
+Empirical DDE pMSE/selection     data/empirical/         Complete empirical inputs and
+and higher-order coefficients   PAIRED_PMSE.csv,        selected fitted state; portable
+                               SELECTION.json and      full empirical DDE refit driver
+                               HIGHER_ORDER*.csv       not supplied
+Higher-level profile and        Section 2E, preserved   Full selected empirical state;
+B5 ideology figures             figures + empirical    exact final-layout renderer
+                               numerical inputs        not supplied
+Ordinal synthetic/tail results  data/ordinal/ CSVs and  Original ordinal simulation
+                               ORDINAL_PROTOCOL.json;  and exact final-layout renderer
+                               Section 2E artwork      not supplied as a verified route
+Synthetic uncertainty enclosure data/uncertainty/;      Exact MAP states, matching data,
+and mixing diagnostics          Section 2B table;       seeds/settings and full chains;
+                               DATASET_SUMMARIES.json  run_posterior_gibbs is only the
+                                                       sampler, not the alignment and
+                                                       interval-analysis pipeline
+B5 posterior interval figures  data/b5/ pooled CSVs    Complete selected MAP state,
+                               and SUMMARY.json;       original inputs and aligned draws;
+                               Section 2E artwork      exact renderer not supplied
+Truth illustrations and         Section 2E preserved   Synthetic truth arrays retained;
+introductory schematic artwork  figures; data/dde/     exact original artwork generators
+                               TRUTH_MATRICES_15_5.npz  not supplied
+
+Do not substitute an arbitrary new input, initialization, seed or fit for a
+missing saved input. EXTERNAL_INPUTS.json describes available schemas/hashes.
+The unavailable analysis routes above are reproducibility gaps, not merely
+commands hidden elsewhere in this repository.
+
+7. EXPLICIT SHALLOW SIMULATION GRID (MATLAB; LONG RUN)
+
+This reproduces case fits for the shallow three-arm dimension experiment.
+It does not automatically build all final tables or the fixed-15/5 comparator
+collection. Start MATLAB in the repository root and choose a NEW absolute
+output directory. This loop runs 3*6*100*3 = 5400 fits and is serial.
+
+  addpath('Algorithms/DDE','Scripts/DDE');
+  out='/absolute/new/shallow_study';
+  assert(~isfolder(out)); mkdir(out);
+  for J=[50 100 150]
+    for n=[500 1000 2000 4000 8000 16000]
+      for replication=1:100
+        for arm=1:3
+          destination=fullfile(out,sprintf('J%d_n%d_r%d_a%d',J,n,replication,arm));
+          run_cavi_case(J,n,replication,arm,destination);
+        end
+      end
+    end
+  end
+
+Each case produces result.mat, checkpoint.mat and job.mat. Check result.complete
+before counting an endpoint. The wrapper uses fixed study seeds internally.
+Do not infer convergence from completion. The saved publication tables remain
+the checked numerical references until a full new-run aggregation is validated.
+
+8. DEEP STUDY SCORING AND FAILURE ACCOUNTING
+
+Use the one-case input/fitting commands in section 4. For n in
+[500 1000 2000 4000 8000 16000], repeat replications 1:100. Fit only inputs
+that successfully initialize. Save the identifier and error for every failure;
+the known n=500/r=76 Gap5:InvalidWidth outcome is one of the 600 attempts.
+
+For each successful fit:
+  addpath('Algorithms/DDE','Scripts/DDE');
+  metrics=score_deep_saved_case('/absolute/case/result.mat', ...
+    '/absolute/matching_input.mat', ...
+    fullfile(pwd,'Algorithms','DDE','deep','input_generation','truth.mat'));
+
+Scoring uses the matching input, including its truth scaling. It includes
+intercepts and all three layers. Final MSE conditions on all dimensions
+correct and applies upper Q3+1.5 IQR separately by n/layer. Recovery uses all
+600 attempts including the recorded initialization failure. The historical
+collectors require scored metrics/hyperparameter exports with specific names;
+they cannot directly consume the wrapper's arbitrary result.mat directories.
+Do not claim that those separate interfaces form a verified single-command
+end-to-end rerun until that conversion and aggregation are implemented.

@@ -4,6 +4,7 @@ function metrics=score_deep_saved_case(resultFile,inputFile,truthFile)
 verify_revision_sources;
 root=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','DDE');oldpath=path;
 cleanup=onCleanup(@()path(oldpath));
+addpath(fullfile(fileparts(fileparts(root)),'Utilities'));
 addpath(genpath(fullfile(root,'CopDDE')));addpath(fullfile(root,'deep'),'-begin');
 r=load(resultFile,'result');s=load(inputFile,'input');t=load(truthFile,'record');
 f=r.result.fit;input=s.input;truth=t.record;

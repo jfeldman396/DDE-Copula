@@ -196,8 +196,8 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 95,
-      "sha256": "7fe77845550a99103361ee400f819acdb1ced353daf742ff50a94f793992094c"
+      "bytes": 136,
+      "sha256": "bc39f34452c07f03071ecd306b603a9ac50c11090c90a4de0b997d13a096b568"
     },
     {
       "path": "Algorithms/DDE/CopDDE/AdjacentRankPairStudy/agr_log_interval.m",
@@ -390,49 +390,9 @@
       "sha256": "73d5d99cbabf232d9c3aed27ff89631a3b02f36ee2bce8d7db641e99b07eab6e"
     },
     {
-      "path": "Algorithms/DDE/CopDDE/Utilities/format_estimates.m",
-      "bytes": 1103,
-      "sha256": "a45fe8bf17ff8ccb3909e16da99663b85534ccfd6fd9af8155340b6e2947a579"
-    },
-    {
-      "path": "Algorithms/DDE/CopDDE/Utilities/generate_X_Cop_marg_emp.m",
-      "bytes": 1960,
-      "sha256": "828513ea5e3be54c52a5857af7c54c1a941f619a2cd8f9b63b1425b71a8921c5"
-    },
-    {
-      "path": "Algorithms/DDE/CopDDE/Utilities/logistic.m",
-      "bytes": 78,
-      "sha256": "32cbf64e60a787160c8b073ccc179d20beae925442e59f26d500bba8f6b9590f"
-    },
-    {
-      "path": "Algorithms/DDE/CopDDE/Utilities/logit.m",
-      "bytes": 73,
-      "sha256": "df141e66f81841e58134eda3ad6f9c4188d38bef1b7d6c915f480ce022b77f59"
-    },
-    {
-      "path": "Algorithms/DDE/CopDDE/Utilities/munkres.m",
-      "bytes": 7137,
-      "sha256": "0c5eecb267d9ce719ed9af25f3f1584fb9cbb9f9601a6ef12d6b9bcbe1a957f8"
-    },
-    {
-      "path": "Algorithms/DDE/CopDDE/Utilities/rescale_B1.m",
-      "bytes": 2885,
-      "sha256": "2f9c1758c03d6dc70d43af4ff255423304253eb55d25c5f4450969c4bb4eded7"
-    },
-    {
-      "path": "Algorithms/DDE/CopDDE/Utilities/sim_block_loadings.m",
-      "bytes": 2033,
-      "sha256": "1713f57b047045cf4230c59215229b34a2699a4e3c68be05b641c4c864373232"
-    },
-    {
       "path": "Algorithms/DDE/CopDDE/Utilities/simulate_gaussian_mixture.m",
       "bytes": 3468,
       "sha256": "231dbb1b4b8ec51916ad74b80d5ef77922295f2c266f9389e926000d0f433e36"
-    },
-    {
-      "path": "Algorithms/DDE/CopDDE/Utilities/thres.m",
-      "bytes": 98,
-      "sha256": "e57aa99a1352eba1d721bc37610196b73d94018a2746e81cfe6b528f70d66361"
     },
     {
       "path": "Algorithms/DDE/CopDDE/WidthGraphRefinement/width_graph_config.m",
@@ -483,26 +443,6 @@
       "path": "Algorithms/DDE/deep/dpr_metrics.m",
       "bytes": 1441,
       "sha256": "c310353a97ad6228c32462fa1fc093febfda5db10c5d8a52c64ffd39328acfa9"
-    },
-    {
-      "path": "Algorithms/DDE/deep/input_generation/Normal_init_D.m",
-      "bytes": 1399,
-      "sha256": "16aee363b8e1a9dcddb06681a5e6cef624b508052db15bf2b865b82ac59333e5"
-    },
-    {
-      "path": "Algorithms/DDE/deep/input_generation/binary_init.m",
-      "bytes": 1929,
-      "sha256": "9f5bcf9401e0192ca56a4e3619c6b83ab9dbeea513c04384bc6b3998d489ed1e"
-    },
-    {
-      "path": "Algorithms/DDE/deep/input_generation/generate_X_cop_D.m",
-      "bytes": 2033,
-      "sha256": "0671018ecc8fb221e15109859d77f5bc5c8a816afb05d3a9e494a3d8c52630a4"
-    },
-    {
-      "path": "Algorithms/DDE/deep/input_generation/logit.m",
-      "bytes": 73,
-      "sha256": "df141e66f81841e58134eda3ad6f9c4188d38bef1b7d6c915f480ce022b77f59"
     },
     {
       "path": "Algorithms/DDE/deep/input_generation/truth.mat",
@@ -776,8 +716,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1509,
-      "sha256": "9116a6dac69d7f27f58cd899980695171fe5ae3e01462811e37c7287d43f11e4"
+      "bytes": 3128,
+      "sha256": "8e1dd2ba30d81d1fd5e220481a7fddb64d917f854347d4591a7acbd3ee9b0144"
     },
     {
       "path": "Results/B5_analysis.mat",
@@ -1271,23 +1211,28 @@
     },
     {
       "path": "Scripts/DDE/create_deep_nofloor_input.m",
-      "bytes": 2533,
-      "sha256": "f9ea1f1616b0858701388fa535300174054f72075d08fdf13362b95b94bf41d2"
+      "bytes": 2592,
+      "sha256": "3c59ffda4ed570957e7557602d36acaeff13076de5d831940cba1d5a6e9ca967"
     },
     {
       "path": "Scripts/DDE/run_cavi_case.m",
-      "bytes": 2670,
-      "sha256": "bf0921697a7100db22ad2b74118b1eb81d926c4997de92f53357fb5bf0f863dc"
+      "bytes": 2587,
+      "sha256": "43618ddfa074aba8b6436bf1a4d4b5e2b9c8a7cbf209be38441e9db330805082"
     },
     {
       "path": "Scripts/DDE/run_deep_saved_case.m",
-      "bytes": 2118,
-      "sha256": "428fc24a8ba222fd4003b069ce8d9f75d9eb49b60d8abdf6c03c97838c3e9988"
+      "bytes": 1974,
+      "sha256": "5cb7c059020f051e55ee58aba3f048556836b5756c0735acd058fd9ad87d71c5"
     },
     {
       "path": "Scripts/DDE/score_deep_saved_case.m",
-      "bytes": 972,
-      "sha256": "157d58d122163e2f8003b43eaaaab1fb54f7e2841c9bc03cd297715235b936aa"
+      "bytes": 1031,
+      "sha256": "3504faaff55dcbdda271243d89b8ce1802a8243d8fd80aedaa870f05b479fa42"
+    },
+    {
+      "path": "Scripts/DDE/stage_dde_sources.m",
+      "bytes": 1165,
+      "sha256": "6937be63be38501a9c553ee9204e63fe6fa386628e05f87c11598eca41b7c099"
     },
     {
       "path": "Scripts/Deeper_Sims.m",
@@ -1386,8 +1331,8 @@
     },
     {
       "path": "Scripts/REPRODUCE.txt",
-      "bytes": 10044,
-      "sha256": "36ba0405bcbf8194c197bb6886c8705d1e021340b220395db9d1c459fe95483d"
+      "bytes": 18528,
+      "sha256": "115776f245469ce9c62a416609e36597790ee9955fa2a9ce47f5aac23dfade44"
     },
     {
       "path": "Scripts/Sim_Overspecified.m",
@@ -1398,6 +1343,11 @@
       "path": "Scripts/Sim_SampleSplit.m",
       "bytes": 5455,
       "sha256": "24aa67c443ffee197e92b169dbe879137a198a8dafff737d333ea9a8bf6fe589"
+    },
+    {
+      "path": "Scripts/reproduce.py",
+      "bytes": 5296,
+      "sha256": "b17e4ea27eb2c4ddc369e2de68cfe98ba89cc069c1be0cc94fdc4b86cb4da6b0"
     },
     {
       "path": "Utilities/F_1_SAEM_cop.m",

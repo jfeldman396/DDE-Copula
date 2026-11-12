@@ -13,8 +13,7 @@ oldpath=path;oldcwd=pwd;oldrng=rng;cleanup=onCleanup(@()restore(oldpath,oldcwd,o
 [ok,msg]=mkdir(outputDir);assert(ok,msg);outFile=java.io.File(outputDir);outputDir=char(outFile.getCanonicalPath());
 % Copy only the published source into this run so legacy configuration mkdir
 % side effects and relative result paths are confined to the new destination.
-copyfile(fullfile(root,'CopDDE'),fullfile(outputDir,'CopDDE'));
-copyfile(fullfile(root,'cavi'),fullfile(outputDir,'cavi'));
+stage_dde_sources(root,outputDir,false);
 addpath(genpath(fullfile(outputDir,'CopDDE')));addpath(fullfile(outputDir,'cavi'),'-begin');cd(outputDir);
 mkdir(fullfile('results','layer_specific_saem_study','inputs'));
 mkdir(fullfile('results','paper_cp_comparison'));copyfile(fullfile(outputDir,'cavi','truth','*.mat'),fullfile('results','paper_cp_comparison'));
