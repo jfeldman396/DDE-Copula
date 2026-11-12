@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -69,6 +70,9 @@ def main():
             generated = f'factor/{name}'
         elif name == 'iVAE_comparison_DDE_oriented.pdf':
             generated = f'ivae/images/{name}'
+        truth = re.match(r'J(50|100|150)_B([12])_true', name, re.IGNORECASE)
+        if truth:
+            generated = f'summaries/J{truth[1]}_B{truth[2]}_truth.pdf'
         if generated:
             assert (out/generated).is_file(), generated
         saved = f"document_figures/{row['document'].removesuffix('.tex')}/{row['requested_asset']}"
@@ -83,7 +87,8 @@ def main():
         inputs = [str(Path('numeric_inputs')/Path(s).relative_to('Results/Publication/data'))
                   for s in row['saved_inputs'].split('; ')]
         assert all((out/p).is_file() for p in inputs)
-        index.append(dict(document='supplied supplement snapshot', result=row['labels'] or 'iVAE loading table',
+        document = 'template_v2.tex' if row['labels'] in ('tab:recovery_resultsJ100','tab:keyitems','fig:b5_qs') else 'supplementary_materials_v2.tex'
+        index.append(dict(document=document, result=row['labels'] or 'iVAE loading table',
                           status='saved_numerical_table_inputs', regenerated_output='', saved_output='',
                           numerical_inputs='; '.join(inputs)))
     with (out/'RESULT_INDEX.csv').open('w', newline='') as handle:

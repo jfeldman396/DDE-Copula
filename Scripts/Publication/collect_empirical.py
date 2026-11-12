@@ -25,6 +25,11 @@ prob=(counts+.5)/(counts.sum(1,keepdims=True)+2.5);edges=np.c_[np.zeros(98),np.c
 assert Y.shape==(1500,98) and np.isnan(Y).sum()==223
 data=dict(Y=Y,row_ids=np.arange(1,1501),cdf_edges=edges)
 O=output(args.output_dir);out=d=O
+# Main-text response-distribution table. The supplied CSV merges missing codes;
+# report missingness without inventing a skipped-versus-not-asked distinction.
+item=survey['BIGFIVE_5']
+pd.DataFrame([dict(item='BIGFIVE_5',response=str(c),count=int((item==c).sum())) for c in range(1,6)] +
+             [dict(item='BIGFIVE_5',response='missing',count=int(item.isna().sum()))]).to_csv(O/'SURVEY_ITEM_RESPONSE_COUNTS.csv',index=False)
 def weighted_means(Y,W,columns):
     valid=np.isfinite(Y[:,columns]);y=np.where(valid,Y[:,columns],0.)
     mass=W.T@valid.astype(float);sums=W.T@y

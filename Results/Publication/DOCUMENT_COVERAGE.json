@@ -1,0 +1,36 @@
+{
+  "documents": [
+    {
+      "document": "template_v2.tex",
+      "sha256": "0ec1caf5369c45a2bf74ea18635d45de6d1aa6fb5ffb44833949828ab7bd04d9",
+      "figure_references": 9,
+      "tables": 3,
+      "unmapped_figure_assets": []
+    },
+    {
+      "document": "supplementary_materials_v2.tex",
+      "sha256": "5cb6315747ab7778d240a14ab429cd7e82d2c51e082c5f14fb216f46e37ece5b",
+      "figure_references": 24,
+      "tables": 7,
+      "unmapped_figure_assets": []
+    },
+    {
+      "document": "responses_v2.tex",
+      "sha256": "74163bf538c9f0b764c6b18978f1cb9f6ce33dc42a988f8c01b7f21d4c20f136",
+      "figure_references": 6,
+      "tables": 1,
+      "unmapped_figure_assets": []
+    }
+  ],
+  "included_figure_references": 39,
+  "included_tables": 10,
+  "excluded": [
+    {
+      "document": "responses_v2.tex",
+      "label": "tab:vi-interval-enclosure",
+      "reason": "VI pilot excluded at author request"
+    }
+  ],
+  "text_scope": "Author maintains subsequent text/caption corrections in Overleaf. Manuscript sources are not distributed.",
+  "missing_codes": "Author CSV has missing values without raw response codes; reproduce aggregate missingness only."
+}

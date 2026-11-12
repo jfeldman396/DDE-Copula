@@ -16,5 +16,32 @@
     2
   ],
   "all_4_families_retained": true,
-  "checks": "all joint tables sum to one; pair averages independently verified via combinatorial row counts"
+  "checks": "all joint tables sum to one; pair averages independently verified via combinatorial row counts",
+  "selection_reference": [
+    {
+      "family": "clayton",
+      "candidate": 3,
+      "validation_pmse": 0.009475589197264,
+      "test_pmse": 0.015815159116312
+    },
+    {
+      "family": "gaussian",
+      "candidate": 3,
+      "validation_pmse": 0.0097392916296936,
+      "test_pmse": 0.0061653751432961
+    },
+    {
+      "family": "student_t",
+      "candidate": 9,
+      "validation_pmse": 0.0109022432435417,
+      "test_pmse": 0.0109196223969566
+    },
+    {
+      "family": "survival_clayton",
+      "candidate": 1,
+      "validation_pmse": 0.01101593893885,
+      "test_pmse": 0.0202150992192349
+    }
+  ],
+  "selection_driver": "Scripts/Publication/run_ordinal_selection.m"
 }

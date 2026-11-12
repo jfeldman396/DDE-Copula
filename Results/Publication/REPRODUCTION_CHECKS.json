@@ -1,6 +1,6 @@
 {
   "date": "2026-11-12",
-  "scope": "Representative executable fits and complete archived-result aggregation checks, not a new run of every experiment",
+  "scope": "Fresh-clone complete ordinal selection/refits and iVAE training, representative other fits, and archived-result aggregation checks; full remaining verification is in progress",
   "software": {
     "matlab": "R2026a",
     "python": "3.13"
@@ -53,6 +53,36 @@
       "case": "replacement chain1, seed35931531",
       "complete": false,
       "comparison": "First sweep matches original draws exactly; full chains not rerun"
+    },
+    {
+      "study": "ordinal selection",
+      "cases": 4,
+      "complete": true,
+      "comparison": "All four original bounded two/three-layer searches reproduce selected settings, validation scores and test scores"
+    },
+    {
+      "study": "ordinal final refits",
+      "cases": 8,
+      "complete": true,
+      "comparison": "All 96 tail-probability rows and 300 joint-probability rows match at relative 1e-10 / absolute 1e-12; figures regenerated"
+    },
+    {
+      "study": "iVAE full training",
+      "epochs": 334,
+      "updates": 2004,
+      "complete": true,
+      "comparison": "All eight network parameter arrays match exactly; maximum loss-history difference is 1.82e-12 from CSV roundtrip"
+    },
+    {
+      "study": "empirical rank Gibbs grid",
+      "cases": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "complete": true,
+      "comparison": "Full fits and all 50 pMSE/AUC/Brier scores per candidate match the reference"
     }
   ],
   "analysis_checks": [
@@ -105,24 +135,59 @@
       "result": "Fresh-weight interface with original fitted weights matches every saved key-item row"
     }
   ],
-  "not_rerun": [
-    "Complete5400-fit shallow grid",
-    "Complete3600-fit comparator grid",
-    "Complete600-attempt deep grid",
-    "All eight ordinal refits or discarded tuning searches",
-    "All40 datasets x four2000-sweep uncertainty chains",
-    "All24 empirical DDE grid candidates",
-    "Full Gaussian candidate study",
-    "Full iVAE training",
-    "All four full B5 posterior chains"
-  ],
   "data_access": "Contact the author, Joe Feldman, for the original survey CSV. Code and aggregate results included; raw respondent data excluded.",
   "interpretation": "Fixed budgets and parity checks do not establish convergence; reported mixing limitations remain.",
   "saved_result_workflow": {
     "passed": true,
     "figure_references": 39,
-    "table_entries": 7
+    "table_entries": 10
   },
   "entry_points_parse_checked": true,
-  "incomplete_endpoint_rejection_checked": true
+  "incomplete_endpoint_rejection_checked": true,
+  "excluded": [
+    "Reviewer1 variational-interval pilot, at author request"
+  ],
+  "all_included_numerical_results_verified": false,
+  "fresh_clone_commit": "73de41513cf0bc9122d84dd4126a548781d56365",
+  "remaining_full_runs": [
+    "Complete5400-fit shallow grid",
+    "Complete3600-fit comparator grid",
+    "Complete600-attempt deep grid",
+    "All40 datasets x four2000-sweep uncertainty chains",
+    "All24 empirical DDE grid candidates",
+    "Full Gaussian candidate study",
+    "All four full B5 posterior chains"
+  ],
+  "remaining_full_runs_status": "Running; no complete-study numerical parity claim for these studies",
+  "portable_environment_check": "Fresh Python environment; training import also checked with optional POSIX fcntl unavailable",
+  "fresh_partial_check": {
+    "checked_at_utc": "2026-11-12T20:35:36.908249+00:00",
+    "scope": "Completed individual cases only; no complete-grid claim",
+    "completed_cases_numerically_matched": [
+      "comparator_J100_n1000_r1_poisson",
+      "comparator_J100_n1000_r1_rl",
+      "comparator_J100_n500_r1_rl",
+      "comparator_J150_n1000_r1_rl",
+      "comparator_J150_n500_r1_rl",
+      "comparator_J50_n1000_r1_poisson",
+      "comparator_J50_n1000_r1_rl",
+      "comparator_J50_n2000_r1_poisson",
+      "comparator_J50_n2000_r1_rl",
+      "comparator_J50_n500_r1_poisson",
+      "comparator_J50_n500_r1_rl",
+      "deep_J108_n500_r1",
+      "shallow_J100_n1000_r1_map",
+      "shallow_J100_n500_r1_map",
+      "shallow_J150_n1000_r1_map",
+      "shallow_J150_n500_r1_map",
+      "shallow_J50_n1000_r1_map",
+      "shallow_J50_n2000_r1_map",
+      "shallow_J50_n500_r1_map",
+      "empirical_gibbs_0",
+      "empirical_gibbs_1",
+      "empirical_gibbs_2",
+      "empirical_gibbs_3"
+    ],
+    "count": 23
+  }
 }

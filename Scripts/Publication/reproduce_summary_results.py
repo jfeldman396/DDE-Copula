@@ -17,7 +17,8 @@ data = ROOT / 'Results/Publication/data'
 for source in ['dde/MAIN_DIMENSION_RECOVERY.csv',
                'deep/DEEP_REFIT_DIMENSION_RECOVERY.csv',
                'deep/DEEP_REFIT_MSE_SUMMARY.csv',
-               'uncertainty/COVERAGE_SUMMARY.csv']:
+               'uncertainty/COVERAGE_SUMMARY.csv',
+               'empirical/SURVEY_ITEM_RESPONSE_COUNTS.csv']:
     shutil.copy2(data/source, out/Path(source).name)
 r = pd.read_csv(data/'native15_5/J100_MAP_RUNTIME_REPLICATES.csv')
 assert len(r) == 600 and not r.duplicated(['n','replication']).any()
@@ -49,11 +50,22 @@ for layer in (1,2,3):
            title=f'No-floor DDE: layer {layer}')
     ax.set_xticks(g.n, g.n.astype(str)); ax.grid(alpha=.2); ax.legend()
     fig.savefig(out/f'B{layer}_MSE.pdf'); plt.close(fig)
+# Known generating matrices are model specifications, not fitted results.
+truth=np.load(data/'dde/TRUTH_MATRICES_15_5.npz')
+for J in [50,100,150]:
+    for layer in [1,2]:
+        matrix=truth[f'J{J}_B{layer}'];bound=np.max(np.abs(matrix))
+        fig,ax=plt.subplots(figsize=(5.7,4),layout='constrained')
+        im=ax.imshow(matrix,aspect='auto',cmap='viridis',vmin=-bound,vmax=bound,interpolation='nearest')
+        ax.set(title=f'J={J}: B{layer} truth',xlabel='Factor (0 = intercept)',ylabel='Item' if layer==1 else 'First-layer feature')
+        fig.colorbar(im,ax=ax)
+        fig.savefig(out/f'J{J}_B{layer}_truth.pdf');plt.close(fig)
 (out/'README.txt').write_text(
     'Table CSVs are exported from saved aggregates, not recomputed from fits.\n'
     'J=100 timing statistics are recomputed from all 100 replications per n.\n'
     'Times are numerical warmup + post-warmup wall seconds, excluding overhead.\n'
     'Deep plots re-render saved numerical summaries; historical typography may differ.\n'
+    'Six truth heatmaps are regenerated from the exact generating matrices.\n'
     'Deep MSE conditions on all dimensions correct; upper Q3+1.5 IQR per n/layer.\n'
     'Uncertainty enclosure is not calibrated coverage: all 40 datasets failed mixing checks.\n')
 print(out)

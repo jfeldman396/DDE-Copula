@@ -21,6 +21,7 @@ result=struct('family',family,'method',method,'hp',hp,'raw',raw,'data',data,'com
 if result.complete
  result.selected_model=r1tune_selected_model(f);
  result.pred=r1t_predict(result.selected_model,data.Ytrain,plan.synthetic_n,e.prediction_seed);
+ result.test_score=r1tt_score(f,data.Ytrain,data.Ytest,971000+100*ix+88020,5,5,100);
 end
 save(fullfile(out,'result.mat'),'result','-v7.3');
 end

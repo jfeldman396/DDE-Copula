@@ -25,5 +25,5 @@
   "feature_columns_zero_based": "2:102 excluding45,52",
   "torch_version": "2.15.0",
   "numpy_version": "2.3.5",
-  "protocol": "Original wrapper checks budget at epoch boundaries; no training performed for this handoff"
+  "protocol": "Original wrapper checks the nominal2000-update budget at epoch boundaries;334 complete epochs produce2004 updates."
 }

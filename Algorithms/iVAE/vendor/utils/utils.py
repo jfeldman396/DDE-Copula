@@ -1,5 +1,4 @@
 import errno
-import fcntl
 import json
 import os
 import time
@@ -194,6 +193,9 @@ class Logger:
 
     @staticmethod
     def _get_exp_id(log_folder):
+        # POSIX locking is needed only for optional shared-file logging.
+        # The reproduction entry point uses the in-memory logger on all OSes.
+        import fcntl
         log_folder = make_dir(log_folder)
         helper_id_file = log_folder + '.expid'
         if not os.path.exists(helper_id_file):

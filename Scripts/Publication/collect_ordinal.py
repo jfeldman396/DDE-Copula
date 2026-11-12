@@ -43,7 +43,7 @@ for r,(fam,title) in enumerate(zip(families,titles)):
   for mod,lab,col,m in zip(models,labels,colors,markers):
    d=o[(o.family==fam)&(o.side==side)&(o.model==mod)]
    ax.plot(d.cutoff,d.probability,label=lab,color=col,marker=m,ms=4)
-  ax.set_title(title+' — '+('both categories ≤ k' if side=='lower' else 'both categories > k'));ax.grid(alpha=.16);ax.set_xticks([1,2,3,4]);ax.set_ylim(0,1)
+  ax.set_title(title+'\n'+('both categories ≤ k' if side=='lower' else 'both categories > k'));ax.grid(alpha=.16);ax.set_xticks([1,2,3,4]);ax.set_ylim(0,1)
   if c==0:ax.set_ylabel('Joint event probability')
   if r==3:ax.set_xlabel('Category threshold k')
 fig.legend(*axs[0,0].get_legend_handles_labels(),loc='lower center',ncol=3,frameon=False,bbox_to_anchor=(.5,-.005));fig.tight_layout(rect=[0,.03,1,1]);save(fig,'R1_2_ordinal_tail_probabilities')
@@ -56,4 +56,28 @@ for r,(fam,title) in enumerate(zip(families,titles)):
   if c==0:axs[r,c].set_ylabel(title+'\nVariable 2 category')
   if r==3:axs[r,c].set_xlabel('Variable 1 category')
 fig.colorbar(im,ax=axs.ravel().tolist(),shrink=.6,label='Joint cell probability');save(fig,'R1_2_ordinal_synthetic_examples')
+# Paper-facing two-column panels use the reported group-maxima DDE fit.
+# The three-method audit panels above retain the matched Gibbs comparison.
+paper_models=['Original','group_maxima'];paper_labels=['Original','DDE Copula']
+fig,axs=plt.subplots(4,2,figsize=(5.6,8.6),sharex=True,sharey=True,layout='constrained')
+for r,(fam,title) in enumerate(zip(families,titles)):
+ for c,(model,label) in enumerate(zip(paper_models,paper_labels)):
+  d=j[(j.family==fam)&(j.model==model)].pivot(index='category2',columns='category1',values='probability')
+  im=axs[r,c].imshow(d,origin='lower',extent=[.5,5.5,.5,5.5],vmin=0,vmax=vmax,cmap='Blues')
+  axs[r,c].set_xticks(range(1,6));axs[r,c].set_yticks(range(1,6))
+  if r==0:axs[r,c].set_title(label)
+  if c==0:axs[r,c].set_ylabel(title+'\nVariable 2 category')
+  if r==3:axs[r,c].set_xlabel('Variable 1 category')
+fig.colorbar(im,ax=axs.ravel().tolist(),shrink=.6,label='Joint cell probability');save(fig,'ordinal_synthetic_vs_truth')
+fig,axs=plt.subplots(4,2,figsize=(6.5,8.6),sharex=True,sharey=True)
+for r,(fam,title) in enumerate(zip(families,titles)):
+ for c,side in enumerate(['lower','upper']):
+  ax=axs[r,c]
+  for model,label,color,marker in zip(paper_models,paper_labels,['#202020','#0072B2'],['o','s']):
+   d=o[(o.family==fam)&(o.side==side)&(o.model==model)]
+   ax.plot(d.cutoff,d.probability,label=label,color=color,marker=marker,ms=4)
+  ax.set_title(title+'\n'+('both categories ≤ k' if side=='lower' else 'both categories > k'));ax.grid(alpha=.16);ax.set_xticks([1,2,3,4]);ax.set_ylim(0,1)
+  if c==0:ax.set_ylabel('Joint event probability')
+  if r==3:ax.set_xlabel('Category threshold k')
+fig.legend(*axs[0,0].get_legend_handles_labels(),loc='lower center',ncol=2,frameon=False);fig.tight_layout(rect=[0,.035,1,1]);save(fig,'ordinal_tail_probabilities')
 print(OUT)
