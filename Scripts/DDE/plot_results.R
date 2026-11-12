@@ -1,5 +1,5 @@
 args <- commandArgs(trailingOnly=TRUE)
-p <- normalizePath(if(length(args)) args[1] else 'Algorithms/DDE/evidence')
+p <- normalizePath(if(length(args)) args[1] else 'Results/DDE/legacy_cp')
 if(length(args)<2) stop('Supply a NEW figure output directory as the second argument.')
 out <- args[2]
 if(dir.exists(out)||file.exists(out)) stop('Output directory already exists; refusing overwrite.')

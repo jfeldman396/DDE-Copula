@@ -326,7 +326,7 @@
     "source_body_preserved": true,
     "runtime_check": "MATLAB failed to start in this environment (Qt/neon incompatibility); no new fits executed",
     "entry_points": [
-      "Algorithms/Native15_5/run_native15_5_case.m",
+      "Scripts/Publication/run_native15_5_case.m",
       "Algorithms/PosteriorGibbs/run_posterior_gibbs.m"
     ]
   }

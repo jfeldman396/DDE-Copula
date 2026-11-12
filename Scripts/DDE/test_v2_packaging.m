@@ -1,6 +1,6 @@
 function test_v2_packaging
 % Static dependency and deterministic helper checks; no fitting/simulation.
-manifest=verify_v2_sources;root=fileparts(mfilename('fullpath'));
+manifest=verify_v2_sources;root=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','DDE');
 oldpath=path;oldcwd=pwd;oldrng=rng;tmp=tempname;mkdir(tmp);
 cleanup=onCleanup(@()restore(oldpath,oldcwd,oldrng,tmp));
 copyfile(fullfile(root,'CopDDE'),fullfile(tmp,'CopDDE'));

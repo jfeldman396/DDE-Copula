@@ -1,0 +1,176 @@
+REPRODUCING THE REVISION AND SUPPLEMENT
+
+Start here. Run commands from the repository root. Use Python 3.11+ and a
+new output directory for each command. The examples below write to a new
+reproduced/ directory. No command in sections 1-3 fits a model.
+
+The repository layout is:
+  Algorithms/           estimation kernels and model implementations
+  Utilities/            shared numerical helpers
+  Scripts/              reproduction entry points and analysis
+  Results/Publication/  current revision/supplement aggregates and figures
+  Results/DDE/legacy_cp/ earlier CP study, separate from the revised VI study
+
+1. INSTALL AND CHECK
+
+  python -m pip install -r Scripts/Publication/requirements-render.txt
+  python Scripts/Publication/validate_handoff.py
+
+The check verifies packaged file hashes, dimensions, selection summaries,
+600 deep outcomes (599 fits and one initialization failure), and comparator
+counts. It does not establish convergence or rerun the simulation grid.
+
+2. WHICH COMMAND PRODUCES WHICH RESULT?
+
+A. Shallow simulation: MAP versus truncated-lasso RL and Poisson DDE
+   J=50,100,150; both loading layers; MSE curves and estimated matrices.
+
+  python Scripts/Publication/render_native15_5.py --output reproduced/native15_5
+
+   Inputs: Results/Publication/data/native15_5/MSE_SUMMARY.csv and
+   AVERAGE_WEIGHT_MATRICES.npz. Outputs: images/J{J}_B{layer}_main_MSE.pdf
+   and images/J{J}_B{layer}_est_updated.pdf (12 PDFs, plus PNG previews).
+   FIGURE_SOURCES.json records each panel's input and retained counts.
+   MAP eligibility requires jointly correct 10/3 dimensions. Comparators
+   use valid replications; upper-IQR trimming is separate by method/J/n/layer.
+   See ELIGIBILITY_AND_EXCLUSIONS.json and the untrimmed replicate CSV.
+
+B. Dimension recovery tables, deeper no-floor MSE, uncertainty table,
+   and average compute times for the J=100 MAP examples.
+
+  python Scripts/Publication/reproduce_summary_results.py --output-dir reproduced/summaries
+
+   Outputs:
+   MAIN_DIMENSION_RECOVERY.csv: shallow recovery for all three DDE arms.
+   DEEP_REFIT_DIMENSION_RECOVERY.csv: no-floor recovery, all 600 attempts.
+   DEEP_REFIT_MSE_SUMMARY.csv: eligible/retained counts and MSE summaries.
+   COVERAGE_SUMMARY.csv: uncertainty enclosure and diagnostic denominators.
+   J100_MAP_RUNTIME_SUMMARY.csv: recomputed from 600 per-replication timings.
+   B1_MSE.pdf, B2_MSE.pdf, B3_MSE.pdf: deeper no-floor MSE curves.
+   Table CSVs are exports of saved aggregates, not new endpoint analyses.
+   Deep plots reproduce numerical curves, not necessarily historical typography.
+   Timing is numerical warmup + post-warmup wall time, excluding overhead;
+   it averages all 100 replications at each n, with no MSE-based exclusions.
+   Uncertainty enclosure is not calibrated coverage; all 40 datasets failed
+   the mixing screen. Reaching a fixed iteration budget is not convergence.
+
+C. Empirical DDE / Gaussian copula loading comparison.
+
+  python Scripts/Publication/render_factor_loadings.py --output-dir reproduced/factor
+
+   Input: Results/Publication/data/ivae/all_standardized_loadings.csv.
+   Output: weight_matrix_comparison.pdf (and PNG).
+   The selected Gaussian candidate is c6 by mean pMSE across six candidates;
+   its mixing diagnostics remain inadequate. Candidate scores/diagnostics
+   are in Results/Publication/data/factor/c1 through c6.
+
+D. Empirical DDE / iVAE comparison.
+
+  python Scripts/Publication/render_ivae.py --output-dir reproduced/ivae
+
+   Inputs: Results/Publication/data/ivae/{iVAE_plot_matrices_10_1.npz,
+   all_standardized_loadings.csv,item_metadata.csv}, with config in
+   Scripts/Publication/config.json.
+   Output: images/iVAE_comparison_DDE_oriented.pdf, individual panels,
+   display matrices and row/column matches. No network training occurs.
+   The ten columns are hidden units; the iVAE latent dimension is one.
+
+E. All existing paper/supplement/response figure files, including artwork
+   whose exact original renderer is not available in this package.
+
+  python Scripts/Publication/export_document_figures.py --output-dir reproduced/document_figures
+
+   Input: Results/Publication/DOCUMENT_ASSET_MAP.csv and packaged figures.
+   Output: subfolders named for the supplied document snapshots, with their
+   expected relative image filenames. This copies saved figures; it does
+   not recompute them. It exports no manuscript text or .tex files.
+   The map covers 39 references in the supplied snapshots; later Overleaf
+   edits may change filenames or numbering.
+
+3. RESULTS WITH LIMITED REPRODUCTION SUPPORT
+
+Ordinal synthetic/tail plots, B5 posterior interval plots, higher-level
+profiles and some legacy truth artwork are retained as saved figures.
+Their aggregate inputs and limitations are listed in
+Results/Publication/FIGURE_TABLE_MAP.csv and EXTERNAL_INPUTS.json.
+There is no verified standalone command here to regenerate every original
+figure from raw inputs. Use command E to obtain the preserved artwork.
+Full B5 draws/checkpoints and raw survey data are external. Do not interpret
+saved aggregates as a complete substitute for those fitting inputs.
+
+4. RERUNNING ESTIMATION (SEPARATE, EXPENSIVE)
+
+MATLAB requires the toolboxes described in Algorithms/DDE/README.md.
+Use absolute paths for every NEW output location below. Do not use the
+packaged Results directory as an output destination.
+
+Revised DDE, one fresh synthetic dataset:
+  addpath('Algorithms/DDE','Scripts/DDE');
+  run_cavi_case(100,500,1,1,'/absolute/new/dde_case');
+
+Arguments: J, n, replication, arm, new output directory.
+J: 50/100/150; n: 500/1000/2000/4000/8000/16000; replication: 1:100.
+Arm 1: tempering + VI; arm 2: VI only; arm 3: tempering only.
+Output: result.mat, checkpoint.mat, job.mat and isolated source/input copies.
+Repeat the exact grid for a full study; a one-case run is not its reproduction.
+Do not use a shortened iteration limit for final study endpoints.
+
+Deeper no-floor DDE, one fresh input and fit:
+  addpath('Algorithms/DDE','Scripts/DDE');
+  create_deep_nofloor_input(500,1,'/absolute/new_input.mat');
+  run_deep_saved_case('/absolute/new_input.mat','/absolute/new/deep_case',160);
+
+Six sample sizes above, 100 replications each. The n=500, replication=76
+zero-width initialization failure must be retained, not replaced by a
+modified initialization. For full saved-study collection, scoring, and
+eligibility/trimming, see Scripts/DDE/analysis/README.txt. Those collectors
+require the documented historical endpoint layout; they are not a one-click
+collector for arbitrarily named new case directories.
+
+Native 15/5 comparators, using a matching saved synthetic input:
+  addpath('Scripts/Publication');
+  run_native15_5_case('/absolute/paired_input.mat','rl','/absolute/new/rl_case');
+  run_native15_5_case('/absolute/paired_input.mat','poisson','/absolute/new/poisson_case');
+
+The input must contain record.R, record.initial, data_seed and algorithm_seed
+with 15/5 initialization, as documented by the wrapper. This saved-input
+interface does not generate the complete paired-input collection. Seeds are
+in Scripts/Publication/config/paired_simulation_seeds.csv. Full inputs are
+external; aggregate CSVs alone cannot rerun the comparator fits.
+
+Gaussian empirical study:
+  addpath('Scripts/Publication');
+  run_gaussian_study('/absolute/external_train_input.mat','/absolute/new/gaussian');
+
+Requires the original external prepared survey input. Runs the fixed 4k and
+8k stages for all six candidates; see EXTERNAL_INPUTS.json for input schema.
+
+iVAE empirical study (separate Python environment):
+  python -m pip install -r Scripts/Publication/requirements-ivae.txt
+  python Algorithms/iVAE/train.py --train --data /absolute/external_survey.csv --output-dir /absolute/new/ivae_fit
+
+Checks the original data hash. Without --train it only prints configuration.
+Results are aggregate weights and loss, not respondent embeddings.
+
+Posterior Gibbs:
+  addpath('Algorithms/PosteriorGibbs');
+  run_posterior_gibbs(a,fullMapState,options,'/absolute/new/posterior');
+
+Requires the full model state and data, plus documented seeds, iteration
+budgets and prior settings; see Results/Publication/README.txt. This is a
+sampler interface, not a complete reconstruction from aggregate intervals.
+
+5. HISTORICAL MATERIAL AND VALIDATION LIMITS
+
+Scripts/DDE/reproduce_tables.py and plot_results.R concern the earlier
+21,600-fit CP study, not the revised tempering+VI results. They are retained
+for provenance and must not be substituted for the commands above.
+Historical packaging reports are consolidated, by original filename, in
+Algorithms/DDE/provenance/HISTORICAL_VALIDATION.json. Source manifests remain
+separate for integrity checks. Duplicate preview images and original
+individual validation reports were archived locally; Git history retains them.
+
+Saved-result checks and renderers can be tested without MATLAB. The full
+simulation grid has not been rerun as part of this repository restructuring.
+The available MATLAB runtime failed to launch on this host; moved fitting
+wrappers have path/source checks, not a fresh executable MATLAB validation.

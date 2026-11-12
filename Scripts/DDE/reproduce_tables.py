@@ -3,7 +3,9 @@ Standard library only; no fitting and no access to original study directories.
 """
 from pathlib import Path
 import argparse, csv, hashlib, json, math, statistics, collections
-ROOT = Path(__file__).resolve().parent
+REPO = Path(__file__).resolve().parents[2]
+ROOT = REPO / 'Algorithms/DDE'
+EVIDENCE = REPO / 'Results/DDE/legacy_cp'
 
 def read(path):
     with path.open(newline='') as handle:
@@ -17,8 +19,8 @@ def verify():
             payload = (repo / entry['path']).read_bytes()
             assert hashlib.sha256(payload).hexdigest() == entry['sha256'], entry['path']
             assert len(payload) == entry['bytes'], entry['path']
-    reference = read(ROOT / 'evidence' / 'primary_all_settings.csv')
-    summaries = read(ROOT / 'evidence' / 'COMMON_SUMMARY.csv')
+    reference = read(EVIDENCE / 'primary_all_settings.csv')
+    summaries = read(EVIDENCE / 'COMMON_SUMMARY.csv')
     fields = list(reference[0])
     rows = []
     for s in summaries:

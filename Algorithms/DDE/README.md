@@ -37,9 +37,9 @@ Packaging was checked with MATLAB R2026a and Statistics and Machine Learning Too
 From the checkout root:
 
 ```sh
-python3 Algorithms/DDE/reproduce_tables.py
-python3 Algorithms/DDE/reproduce_tables.py --output /absolute/new/primary_table.csv
-matlab -singleCompThread -batch "addpath('Algorithms/DDE'); test_v2_packaging"
+python3 Scripts/DDE/reproduce_tables.py
+python3 Scripts/DDE/reproduce_tables.py --output /absolute/new/primary_table.csv
+matlab -singleCompThread -batch "addpath('Algorithms/DDE','Scripts/DDE'); test_v2_packaging"
 ```
 
 The Python check verifies source/evidence hashes and rebuilds the 216-cell primary table from the published compact summary. It does not recompute fits or bootstrap intervals from endpoint records. The MATLAB check verifies the isolated dependency closure and deterministic helper identities; it runs no estimator, simulation or parallel pool. Temporary test files are removed afterward.
@@ -49,7 +49,7 @@ The Python check verifies source/evidence hashes and rebuilds the 216-cell prima
 This command **starts numerical estimation**; it was not run as part of packaging:
 
 ```matlab
-addpath('Algorithms/DDE');
+addpath('Algorithms/DDE','Scripts/DDE');
 result = run_v2_case(50, 500, 1, 1, '/absolute/new/dde_case_J50_n500_r1_a1');
 ```
 
@@ -65,7 +65,7 @@ Direct `lsa_fit` calls can resume its own `record` checkpoint. It deterministica
 
 The historical production launcher, claims, release markers and absolute-path freeze checks are not exposed as a ready-to-run grid launcher here. Predecessor engines, shared-prefix orchestration and the old production collector are deliberately excluded. `summarize_v2` reads only the fresh wrapper's result schema and refuses incomplete case lists; it does not reinterpret old checkpoints or silently omit failed cases. Never create validation/release markers merely to bypass the production guards.
 
-The saved `historical_LSA_VALIDATION.json` reports checks previously performed on the original engine, including short trajectories and resume. It is historical evidence, not a new test of this package. New checks are described in [PACKAGING_VALIDATION.md](provenance/PACKAGING_VALIDATION.md). Full trajectory/restart parity for the wrapper and end-to-end regeneration of the study remain untested. Results for unfinished post-warmup diagnostics are deliberately excluded.
+The saved `historical_LSA_VALIDATION.json` reports checks previously performed on the original engine, including short trajectories and resume. It is historical evidence, not a new test of this package. New checks are described in [PACKAGING_VALIDATION.md](provenance/HISTORICAL_VALIDATION.json). Full trajectory/restart parity for the wrapper and end-to-end regeneration of the study remain untested. Results for unfinished post-warmup diagnostics are deliberately excluded.
 
 ## Small public interface
 
@@ -74,7 +74,7 @@ The public surface is `run_v2_case` (simulate the paper input and fit one arm), 
 To run a chosen case list (this starts numerical work):
 
 ```matlab
-addpath('Algorithms/DDE');
+addpath('Algorithms/DDE','Scripts/DDE');
 jobs = table(50,500,1,1,'VariableNames',{'J','n','replication','arm_id'});
 run_v2_study('/absolute/new/study',jobs);
 summarize_v2('/absolute/new/study','/absolute/new/endpoints.csv');
@@ -90,14 +90,14 @@ jobs = table(J(:),N(:),R(:),A(:),'VariableNames',{'J','n','replication','arm_id'
 Reproduce the three published descriptive figures from compact evidence, without fitting (base R, no extra packages):
 
 ```sh
-Rscript Algorithms/DDE/plot_results.R Algorithms/DDE/evidence /absolute/new/figures
+Rscript Scripts/DDE/plot_results.R Results/DDE/legacy_cp /absolute/new/figures
 ```
 
 The script writes PNG and PDF files to a new directory and refuses overwrites. Its plotting calculations match the paper evidence script; only input/output handling is adapted. After a complete fresh grid, export `endpoints.csv` with `summarize_v2`, then rebuild the primary and per-n matched figure tables:
 
 ```sh
-python3 Algorithms/DDE/reproduce_tables.py --endpoints /absolute/new/endpoints.csv --outdir /absolute/new/tables
-Rscript Algorithms/DDE/plot_results.R /absolute/new/tables /absolute/new/figures
+python3 Scripts/DDE/reproduce_tables.py --endpoints /absolute/new/endpoints.csv --outdir /absolute/new/tables
+Rscript Scripts/DDE/plot_results.R /absolute/new/tables /absolute/new/figures
 ```
 
 The endpoint reaggregator requires the full 21,600 distinct complete cases and retains every outcome. It was validated against the saved historical endpoint CSV: all 216 primary rows, 54 tempering+CP rows and 54 matched rows agree to tolerance 1e-12. No fits were rerun. It does not rebuild the supplementary bootstrap intervals, all-six-n matching or posthoc sensitivity tables; those published uncertainty tables remain historical evidence. Full numerical regeneration of the study is untested.

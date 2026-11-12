@@ -1,6 +1,6 @@
 Deeper no-floor fit: saved-input reproduction
 
-Add the v2 directory to the MATLAB path, then call:
+Add Algorithms/DDE and Scripts/DDE to the MATLAB path, then call:
   result = run_deep_saved_case('/absolute/input.mat', '/absolute/new_output', 160);
 The output directory must not already exist. The input must contain the
 synthetic study's saved input structure, including initial states and seeds.

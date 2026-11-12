@@ -4,7 +4,7 @@ function result=run_native15_5_case(inputFile,method,outputDir)
 assert(ismember(method,{'rl','poisson'}));
 assert(java.io.File(inputFile).isAbsolute() && java.io.File(outputDir).isAbsolute());
 assert(isfile(inputFile) && ~isfolder(outputDir) && ~isfile(outputDir));
-here=fileparts(mfilename('fullpath'));oldpath=path;oldrng=rng;
+here=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','Native15_5');oldpath=path;oldrng=rng;
 cleanup=onCleanup(@()restore_state(oldpath,oldrng));
 assert(isempty(gcp('nocreate')),'Run without an active parallel pool.');
 addpath(fullfile(here,'frozen','common'));

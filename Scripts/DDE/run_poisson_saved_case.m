@@ -4,7 +4,7 @@ function result=run_poisson_saved_case(inputFile,outputDir)
 assert(java.io.File(inputFile).isAbsolute()&&java.io.File(outputDir).isAbsolute());
 assert(isfile(inputFile)&&~isfile(outputDir)&&~isfolder(outputDir));
 baseline=verify_v2_sources;verify_cavi_sources;manifest=verify_poisson_sources;
-root=fileparts(mfilename('fullpath'));oldpath=path;oldcwd=pwd;oldrng=rng;
+root=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','DDE');oldpath=path;oldcwd=pwd;oldrng=rng;
 cleanup=onCleanup(@()restore(oldpath,oldcwd,oldrng));
 s=load(inputFile,'record');input=s.record;[N,J]=size(input.R);
 assert(ismember(J,[50 100 150]));

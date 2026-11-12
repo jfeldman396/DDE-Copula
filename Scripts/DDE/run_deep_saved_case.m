@@ -12,7 +12,7 @@ s=load(inputFile,'input');input=s.input;
 assert(input.J==108&&numel(input.initial.A)==3);
 assert(isequal(input.initial.widths,[size(input.initial.A{1},2),size(input.initial.A{2},2),size(input.initial.A{3},2)]));
 assert(all(input.initial.widths>=1));
-root=fileparts(mfilename('fullpath'));oldpath=path;oldcwd=pwd;oldrng=rng;
+root=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','DDE');oldpath=path;oldcwd=pwd;oldrng=rng;
 cleanup=onCleanup(@()restore(oldpath,oldcwd,oldrng));
 [ok,msg]=mkdir(outputDir);assert(ok,msg);
 copyfile(fullfile(root,'CopDDE'),fullfile(outputDir,'CopDDE'));

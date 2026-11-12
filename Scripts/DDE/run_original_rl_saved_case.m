@@ -4,7 +4,7 @@ function result=run_original_rl_saved_case(inputFile,outputDir)
 assert(java.io.File(inputFile).isAbsolute()&&java.io.File(outputDir).isAbsolute());
 assert(isfile(inputFile)&&~isfile(outputDir)&&~isfolder(outputDir));
 baseline=verify_v2_sources;verify_cavi_sources;manifest=verify_original_rl_sources;
-root=fileparts(mfilename('fullpath'));oldpath=path;oldcwd=pwd;oldrng=rng;
+root=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','DDE');oldpath=path;oldcwd=pwd;oldrng=rng;
 assert(isempty(gcp('nocreate')),'V2:ActivePool','Run in a MATLAB session without an active parallel pool.');
 settings=parallel.Settings;oldAuto=settings.Pool.AutoCreate;settings.Pool.AutoCreate=false;
 cleanup=onCleanup(@()restore(oldpath,oldcwd,oldrng,settings,oldAuto));

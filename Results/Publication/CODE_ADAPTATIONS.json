@@ -23,5 +23,10 @@
     "paths": "Inputs and outputs supplied through portable configuration and explicit output arguments.",
     "verification": "5PNG figures pixel-identical; display matrices and row/column permutations identical"
   },
-  "provenance": "SOURCE_MANIFEST.json gives original and packaged file hashes."
+  "provenance": "SOURCE_MANIFEST.json gives original and packaged file hashes.",
+  "reorganization": {
+    "changes": "Reproduction entry points moved to Scripts; legacy evidence moved to Results. Wrapper source roots updated; numerical fitting kernels unchanged. Historical validation reports consolidated; duplicate figure previews archived.",
+    "guide": "Scripts/REPRODUCE.txt",
+    "MATLAB_runtime_validation": "Not rerun: local runtime launch failure."
+  }
 }

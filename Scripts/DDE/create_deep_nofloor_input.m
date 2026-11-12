@@ -7,7 +7,7 @@ outputFile=char(outputFile);
 assert(java.io.File(outputFile).isAbsolute(),'V2:AbsolutePaths','Use an absolute output path.');
 assert(~isfile(outputFile)&&~isfolder(outputFile),'V2:FreshOutput','Output must not exist.');
 verify_v2_sources;verify_deep_input_sources;
-root=fileparts(mfilename('fullpath'));oldpath=path;oldrng=rng;
+root=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','DDE');oldpath=path;oldrng=rng;
 cleanup=onCleanup(@()restore(oldpath,oldrng));
 addpath(genpath(fullfile(root,'CopDDE')));
 addpath(fullfile(root,'deep','input_generation'),'-begin');

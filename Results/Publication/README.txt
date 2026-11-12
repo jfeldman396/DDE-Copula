@@ -1,3 +1,5 @@
+START HERE: Scripts/REPRODUCE.txt maps results to commands, inputs and outputs.
+
 PAPER CODE AND AGGREGATE RESULTS HANDOFF
 
 The repository keeps its original Algorithms / Utilities / Scripts / Results
@@ -105,7 +107,7 @@ python Scripts/Publication/export_document_figures.py --output-dir /chosen/new/f
 python Scripts/Publication/render_native15_5.py --output /chosen/new/native_plots
 
 Additional fitting entry points:
-addpath('Algorithms/Native15_5'); run_native15_5_case(inputFile,'rl',newOutputDir)
-addpath('Algorithms/Native15_5'); run_native15_5_case(inputFile,'poisson',newOutputDir)
+addpath('Scripts/Publication'); run_native15_5_case(inputFile,'rl',newOutputDir)
+addpath('Scripts/Publication'); run_native15_5_case(inputFile,'poisson',newOutputDir)
 addpath('Algorithms/PosteriorGibbs'); run_posterior_gibbs(a,fullMapState,options,newOutputDir)
 These require the full saved input/state, not only aggregate CSVs. Sampler options are seed, iterations, spike1, spike2, alpha1, alpha2. Simulation seed formula: 930031+J*10000+n+chain*1000000+replication*17000000. The B5 reported first chain uses its documented independent replacement seed, not the original seed.

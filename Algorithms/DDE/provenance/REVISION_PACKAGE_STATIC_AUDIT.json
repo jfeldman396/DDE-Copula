@@ -1,8 +1,0 @@
-{
-  "checked_at": "2026-11-05T02:45:56.510224+00:00",
-  "source_files_verified": 57,
-  "analysis_manifest_verified": true,
-  "python_syntax_verified": true,
-  "synthetic_fixtures_not_ignored": true,
-  "scope": "Static package audit; no simulation reruns or full-study reproduction claimed."
-}

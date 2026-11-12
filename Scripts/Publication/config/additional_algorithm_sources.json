@@ -1,8 +1,8 @@
 {
   "sources": [
     {
-      "path": "Algorithms/Native15_5/run_native15_5_case.m",
-      "sha256": "5a33274f214fe7c4410b93d774758c0a6581f816ced6b2fad569bf03aed0a598"
+      "path": "Scripts/Publication/run_native15_5_case.m",
+      "sha256": "fe685a8f45f3d9a87103eb5ab4796ad708ba373325647b5b7c182dd08183daa6"
     },
     {
       "path": "Algorithms/Native15_5/frozen/common/cpd_metrics.m",

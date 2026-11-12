@@ -22,7 +22,7 @@ B2 errors are close on matched correctly selected H1/Z datasets, but the retaine
 
 CPU includes serial-equivalent inherited prefix cost, and timing epochs differ. It is descriptive, not a controlled hardware benchmark. Intervals and matched comparisons have distinct eligible cohorts. Endpoint MSE does not demonstrate conditional-expectation accuracy, consistency, initialization stickiness or convergence. Ongoing mechanism diagnostics and posthoc sensitivities are outside this publication.
 
-`python3 Algorithms/DDE/reproduce_tables.py` verifies hashes and reconciles the published compact summary with the primary table. This does not recreate the original independent audit from endpoint records or regenerate bootstrap intervals; those require the full archived outcome data.
+`python3 Scripts/DDE/reproduce_tables.py` verifies hashes and reconciles the published compact summary with the primary table. This does not recreate the original independent audit from endpoint records or regenerate bootstrap intervals; those require the full archived outcome data.
 
 ## Reproduced figures
 
