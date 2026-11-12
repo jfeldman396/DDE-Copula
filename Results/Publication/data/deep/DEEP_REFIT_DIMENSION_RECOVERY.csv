@@ -1,0 +1,7 @@
+variant,n,successful_fits,initialization_failed,attempts_resolved,K1_correct,K1_correct_percent,K2_correct,K2_correct_percent,K3_correct,K3_correct_percent,joint_correct,joint_correct_percent
+nofloor,500,99,1,100,99,99.0,96,96.0,67,67.0,67,67.0
+nofloor,1000,100,0,100,100,100.0,99,99.0,93,93.0,92,92.0
+nofloor,2000,100,0,100,100,100.0,98,98.0,99,99.0,97,97.0
+nofloor,4000,100,0,100,100,100.0,99,99.0,100,100.0,99,99.0
+nofloor,8000,100,0,100,100,100.0,98,98.0,98,98.0,96,96.0
+nofloor,16000,100,0,100,100,100.0,97,97.0,100,100.0,97,97.0

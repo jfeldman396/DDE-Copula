@@ -1,0 +1,15 @@
+{
+  "original_source": "external:iVAE.ipynb",
+  "hidden_widths": [
+    10,
+    10
+  ],
+  "latent_dim": 1,
+  "seed": 0,
+  "epochs": 334,
+  "actual_updates": 2004,
+  "finite_loss": true,
+  "data_sha256": "c1ad10149d4a96db6cea044059d9b2edfec9e688d30554edf8d87a7fb1ab847b",
+  "numpy": "2.3.5",
+  "note": "Original notebook settings preserved except width 9 to 10; runtime PyTorch 2.15 CPU; not claimed bitwise reproduction of historical runtime."
+}

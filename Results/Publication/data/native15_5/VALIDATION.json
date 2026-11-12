@@ -1,0 +1,26 @@
+{
+  "computed_utc": "2026-11-12T15:33:19.680426+00:00",
+  "status": "passed_numeric_and_visual_review",
+  "MAP_endpoints": 1800,
+  "comparator_endpoints": 3600,
+  "MSE_summary_rows": 108,
+  "native_widths": [
+    15,
+    5
+  ],
+  "new_comparator_fits": 2997,
+  "reused_comparator_fits": 603,
+  "all_finite": true,
+  "all_MSE_recomputed": true,
+  "sources_and_old_figures_preserved": true,
+  "notes": [
+    "MAP conditional on both dimensions correct; comparator means use all valid replications before upper-IQR exclusion.",
+    "Mean matrices use precisely the per-layer retained MSE replications; all-eligible matrix means and all errors are archived.",
+    "All coefficients including intercepts scored on Jx16 and15x6 matrices, with native-width alignment.",
+    "Poisson log-mean and Gaussian latent-scale coefficients remain different estimands; comparison follows the original convention.",
+    "All 12 PDF pages rendered and inspected; heatmap saturation is labeled and counts are archived."
+  ],
+  "visual_review_utc": "2026-11-12T15:33:42.676457+00:00",
+  "pdfs_rendered_and_reviewed": 12,
+  "figure_source_mapping_verified": true
+}

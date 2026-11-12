@@ -1,0 +1,20 @@
+{
+  "categories": [
+    "0\u20131",
+    "2\u20133",
+    "4\u20135",
+    "6\u20137",
+    "8 or more"
+  ],
+  "scope": "Descriptive ordinal projection of previously fitted count models; no ordinal refit; fixed same boundaries for all variables and samples",
+  "original_n": 2000,
+  "synthetic_n": 5000,
+  "variable_pairs": 435,
+  "independent_pair_replicates": false,
+  "examples_pair": [
+    1,
+    2
+  ],
+  "all_4_families_retained": true,
+  "checks": "all joint tables sum to one; pair averages independently verified via combinatorial row counts"
+}

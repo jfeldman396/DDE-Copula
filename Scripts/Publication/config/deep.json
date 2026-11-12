@@ -1,0 +1,19 @@
+{
+  "method": "maxima + tempering + CAVI",
+  "tau": "3*n^(-.3)",
+  "initialization": "K1=min(36,gap+5);K2=floor(K1/3);K3=floor(K2/3)",
+  "attempts": 600,
+  "completed_fits": 599,
+  "initialization_failures": 1,
+  "n": [
+    500,
+    1000,
+    2000,
+    4000,
+    8000,
+    16000
+  ],
+  "stopped_comparators_included": false,
+  "code": "v2/deep",
+  "code_path_base": "repository root"
+}

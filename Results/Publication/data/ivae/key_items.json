@@ -1,0 +1,420 @@
+[
+  {
+    "method": "DDE copula",
+    "factor": 1,
+    "items": [
+      "Leave things unfinished",
+      "Don't see things through",
+      "Need a push to get started"
+    ],
+    "indices": [
+      56,
+      76,
+      8
+    ]
+  },
+  {
+    "method": "DDE copula",
+    "factor": 2,
+    "items": [
+      "Avoid philosophical discussions",
+      "Have difficulty understanding abstract ideas",
+      "Have little to say"
+    ],
+    "indices": [
+      7,
+      62,
+      39
+    ]
+  },
+  {
+    "method": "DDE copula",
+    "factor": 3,
+    "items": [
+      "Start conversations",
+      "Feel comfortable around people",
+      "Talk to a lot of different people at parties"
+    ],
+    "indices": [
+      91,
+      81,
+      43
+    ]
+  },
+  {
+    "method": "DDE copula",
+    "factor": 4,
+    "items": [
+      "Make plans and stick to them",
+      "Finish what I start",
+      "Follow through with my plans"
+    ],
+    "indices": [
+      53,
+      63,
+      35
+    ]
+  },
+  {
+    "method": "DDE copula",
+    "factor": 5,
+    "items": [
+      "Contradict others",
+      "Am out for my own personal gain"
+    ],
+    "indices": [
+      50,
+      70
+    ]
+  },
+  {
+    "method": "DDE copula",
+    "factor": 6,
+    "items": [
+      "Seldom get mad",
+      "Rarely get irritated",
+      "Am not easily bothered by things"
+    ],
+    "indices": [
+      75,
+      65,
+      19
+    ]
+  },
+  {
+    "method": "DDE copula",
+    "factor": 7,
+    "items": [
+      "Do not like art",
+      "Do not enjoy going to art museums",
+      "Do not like poetry"
+    ],
+    "indices": [
+      72,
+      34,
+      4
+    ]
+  },
+  {
+    "method": "DDE copula",
+    "factor": 8,
+    "items": [
+      "Get stressed out easily",
+      "Fear for the worst",
+      "Dislike myself"
+    ],
+    "indices": [
+      17,
+      40,
+      30
+    ]
+  },
+  {
+    "method": "DDE copula",
+    "factor": 9,
+    "items": [
+      "Accept people as they are",
+      "Am easy to satisfy",
+      "Enjoy hearing new ideas"
+    ],
+    "indices": [
+      45,
+      13,
+      59
+    ]
+  },
+  {
+    "method": "DDE copula",
+    "factor": 10,
+    "items": [
+      "Make demands on others",
+      "Believe that I am better than others",
+      "Have a sharp tongue"
+    ],
+    "indices": [
+      60,
+      42,
+      80
+    ]
+  },
+  {
+    "method": "iVAE encoder",
+    "factor": 1,
+    "items": [
+      "Am filled with doubts about things",
+      "Hold a grudge",
+      "Have little to say"
+    ],
+    "indices": [
+      88,
+      2,
+      39
+    ]
+  },
+  {
+    "method": "iVAE encoder",
+    "factor": 2,
+    "items": [
+      "Accept people as they are",
+      "Make friends easily",
+      "Find it difficult to get down to work"
+    ],
+    "indices": [
+      45,
+      10,
+      86
+    ]
+  },
+  {
+    "method": "iVAE encoder",
+    "factor": 3,
+    "items": [
+      "Am exacting in my work",
+      "Enjoy wild flights of fantasy",
+      "Am relaxed most of the time"
+    ],
+    "indices": [
+      44,
+      16,
+      27
+    ]
+  },
+  {
+    "method": "iVAE encoder",
+    "factor": 4,
+    "items": [
+      "Avoid philosophical discussions",
+      "Contradict others",
+      "Pay attention to details"
+    ],
+    "indices": [
+      7,
+      50,
+      83
+    ]
+  },
+  {
+    "method": "iVAE encoder",
+    "factor": 5,
+    "items": [
+      "Believe that others have good intentions",
+      "Do not mind being the center of attention",
+      "Make a mess of things"
+    ],
+    "indices": [
+      6,
+      3,
+      66
+    ]
+  },
+  {
+    "method": "iVAE encoder",
+    "factor": 6,
+    "items": [
+      "Leave things unfinished",
+      "Do not like poetry",
+      "Am easy to satisfy"
+    ],
+    "indices": [
+      56,
+      4,
+      13
+    ]
+  },
+  {
+    "method": "iVAE encoder",
+    "factor": 7,
+    "items": [
+      "Treat all people equally",
+      "Am not easily bothered by things",
+      "Don't talk a lot"
+    ],
+    "indices": [
+      94,
+      19,
+      29
+    ]
+  },
+  {
+    "method": "iVAE encoder",
+    "factor": 8,
+    "items": [
+      "Do not enjoy going to art museums",
+      "Don't like to draw attention to myself",
+      "Don't put my mind on the task at hand"
+    ],
+    "indices": [
+      34,
+      57,
+      47
+    ]
+  },
+  {
+    "method": "iVAE encoder",
+    "factor": 9,
+    "items": [
+      "Retreat from others",
+      "Panic easily",
+      "Don't see things through"
+    ],
+    "indices": [
+      77,
+      49,
+      76
+    ]
+  },
+  {
+    "method": "iVAE encoder",
+    "factor": 10,
+    "items": [
+      "Seldom get mad",
+      "Insult people",
+      "Believe in the importance of art"
+    ],
+    "indices": [
+      75,
+      90,
+      89
+    ]
+  },
+  {
+    "method": "iVAE decoder",
+    "factor": 1,
+    "items": [
+      "Accept people as they are",
+      "Pay attention to details",
+      "Am skilled in handling social situations"
+    ],
+    "indices": [
+      45,
+      83,
+      71
+    ]
+  },
+  {
+    "method": "iVAE decoder",
+    "factor": 2,
+    "items": [
+      "Believe that too much tax money goes to support artists",
+      "Insult people",
+      "Keep in the background"
+    ],
+    "indices": [
+      82,
+      90,
+      14
+    ]
+  },
+  {
+    "method": "iVAE decoder",
+    "factor": 3,
+    "items": [
+      "Don't like to draw attention to myself",
+      "Have a vivid imagination",
+      "Avoid contact with others"
+    ],
+    "indices": [
+      57,
+      1,
+      18
+    ]
+  },
+  {
+    "method": "iVAE decoder",
+    "factor": 4,
+    "items": [
+      "Talk to a lot of different people at parties",
+      "Rarely look for a deeper meaning in things",
+      "Seldom get mad"
+    ],
+    "indices": [
+      43,
+      92,
+      75
+    ]
+  },
+  {
+    "method": "iVAE decoder",
+    "factor": 5,
+    "items": [
+      "Feel comfortable with myself",
+      "Fear for the worst",
+      "Start conversations"
+    ],
+    "indices": [
+      11,
+      40,
+      91
+    ]
+  },
+  {
+    "method": "iVAE decoder",
+    "factor": 6,
+    "items": [
+      "Rarely lose my composure",
+      "Am the life of the party",
+      "Make friends easily"
+    ],
+    "indices": [
+      55,
+      61,
+      10
+    ]
+  },
+  {
+    "method": "iVAE decoder",
+    "factor": 7,
+    "items": [
+      "Find it difficult to approach others",
+      "Get back at others",
+      "Often feel blue"
+    ],
+    "indices": [
+      67,
+      32,
+      12
+    ]
+  },
+  {
+    "method": "iVAE decoder",
+    "factor": 8,
+    "items": [
+      "Have a sharp tongue",
+      "Follow through with my plans",
+      "Am not easily frustrated"
+    ],
+    "indices": [
+      80,
+      35,
+      46
+    ]
+  },
+  {
+    "method": "iVAE decoder",
+    "factor": 9,
+    "items": [
+      "Do not enjoy going to art museums",
+      "Am always prepared",
+      "Make people feel at ease"
+    ],
+    "indices": [
+      34,
+      15,
+      36
+    ]
+  },
+  {
+    "method": "iVAE decoder",
+    "factor": 10,
+    "items": [
+      "Believe that others have good intentions",
+      "Contradict others",
+      "Treat all people equally"
+    ],
+    "indices": [
+      6,
+      50,
+      94
+    ]
+  }
+]

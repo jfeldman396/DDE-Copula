@@ -1,0 +1,43 @@
+{
+  "H": 32,
+  "configs": [
+    {
+      "alpha": 5,
+      "spike": 0.0008
+    },
+    {
+      "alpha": 5,
+      "spike": 0.0032
+    },
+    {
+      "alpha": 5,
+      "spike": 0.05
+    },
+    {
+      "alpha": 32,
+      "spike": 0.0008
+    },
+    {
+      "alpha": 32,
+      "spike": 0.0032
+    },
+    {
+      "alpha": 32,
+      "spike": 0.05
+    }
+  ],
+  "chain_seeds": [
+    2026110301,
+    2026110302
+  ],
+  "iteration_seed": "mod(chain_seed + 10007 * iteration, 2^32-1)",
+  "iterations": 8000,
+  "burn": 1000,
+  "thin": 5,
+  "retained_window": "4005:5:8000, two chains",
+  "fixed_rotation": "Reference and varimax Q preserved from 4k stage",
+  "tempering": true,
+  "kernel": "missing_safe_exact_rank_Gibbs",
+  "selected_id": 6,
+  "posterior_mixing_adequate": false
+}

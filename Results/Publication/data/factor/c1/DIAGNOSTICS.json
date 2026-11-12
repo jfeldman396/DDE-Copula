@@ -1,0 +1,9 @@
+{
+  "split_rank_Rhat_median": 1.0031333989440407,
+  "split_rank_Rhat_max": 1.1067995070744119,
+  "split_rank_Rhat_fraction_gt1_1": 0.00042078687144961075,
+  "rank_ESS_median": 627.5546966894879,
+  "rank_ESS_min": 18.334887902214746,
+  "rank_ESS_fraction_lt100": 0.021039343572480537,
+  "ESS_scope": "Initial-positive autocorrelation-pair ESS on rank-normalized split correlation chains; retained thinned draws only."
+}

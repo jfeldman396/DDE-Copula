@@ -1,0 +1,99 @@
+model_column_1based,item_id,original_csv_column_1based,wording
+1,BIGFIVE_1,3,Have a vivid imagination
+2,BIGFIVE_2,4,Hold a grudge
+3,BIGFIVE_3,5,Do not mind being the center of attention
+4,BIGFIVE_4,6,Do not like poetry
+5,BIGFIVE_5,7,Complete tasks successfully
+6,BIGFIVE_6,8,Believe that others have good intentions
+7,BIGFIVE_7,9,Avoid philosophical discussions
+8,BIGFIVE_8,10,Need a push to get started
+9,BIGFIVE_9,11,Cut others to pieces
+10,BIGFIVE_10,12,Make friends easily
+11,BIGFIVE_11,13,Feel comfortable with myself
+12,BIGFIVE_12,14,Often feel blue
+13,BIGFIVE_13,15,Am easy to satisfy
+14,BIGFIVE_14,16,Keep in the background
+15,BIGFIVE_15,17,Am always prepared
+16,BIGFIVE_16,18,Enjoy wild flights of fantasy
+17,BIGFIVE_17,19,Get stressed out easily
+18,BIGFIVE_18,20,Avoid contact with others
+19,BIGFIVE_19,21,Am not easily bothered by things
+20,BIGFIVE_20,22,Shirk my duties
+21,BIGFIVE_21,23,Can say things beautifully
+22,BIGFIVE_22,24,Suspect hidden motives in others
+23,BIGFIVE_23,25,Cheer people up
+24,BIGFIVE_24,26,Am not interested in abstract ideas
+25,BIGFIVE_25,27,Do things according to a plan
+26,BIGFIVE_26,28,Am concerned about others
+27,BIGFIVE_27,29,Am relaxed most of the time
+28,BIGFIVE_28,30,Waste my time
+29,BIGFIVE_29,31,Don't talk a lot
+30,BIGFIVE_30,32,Dislike myself
+31,BIGFIVE_31,33,Enjoy thinking about things
+32,BIGFIVE_32,34,Get back at others
+33,BIGFIVE_33,35,Warm up quickly to others
+34,BIGFIVE_34,36,Do not enjoy going to art museums
+35,BIGFIVE_35,37,Follow through with my plans
+36,BIGFIVE_36,38,Make people feel at ease
+37,BIGFIVE_37,39,Seldom feel blue
+38,BIGFIVE_38,40,Mess things up
+39,BIGFIVE_39,41,Have little to say
+40,BIGFIVE_40,42,Fear for the worst
+41,BIGFIVE_41,43,Carry the conversation to a higher level
+42,BIGFIVE_42,44,Believe that I am better than others
+43,BIGFIVE_43,45,Talk to a lot of different people at parties
+44,BIGFIVE_45,47,Am exacting in my work
+45,BIGFIVE_46,48,Accept people as they are
+46,BIGFIVE_47,49,Am not easily frustrated
+47,BIGFIVE_48,50,Don't put my mind on the task at hand
+48,BIGFIVE_49,51,Keep others at a distance
+49,BIGFIVE_50,52,Panic easily
+50,BIGFIVE_52,54,Contradict others
+51,BIGFIVE_53,55,Know how to captivate people
+52,BIGFIVE_54,56,Am not interested in theoretical discussions
+53,BIGFIVE_55,57,Make plans and stick to them
+54,BIGFIVE_56,58,Trust what people say
+55,BIGFIVE_57,59,Rarely lose my composure
+56,BIGFIVE_58,60,Leave things unfinished
+57,BIGFIVE_59,61,Don't like to draw attention to myself
+58,BIGFIVE_60,62,Worry about things
+59,BIGFIVE_61,63,Enjoy hearing new ideas
+60,BIGFIVE_62,64,Make demands on others
+61,BIGFIVE_63,65,Am the life of the party
+62,BIGFIVE_64,66,Have difficulty understanding abstract ideas
+63,BIGFIVE_65,67,Finish what I start
+64,BIGFIVE_66,68,Respect others
+65,BIGFIVE_67,69,Rarely get irritated
+66,BIGFIVE_68,70,Make a mess of things
+67,BIGFIVE_69,71,Find it difficult to approach others
+68,BIGFIVE_70,72,Have frequent mood swings
+69,BIGFIVE_71,73,Have a rich vocabulary
+70,BIGFIVE_72,74,Am out for my own personal gain
+71,BIGFIVE_73,75,Am skilled in handling social situations
+72,BIGFIVE_74,76,Do not like art
+73,BIGFIVE_75,77,Get chores done right away
+74,BIGFIVE_76,78,Sympathize with others' feelings
+75,BIGFIVE_77,79,Seldom get mad
+76,BIGFIVE_78,80,Don't see things through
+77,BIGFIVE_79,81,Retreat from others
+78,BIGFIVE_80,82,Am often down in the dumps
+79,BIGFIVE_81,83,Get excited by new ideas
+80,BIGFIVE_82,84,Have a sharp tongue
+81,BIGFIVE_83,85,Feel comfortable around people
+82,BIGFIVE_84,86,Believe that too much tax money goes to support artists
+83,BIGFIVE_85,87,Pay attention to details
+84,BIGFIVE_86,88,Have a good word for everyone
+85,BIGFIVE_87,89,Remain calm under pressure
+86,BIGFIVE_88,90,Find it difficult to get down to work
+87,BIGFIVE_89,91,Would describe my experiences as somewhat dull
+88,BIGFIVE_90,92,Am filled with doubts about things
+89,BIGFIVE_91,93,Believe in the importance of art
+90,BIGFIVE_92,94,Insult people
+91,BIGFIVE_93,95,Start conversations
+92,BIGFIVE_94,96,Rarely look for a deeper meaning in things
+93,BIGFIVE_95,97,Carry out my plans
+94,BIGFIVE_96,98,Treat all people equally
+95,BIGFIVE_97,99,Am very pleased with myself
+96,BIGFIVE_98,100,Do just enough work to get by
+97,BIGFIVE_99,101,Am hard to get to know
+98,BIGFIVE_100,102,Feel threatened easily

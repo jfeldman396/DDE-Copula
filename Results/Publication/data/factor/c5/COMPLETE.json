@@ -1,0 +1,12 @@
+{
+  "id": 5,
+  "alpha": 32,
+  "spike": 0.0032,
+  "pMSE_mean": 0.007282274756017027,
+  "pMSE_SD": 0.00020744671099945768,
+  "pMSE_MC_SE": 2.9337395216512495e-05,
+  "correlation_Rhat_max": 1.6251719829283233,
+  "correlation_ESS_min": 3.511392145491814,
+  "CPU_seconds": 713.7000000001262,
+  "rotation_relative_error_max": 3.3076127379141118e-15
+}

@@ -1,0 +1,27 @@
+{
+  "GaussianCopula": {
+    "paths": [
+      "Algorithms/GaussianCopula/gaussian_review.m",
+      "Algorithms/GaussianCopula/gaussian_review_8k.m",
+      "Algorithms/GaussianCopula/review_gfg_fit.m",
+      "Algorithms/GaussianCopula/review_gfg_fit_8k.m"
+    ],
+    "changes": [
+      "Replace local root/output paths with explicit arguments and repository-relative helper paths.",
+      "Supply original4k rotation-reference directory explicitly.",
+      "Resolve STOP_REQUEST beside each new run directory."
+    ],
+    "sampling_and_scoring_bodies": "Source diff inspected; unchanged apart from path access",
+    "wrapper": "Scripts/Publication/run_gaussian_study.m adds explicit original-input hash check and orchestration; not executed for fitting"
+  },
+  "iVAE": {
+    "vendor": "Local research source preserved with MIT notice and file hashes.",
+    "train_entry_point": "Adapted original10/1 driver to explicit opt-in, checked external input, portable source paths and aggregate-only outputs; original architecture, seeds, budgets and Gaussian broadcasting patches preserved.",
+    "full_training_parity": "Not rerun"
+  },
+  "renderers": {
+    "paths": "Inputs and outputs supplied through portable configuration and explicit output arguments.",
+    "verification": "5PNG figures pixel-identical; display matrices and row/column permutations identical"
+  },
+  "provenance": "SOURCE_MANIFEST.json gives original and packaged file hashes."
+}

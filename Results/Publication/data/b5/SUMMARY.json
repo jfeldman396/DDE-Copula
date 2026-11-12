@@ -1,0 +1,11 @@
+{
+  "window": "Sweeps 1001\u20132000 per chain (new-seed chain 1 plus original chains 2\u20134), then condition on CSP active dimensions 10/1",
+  "conditional_counts": {
+    "new_seed_chain_1": 1000,
+    "chain_2": 768,
+    "chain_3": 1000,
+    "chain_4": 994
+  },
+  "pooled_draws": 3762,
+  "note": "Same per-draw alignment as full-window analysis. No thresholding. Descriptive window sensitivity, not evidence of convergence."
+}

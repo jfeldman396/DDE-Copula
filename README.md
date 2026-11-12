@@ -20,3 +20,8 @@ matlab -singleCompThread -batch "addpath('v2'); test_v2_packaging"
 ```
 
 A fit is an explicit separate action; see the guide. Bulk fit files, checkpoints, private/local data, machine credentials and ongoing diagnostic results are not part of this publication.
+
+
+## Publication code and aggregate results
+
+The handoff follows the original `Algorithms`, `Utilities`, `Scripts`, and `Results` layout. Start with [Results/Publication/README.txt](Results/Publication/README.txt) for DDE, Gaussian copula factor-model and 10/1 iVAE code, saved results, configuration/seeds and figure/table mappings. Completed native 15/5 comparator plots, per-replication errors, average matrices, and J=100 MAP timings are available in Results/Publication/data/native15_5 and Results/Publication/figures/native15_5. Existing legacy files remain historical assets.

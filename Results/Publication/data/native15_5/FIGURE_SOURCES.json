@@ -1,0 +1,1964 @@
+[
+  {
+    "figure": "J50_B1_main_MSE.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 50,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.020738409945705576,
+      0.009689423614300328,
+      0.004617671767484977,
+      0.0030308565792961178,
+      0.0018434587779186877,
+      0.001097743518806944
+    ],
+    "retained_counts": [
+      47,
+      75,
+      74,
+      74,
+      89,
+      86
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J50_B1_main_MSE.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 50,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.028204192634204008,
+      0.01797436952820089,
+      0.01366255388464492,
+      0.010443241156091347,
+      0.007592378747140354,
+      0.006659581162781194
+    ],
+    "retained_counts": [
+      97,
+      93,
+      98,
+      95,
+      95,
+      89
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J50_B1_main_MSE.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 50,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.331415523780971,
+      0.283066336247795,
+      0.2596391890499874,
+      0.2592296727465062,
+      0.25363857799536643,
+      0.2604556263332776
+    ],
+    "retained_counts": [
+      96,
+      96,
+      100,
+      99,
+      96,
+      99
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 50,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J50_n1000_B1_retained",
+    "panel_row": 1,
+    "panel_column": 1,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 50,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J50_n4000_B1_retained",
+    "panel_row": 1,
+    "panel_column": 2,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 50,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J50_n16000_B1_retained",
+    "panel_row": 1,
+    "panel_column": 3,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 50,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J50_B1",
+    "panel_row": 1,
+    "panel_column": 4,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 50,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J50_n1000_B1_retained",
+    "panel_row": 2,
+    "panel_column": 1,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 50,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J50_n4000_B1_retained",
+    "panel_row": 2,
+    "panel_column": 2,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 50,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J50_n16000_B1_retained",
+    "panel_row": 2,
+    "panel_column": 3,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 50,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J50_B1",
+    "panel_row": 2,
+    "panel_column": 4,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 50,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J50_n1000_B1_retained",
+    "panel_row": 3,
+    "panel_column": 1,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 50,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J50_n4000_B1_retained",
+    "panel_row": 3,
+    "panel_column": 2,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 50,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J50_n16000_B1_retained",
+    "panel_row": 3,
+    "panel_column": 3,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 50,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J50_B1",
+    "panel_row": 3,
+    "panel_column": 4,
+    "shape": [
+      50,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J50_B2_main_MSE.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 50,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.05547007530470098,
+      0.024078056894537462,
+      0.012060186367779096,
+      0.005800406608026643,
+      0.002979386233969998,
+      0.0015589992242412897
+    ],
+    "retained_counts": [
+      44,
+      77,
+      80,
+      73,
+      89,
+      85
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J50_B2_main_MSE.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 50,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      1.2686434710936074,
+      1.1594123165052557,
+      1.0922683956448846,
+      1.0385149167211565,
+      0.9842477777778309,
+      0.920006197580933
+    ],
+    "retained_counts": [
+      98,
+      94,
+      94,
+      93,
+      98,
+      94
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J50_B2_main_MSE.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 50,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      3.384755065354484,
+      3.5423056576262972,
+      3.6673514890153838,
+      3.623208601043657,
+      3.462842968646978,
+      3.404781579214449
+    ],
+    "retained_counts": [
+      99,
+      100,
+      95,
+      100,
+      100,
+      100
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 50,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J50_n1000_B2_retained",
+    "panel_row": 1,
+    "panel_column": 1,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 50,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J50_n4000_B2_retained",
+    "panel_row": 1,
+    "panel_column": 2,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 50,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J50_n16000_B2_retained",
+    "panel_row": 1,
+    "panel_column": 3,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 50,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J50_B2",
+    "panel_row": 1,
+    "panel_column": 4,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 50,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J50_n1000_B2_retained",
+    "panel_row": 2,
+    "panel_column": 1,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 50,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J50_n4000_B2_retained",
+    "panel_row": 2,
+    "panel_column": 2,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 50,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J50_n16000_B2_retained",
+    "panel_row": 2,
+    "panel_column": 3,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 50,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J50_B2",
+    "panel_row": 2,
+    "panel_column": 4,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 50,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J50_n1000_B2_retained",
+    "panel_row": 3,
+    "panel_column": 1,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 50,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J50_n4000_B2_retained",
+    "panel_row": 3,
+    "panel_column": 2,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 50,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J50_n16000_B2_retained",
+    "panel_row": 3,
+    "panel_column": 3,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J50_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 50,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J50_B2",
+    "panel_row": 3,
+    "panel_column": 4,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B1_main_MSE.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 100,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.01417550451734392,
+      0.007780591004542179,
+      0.0047192897496368446,
+      0.002910732693247751,
+      0.0016999112949670236,
+      0.0010644525660138391
+    ],
+    "retained_counts": [
+      95,
+      97,
+      98,
+      99,
+      99,
+      100
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J100_B1_main_MSE.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 100,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.01747470139363107,
+      0.009598082799343153,
+      0.00671273231210919,
+      0.005564410308021277,
+      0.004750439485999049,
+      0.004301449833015272
+    ],
+    "retained_counts": [
+      95,
+      97,
+      98,
+      100,
+      100,
+      100
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J100_B1_main_MSE.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 100,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.4170710413753502,
+      0.3766000968922054,
+      0.35030674307122467,
+      0.35184681340577173,
+      0.34114787404092056,
+      0.35467695451584397
+    ],
+    "retained_counts": [
+      99,
+      100,
+      100,
+      100,
+      100,
+      99
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 100,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J100_n1000_B1_retained",
+    "panel_row": 1,
+    "panel_column": 1,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 100,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J100_n4000_B1_retained",
+    "panel_row": 1,
+    "panel_column": 2,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 100,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J100_n16000_B1_retained",
+    "panel_row": 1,
+    "panel_column": 3,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 100,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J100_B1",
+    "panel_row": 1,
+    "panel_column": 4,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 100,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J100_n1000_B1_retained",
+    "panel_row": 2,
+    "panel_column": 1,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 100,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J100_n4000_B1_retained",
+    "panel_row": 2,
+    "panel_column": 2,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 100,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J100_n16000_B1_retained",
+    "panel_row": 2,
+    "panel_column": 3,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 100,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J100_B1",
+    "panel_row": 2,
+    "panel_column": 4,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 100,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J100_n1000_B1_retained",
+    "panel_row": 3,
+    "panel_column": 1,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 100,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J100_n4000_B1_retained",
+    "panel_row": 3,
+    "panel_column": 2,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 100,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J100_n16000_B1_retained",
+    "panel_row": 3,
+    "panel_column": 3,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 100,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J100_B1",
+    "panel_row": 3,
+    "panel_column": 4,
+    "shape": [
+      100,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J100_B2_main_MSE.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 100,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.05747054315130335,
+      0.024333731751016736,
+      0.01170472379053373,
+      0.005556806968518891,
+      0.0028885135263184186,
+      0.0015278002902462521
+    ],
+    "retained_counts": [
+      92,
+      97,
+      96,
+      93,
+      100,
+      97
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J100_B2_main_MSE.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 100,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.45685166341599187,
+      0.5201655198497085,
+      0.5311970390605216,
+      0.5850949498592625,
+      0.5514476200293742,
+      0.5732693203041592
+    ],
+    "retained_counts": [
+      99,
+      100,
+      100,
+      100,
+      99,
+      100
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J100_B2_main_MSE.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 100,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      2.368295893703341,
+      2.648919126544442,
+      2.3800575048444164,
+      2.3665732399933623,
+      2.356400642548636,
+      2.340718569411526
+    ],
+    "retained_counts": [
+      97,
+      99,
+      94,
+      96,
+      94,
+      95
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 100,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J100_n1000_B2_retained",
+    "panel_row": 1,
+    "panel_column": 1,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 100,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J100_n4000_B2_retained",
+    "panel_row": 1,
+    "panel_column": 2,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 100,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J100_n16000_B2_retained",
+    "panel_row": 1,
+    "panel_column": 3,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 100,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J100_B2",
+    "panel_row": 1,
+    "panel_column": 4,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 100,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J100_n1000_B2_retained",
+    "panel_row": 2,
+    "panel_column": 1,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 100,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J100_n4000_B2_retained",
+    "panel_row": 2,
+    "panel_column": 2,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 100,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J100_n16000_B2_retained",
+    "panel_row": 2,
+    "panel_column": 3,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 100,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J100_B2",
+    "panel_row": 2,
+    "panel_column": 4,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 100,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J100_n1000_B2_retained",
+    "panel_row": 3,
+    "panel_column": 1,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 100,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J100_n4000_B2_retained",
+    "panel_row": 3,
+    "panel_column": 2,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 100,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J100_n16000_B2_retained",
+    "panel_row": 3,
+    "panel_column": 3,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J100_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 100,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J100_B2",
+    "panel_row": 3,
+    "panel_column": 4,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B1_main_MSE.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 150,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.016683583736967104,
+      0.008708003799352012,
+      0.005021080371376732,
+      0.003116938123673901,
+      0.001708056235037591,
+      0.0009953251551696564
+    ],
+    "retained_counts": [
+      90,
+      95,
+      97,
+      96,
+      99,
+      100
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J150_B1_main_MSE.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 150,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.012269031542296542,
+      0.007666919328187167,
+      0.005851255544017928,
+      0.005002099447632547,
+      0.004411548583733343,
+      0.004104808793921571
+    ],
+    "retained_counts": [
+      88,
+      95,
+      91,
+      95,
+      99,
+      98
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J150_B1_main_MSE.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 150,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.36343581796484925,
+      0.30797442212113535,
+      0.27811474139326253,
+      0.2832093558643081,
+      0.27767696641827966,
+      0.283911329293344
+    ],
+    "retained_counts": [
+      98,
+      97,
+      98,
+      99,
+      99,
+      99
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 150,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J150_n1000_B1_retained",
+    "panel_row": 1,
+    "panel_column": 1,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 150,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J150_n4000_B1_retained",
+    "panel_row": 1,
+    "panel_column": 2,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 150,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J150_n16000_B1_retained",
+    "panel_row": 1,
+    "panel_column": 3,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "map",
+    "layer": 1,
+    "J": 150,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J150_B1",
+    "panel_row": 1,
+    "panel_column": 4,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 150,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J150_n1000_B1_retained",
+    "panel_row": 2,
+    "panel_column": 1,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 150,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J150_n4000_B1_retained",
+    "panel_row": 2,
+    "panel_column": 2,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 150,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J150_n16000_B1_retained",
+    "panel_row": 2,
+    "panel_column": 3,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "rl",
+    "layer": 1,
+    "J": 150,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J150_B1",
+    "panel_row": 2,
+    "panel_column": 4,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 150,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J150_n1000_B1_retained",
+    "panel_row": 3,
+    "panel_column": 1,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 150,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J150_n4000_B1_retained",
+    "panel_row": 3,
+    "panel_column": 2,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 150,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J150_n16000_B1_retained",
+    "panel_row": 3,
+    "panel_column": 3,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B1_est_updated.pdf",
+    "method": "poisson",
+    "layer": 1,
+    "J": 150,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J150_B1",
+    "panel_row": 3,
+    "panel_column": 4,
+    "shape": [
+      150,
+      16
+    ],
+    "color_limits": [
+      -2.373606206144344,
+      2.373606206144344
+    ]
+  },
+  {
+    "figure": "J150_B2_main_MSE.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 150,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.05757923693852127,
+      0.024385342952372543,
+      0.012045242433959867,
+      0.00554331241155781,
+      0.0029551972675944567,
+      0.0015236753919290829
+    ],
+    "retained_counts": [
+      94,
+      95,
+      98,
+      90,
+      100,
+      98
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J150_B2_main_MSE.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 150,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      0.401249801006834,
+      0.3774308570747806,
+      0.3782960100238617,
+      0.38590224536813617,
+      0.3945405262821933,
+      0.39692835765302964
+    ],
+    "retained_counts": [
+      97,
+      98,
+      99,
+      99,
+      98,
+      100
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J150_B2_main_MSE.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 150,
+    "source": "MSE_SUMMARY.csv",
+    "sample_sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "plotted_values": [
+      3.4611248097346756,
+      3.28052272791515,
+      2.921513856152623,
+      2.615166722672361,
+      2.6952394995025184,
+      2.5763579825475285
+    ],
+    "retained_counts": [
+      99,
+      98,
+      99,
+      98,
+      98,
+      98
+    ],
+    "eligibility_and_exclusions": "ELIGIBILITY_AND_EXCLUSIONS.json",
+    "ordinate": "MSE on logarithmic y axis; values are not log-transformed before plotting"
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 150,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J150_n1000_B2_retained",
+    "panel_row": 1,
+    "panel_column": 1,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 150,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J150_n4000_B2_retained",
+    "panel_row": 1,
+    "panel_column": 2,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 150,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "map_J150_n16000_B2_retained",
+    "panel_row": 1,
+    "panel_column": 3,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "map",
+    "layer": 2,
+    "J": 150,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J150_B2",
+    "panel_row": 1,
+    "panel_column": 4,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 150,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J150_n1000_B2_retained",
+    "panel_row": 2,
+    "panel_column": 1,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 150,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J150_n4000_B2_retained",
+    "panel_row": 2,
+    "panel_column": 2,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 150,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "rl_J150_n16000_B2_retained",
+    "panel_row": 2,
+    "panel_column": 3,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "rl",
+    "layer": 2,
+    "J": 150,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J150_B2",
+    "panel_row": 2,
+    "panel_column": 4,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 150,
+    "n": 1000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J150_n1000_B2_retained",
+    "panel_row": 3,
+    "panel_column": 1,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 150,
+    "n": 4000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J150_n4000_B2_retained",
+    "panel_row": 3,
+    "panel_column": 2,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 150,
+    "n": 16000,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "poisson_J150_n16000_B2_retained",
+    "panel_row": 3,
+    "panel_column": 3,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  },
+  {
+    "figure": "J150_B2_est_updated.pdf",
+    "method": "poisson",
+    "layer": 2,
+    "J": 150,
+    "n": null,
+    "source": "AVERAGE_WEIGHT_MATRICES.npz",
+    "array_key": "truth_J150_B2",
+    "panel_row": 3,
+    "panel_column": 4,
+    "shape": [
+      15,
+      6
+    ],
+    "color_limits": [
+      -4.0,
+      4.0
+    ]
+  }
+]

@@ -1,0 +1,179 @@
+{
+  "sources": [
+    {
+      "path": "Algorithms/Native15_5/run_native15_5_case.m",
+      "sha256": "5a33274f214fe7c4410b93d774758c0a6581f816ced6b2fad569bf03aed0a598"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/common/cpd_metrics.m",
+      "sha256": "6c4007ff76f03f53f41fb0f2a781daba12160ed0cad698d0e122c527766266be"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/common/munkres.m",
+      "sha256": "0c5eecb267d9ce719ed9af25f3f1584fb9cbb9f9601a6ef12d6b9bcbe1a957f8"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/common/Normal_init_v2.m",
+      "sha256": "46ec9dca618e1d599de15674cb8b949e5d6e1770a1a513f877c25ba104098e22"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/common/revision_align_poisson.m",
+      "sha256": "b34fbd211a4456fdab88b17e29562b940e17cbd2e44f4c1c15bcd09b758a7013"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/common/logit.m",
+      "sha256": "df141e66f81841e58134eda3ad6f9c4188d38bef1b7d6c915f480ce022b77f59"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/common/generate_X_Cop_marg_emp.m",
+      "sha256": "828513ea5e3be54c52a5857af7c54c1a941f619a2cd8f9b63b1425b71a8921c5"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/original_rl/thres.m",
+      "sha256": "e57aa99a1352eba1d721bc37610196b73d94018a2746e81cfe6b528f70d66361"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/original_rl/F_2_SAEM_cop.m",
+      "sha256": "c1f10b241856605881987ff7a6dd7bacbaf68005392e89ec2818f6c30c70d862"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/original_rl/F_1_SAEM_cop.m",
+      "sha256": "331ba1a45395209b916110c6865be83910c77d860898889671d68cbdbd236ecc"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/original_rl/get_SAEM_RL.m",
+      "sha256": "7771e9a55c0920b7f9680526f055196ba792180d1071513b5464191f7217ced0"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/original_rl/nonlcon.m",
+      "sha256": "291a55ae8dc0e65505ff2e9b4f4378553cdb86f9dffadb4cc9bc156d7c54677c"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/original_rl/logistic.m",
+      "sha256": "32cbf64e60a787160c8b073ccc179d20beae925442e59f26d500bba8f6b9590f"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/original_rl/TLP.m",
+      "sha256": "503451daec6e050efb84276e5113af8884d525dad0ad02786c164a36d03bee66"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/generate_X_normal.m",
+      "sha256": "ad30f9c9606030cbb54ed6a1921d5f54f186ca723868d63fc0eee446b3adea33"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/thres.m",
+      "sha256": "9bbce29d24a311a48f4a312b47e1a6a6ca7b04f115ae349f9515a820bf62c025"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/munkres.m",
+      "sha256": "5e34493f2c977bae67ab2ea3a0156cdc2e72be727361245b0225bfefaad93136"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/drchrnd.m",
+      "sha256": "8b23cd7b0155277833beb013b01401daaf341253e4ba641147fa3f0e80edad3a"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/nchoosek_prac.m",
+      "sha256": "1ff6c37fb9971aad7bab6f730e0ed3672b0662cc4a2c4d8892bee974f24f2676"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/binary.m",
+      "sha256": "1af59973991bcf1e547d94f7d5c5f6007ecdd7a896eb18b205b8d10baf952a49"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/generate_X_bernoulli.m",
+      "sha256": "f400c9360a211fbbae7e8518b0250be2c5551415ea6d51f10bf51af252d08b01"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/generate_X_poisson.m",
+      "sha256": "e2ac69474adf0871abadfeb96d4f55078c569d5ddad7696667bf63bf2e19492a"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/logit.m",
+      "sha256": "978fdb49612dae29f9fb94c63b11dd25fed875b118666af646cd8a332b880c01"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/nonlcon.m",
+      "sha256": "1474a66b14954a3c57aa8850a18764b6804bb8b378ff0e093bfe9acf778104d0"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/logistic.m",
+      "sha256": "3b8297349a3f69807925da8b8d42dacd5bd90bcfd8442eb42fbbb2fd8674ec9d"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/utilities/TLP.m",
+      "sha256": "d9a1c6720a2560ecc45f6dac0ab8e263dec674c24260c2675fbdfaba8f542f16"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/main algorithms/Poisson/Fun_1_TLP.m",
+      "sha256": "aa7023adc1a2a9ffcc1d8aa9d972ce3865ff5bf225f698646753c019db2aa2cf"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/main algorithms/Poisson/F_2_SAEM.m",
+      "sha256": "16cf987fea888b423ff5eb892a7041076535279824f10eed18d80740910ed46d"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/main algorithms/Poisson/Poi_init.m",
+      "sha256": "564ff75d677e6c22e8c227e3f4f409366f973d0aa44f29fb989e1c8088137af5"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/main algorithms/Poisson/Fun_2_TLP.m",
+      "sha256": "6dba24cb62ee1744c0fd1b702daa5a99426e8f8cc465584f380033bf46818c30"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/main algorithms/Poisson/F_1_SAEM.m",
+      "sha256": "c966dfcf6ac2b8e2b92a66392624d2c98eb1b179499d2d9575afc5d08375b549"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/main algorithms/Poisson/get_SAEM_poisson.m",
+      "sha256": "b33bc0bff7309fb127624d17114fc99f8c2141dd97a466967d99c0a9e9a6f59d"
+    },
+    {
+      "path": "Algorithms/Native15_5/frozen/poisson/main algorithms/Poisson/get_EM_poisson.m",
+      "sha256": "63de691ab2eb323cb9c8034458dc5733d9d09a748bc5f8f9bbc19d8f9fffccec"
+    },
+    {
+      "path": "Algorithms/PosteriorGibbs/run_posterior_gibbs.m",
+      "sha256": "b780851a7a0e951bc41cfd6d35b2ba48f0831da0001e6c2fdcbf930d5afec166"
+    },
+    {
+      "path": "Algorithms/PosteriorGibbs/utilities/dde_csp_gibbs.m",
+      "sha256": "0b52b35cac69f859126ceb6f592309a70464e23e6c775bb111589c4844091633"
+    },
+    {
+      "path": "Algorithms/PosteriorGibbs/utilities/cma_column.m",
+      "sha256": "09011fd47c2d6fcc6a679c2656b65021804f59909e97f1677881876a689e56eb"
+    },
+    {
+      "path": "Algorithms/PosteriorGibbs/utilities/dde_csp_init.m",
+      "sha256": "27f49c8170ff46d40ef5d4804ebd8965c97627f22b3c13ca36567c5360765a70"
+    },
+    {
+      "path": "Algorithms/PosteriorGibbs/utilities/agr_slice.m",
+      "sha256": "ba051d11b74c46b753622f77f1d3b258ac81c4e71f3d3da07723746a7c8756fd"
+    },
+    {
+      "path": "Algorithms/PosteriorGibbs/utilities/agr_log_interval.m",
+      "sha256": "923959e3e083d7782701ff2186471a280fb9059355c0fab45226bed50b712a57"
+    },
+    {
+      "path": "Algorithms/PosteriorGibbs/utilities/cma_conditional.m",
+      "sha256": "9446998972aa83ff75f7e698a6614bfc3d563d6cdac5df6dd087904f78fadf83"
+    },
+    {
+      "path": "Algorithms/PosteriorGibbs/utilities/dde_assert_rank_consistency.m",
+      "sha256": "f39aba71a5aa11eba044fb867311206e9765665bf72dd8c3bce8b42ca06f5995"
+    },
+    {
+      "path": "Algorithms/PosteriorGibbs/utilities/agr_truncated_standard_normal.m",
+      "sha256": "f10484e9887529afde5745ed868ec36160a00e79e343a664c37ae85c922e74eb"
+    },
+    {
+      "path": "Algorithms/PosteriorGibbs/utilities/cma_logh.m",
+      "sha256": "bfe48d3a608f6aa5633794bc2e8e5b4cd201cc862b7c1a6c43fd9d1354282573"
+    }
+  ],
+  "native_wrapper": "Numerical fitting and scoring body extracted without changes; I/O paths made explicit. Requires original paired input.",
+  "gibbs_wrapper": "Transition body unchanged; initialization inputs, priors, seed and output are explicit. Not an end-to-end experimental rerun.",
+  "validation": "Source audit only; full long-running experiments not repeated."
+}

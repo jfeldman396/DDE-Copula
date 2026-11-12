@@ -1,0 +1,38 @@
+{
+  "user_selected": true,
+  "criterion": "User selected third-ranked 10/1 fit in concentration12/4 grid for presentation; not minimum-pMSE fit",
+  "fit": {
+    "sampler": "maxima",
+    "config_id": 9,
+    "cfg": {
+      "tau": 0.4,
+      "spike1": 0.05,
+      "spike2": 0.1,
+      "beta0": 0.7,
+      "alpha1": 12,
+      "alpha2": 4
+    },
+    "fit_seed": 2026121001.0,
+    "widths": [
+      10,
+      1
+    ],
+    "iterations": 740,
+    "stabilized": true,
+    "eligible": true,
+    "CM_flags": 0,
+    "fit_wall_seconds": 238.85646341666674,
+    "model_path": "external:MODEL_it0740_target0800.mat",
+    "model_sha256": "c86eea8226431f5d953ca8652f370ec61367698c24482cbb3a94a3afd23455c7",
+    "plan_sha256": "f0e9eaa18a470ed30713297c50ee9996509bd3e5b283e73476a0e8474828d27d",
+    "status": "COMPLETE_STABILIZED_VALID_ALL50_PMSE",
+    "pMSE_mean": 0.007118472114164605,
+    "pMSE_SD": 0.0001898730886124062,
+    "pMSE_MC_SE": 2.685210970453333e-05,
+    "score_replicates": 50,
+    "scoring_wall_seconds": 129.92893004166666,
+    "score_csv_sha256": "56a8413db4e2ce1e1516c32f49297a82e493504876d694e43241c21af4da07ba",
+    "no_political_read": true,
+    "heldout_evaluation": false
+  }
+}

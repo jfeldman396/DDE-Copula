@@ -1,0 +1,363 @@
+{
+  "dataset": "J100_n1000_r3",
+  "input_fingerprints": [
+    {
+      "path": "output/reviewer1_gibbs10_20261106/exactmap/J100_n1000_r3_chain1",
+      "chain_bytes": 61352266,
+      "chain_mtime_ns": 1794011834292835111
+    },
+    {
+      "path": "output/reviewer1_gibbs10_20261106/exactmap/J100_n1000_r3_chain2",
+      "chain_bytes": 61387498,
+      "chain_mtime_ns": 1794012032520702189
+    },
+    {
+      "path": "output/reviewer1_gibbs10_20261106/exactmap/J100_n1000_r3_chain3",
+      "chain_bytes": 61372083,
+      "chain_mtime_ns": 1794012895968923873
+    },
+    {
+      "path": "output/reviewer1_gibbs10_20261106/exactmap/J100_n1000_r3_chain4",
+      "chain_bytes": 61371134,
+      "chain_mtime_ns": 1794013089114934335
+    }
+  ],
+  "chains": 4,
+  "burnin": 1000,
+  "retained_per_chain": 1000,
+  "alignment": [
+    {
+      "source_slots": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        22
+      ],
+      "truth_slots": [
+        2,
+        3,
+        7,
+        4,
+        10,
+        1,
+        6,
+        5,
+        9,
+        8
+      ],
+      "signs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "source_slots": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        22
+      ],
+      "truth_slots": [
+        2,
+        3,
+        7,
+        4,
+        10,
+        1,
+        6,
+        5,
+        9,
+        8
+      ],
+      "signs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "source_slots": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        22
+      ],
+      "truth_slots": [
+        2,
+        3,
+        7,
+        4,
+        10,
+        1,
+        6,
+        5,
+        9,
+        8
+      ],
+      "signs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "source_slots": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        22
+      ],
+      "truth_slots": [
+        2,
+        3,
+        7,
+        4,
+        10,
+        1,
+        6,
+        5,
+        9,
+        8
+      ],
+      "signs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "estimand": "Normalized shallow non-intercept coefficients matched to 10 true factors using one fixed chain-mean assignment per chain; remaining candidate columns are not additional coverage entries. No dimension conditioning.",
+  "strata": {
+    "all": {
+      "enclosed": 965,
+      "total": 1000,
+      "fraction": 0.965,
+      "mean_interval_width": 0.11362804339065993
+    },
+    "nonzero": {
+      "enclosed": 194,
+      "total": 200,
+      "fraction": 0.97,
+      "mean_interval_width": 0.20553168293374707
+    },
+    "zero": {
+      "enclosed": 771,
+      "total": 800,
+      "fraction": 0.96375,
+      "mean_interval_width": 0.09065213350488815
+    }
+  },
+  "loadings": {
+    "coordinates": 1000,
+    "rank_folded_split_Rhat": {
+      "defined": 1000,
+      "undefined": 0,
+      "max": 1.8611035787740522,
+      "median": 1.0253184033125078
+    },
+    "bulk_ESS": {
+      "defined": 1000,
+      "undefined": 0,
+      "min": 5.702873607556413,
+      "median": 279.4101602701224
+    },
+    "tail_ESS": {
+      "defined": 1000,
+      "undefined": 0,
+      "min": 11.235854966690352,
+      "median": 625.1196563294084
+    },
+    "Rhat_above_1_01": 847,
+    "Rhat_above_1_1": 123,
+    "bulk_ESS_below_400": 702,
+    "tail_ESS_below_400": 312,
+    "max_retained_half_mean_difference": 0.19684890203352368,
+    "max_retained_half_difference_in_pooled_SD": 2.553962444845099,
+    "all_diagnostics_defined": true,
+    "screen_pass": false
+  },
+  "invariant_correlations": {
+    "coordinates": 4950,
+    "rank_folded_split_Rhat": {
+      "defined": 4950,
+      "undefined": 0,
+      "max": 1.447462637378684,
+      "median": 1.0427291588224672
+    },
+    "bulk_ESS": {
+      "defined": 4950,
+      "undefined": 0,
+      "min": 7.789564974925856,
+      "median": 89.43829645605646
+    },
+    "tail_ESS": {
+      "defined": 4950,
+      "undefined": 0,
+      "min": 12.771783241919232,
+      "median": 515.8368322440908
+    },
+    "Rhat_above_1_01": 4221,
+    "Rhat_above_1_1": 1081,
+    "bulk_ESS_below_400": 3931,
+    "tail_ESS_below_400": 2217,
+    "max_retained_half_mean_difference": 0.08440661828217474,
+    "max_retained_half_difference_in_pooled_SD": 2.044806076084193,
+    "all_diagnostics_defined": true,
+    "screen_pass": false
+  },
+  "active_dimensions": {
+    "coordinates": 2,
+    "rank_folded_split_Rhat": {
+      "defined": 1,
+      "undefined": 1,
+      "max": 344317178117016.56,
+      "median": 344317178117016.56
+    },
+    "bulk_ESS": {
+      "defined": 1,
+      "undefined": 1,
+      "min": 4.004004004004004,
+      "median": 4.004004004004004
+    },
+    "tail_ESS": {
+      "defined": 0,
+      "undefined": 2,
+      "min": null,
+      "median": null
+    },
+    "Rhat_above_1_01": 1,
+    "Rhat_above_1_1": 1,
+    "bulk_ESS_below_400": 1,
+    "tail_ESS_below_400": 0,
+    "max_retained_half_mean_difference": 0.0,
+    "max_retained_half_difference_in_pooled_SD": 0.0,
+    "all_diagnostics_defined": false,
+    "screen_pass": false
+  },
+  "dimension_probabilities": [
+    {
+      "K1": 10,
+      "K2": 3,
+      "probability": 0.25
+    },
+    {
+      "K1": 11,
+      "K2": 3,
+      "probability": 0.75
+    }
+  ],
+  "dimension_chain_means": [
+    [
+      10.0,
+      3.0
+    ],
+    [
+      11.0,
+      3.0
+    ],
+    [
+      11.0,
+      3.0
+    ],
+    [
+      11.0,
+      3.0
+    ]
+  ],
+  "dimension_retained_half_means": [
+    [
+      [
+        10.0,
+        3.0
+      ],
+      [
+        10.0,
+        3.0
+      ]
+    ],
+    [
+      [
+        11.0,
+        3.0
+      ],
+      [
+        11.0,
+        3.0
+      ]
+    ],
+    [
+      [
+        11.0,
+        3.0
+      ],
+      [
+        11.0,
+        3.0
+      ]
+    ],
+    [
+      [
+        11.0,
+        3.0
+      ],
+      [
+        11.0,
+        3.0
+      ]
+    ]
+  ],
+  "interpretation": "Finite-budget diagnostics; failed mixing precludes a reliable posterior calibration claim. Undefined constant-series diagnostics remain explicitly undefined, not automatic passes."
+}

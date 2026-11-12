@@ -1,0 +1,37 @@
+{
+  "status": "COMPLETE_VALIDATED",
+  "new_fits_required": 2997,
+  "comparator_endpoints_expected": 3600,
+  "reused_Poisson": 603,
+  "reused_MAP": 1800,
+  "widths": [
+    15,
+    5
+  ],
+  "RL_J": [
+    50,
+    100,
+    150
+  ],
+  "Poisson_new_J": [
+    50,
+    100
+  ],
+  "n": [
+    500,
+    1000,
+    2000,
+    4000,
+    8000,
+    16000
+  ],
+  "replications": 100,
+  "coefficient_shapes": "Jx16 and15x6 including intercepts",
+  "eligibility": "MAP jointly correct10/3; comparators all valid replications",
+  "exclusions": "upperQ3+1.5IQR separately per method/J/n/layer; save IDs and untrimmed errors",
+  "legacy_results": "Preserved externally, not included in this new handoff",
+  "partial_results_included": false,
+  "workers_or_controllers_included": false,
+  "results": "Results/Publication/data/native15_5",
+  "figures": "Results/Publication/figures/native15_5"
+}

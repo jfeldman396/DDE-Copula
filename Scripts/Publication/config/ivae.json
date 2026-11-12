@@ -1,0 +1,29 @@
+{
+  "hidden_widths": [
+    10,
+    10
+  ],
+  "latent_dimension": 1,
+  "seed": 0,
+  "batch_size": 256,
+  "max_iter": 2000,
+  "actual_updates": 2004,
+  "epochs": 334,
+  "learning_rate": 0.01,
+  "activation": "lrelu",
+  "slope": 0.1,
+  "anneal": false,
+  "scheduler_patience": 3,
+  "scheduler_factor": 0.1,
+  "device": "cpu",
+  "data_shape": [
+    1500,
+    98
+  ],
+  "auxiliary": "ideo5",
+  "imputation": "item-column mean",
+  "feature_columns_zero_based": "2:102 excluding45,52",
+  "torch_version": "2.15.0",
+  "numpy_version": "2.3.5",
+  "protocol": "Original wrapper checks budget at epoch boundaries; no training performed for this handoff"
+}

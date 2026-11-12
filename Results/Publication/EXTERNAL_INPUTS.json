@@ -1,0 +1,25 @@
+{
+  "survey_csv": {
+    "included": false,
+    "sha256": "c1ad10149d4a96db6cea044059d9b2edfec9e688d30554edf8d87a7fb1ab847b",
+    "used_by": "Algorithms/iVAE/train.py",
+    "schema": "1500rows, original survey columns; item positions3:102 in MATLAB notation excluding46,53; ideology column ideo5",
+    "preprocessing": "Mean imputation of98 item columns; ideology auxiliary; original CSV required"
+  },
+  "factor_train_input": {
+    "included": false,
+    "sha256": "0b2848f2875580338b4fc71eccd696c0fadb69b5d2c712859f10255c5210233f",
+    "used_by": "Scripts/Publication/run_gaussian_study.m",
+    "schema": "MAT variables Y and X, both1500x98; Y has223 missing entries; X replaces missing entries with3"
+  },
+  "raw_simulation_endpoints": {
+    "included": false,
+    "entry_points": "v2 saved-input interfaces",
+    "note": "Completed native15/5 aggregates included. Full paired inputs can be supplied to Algorithms/Native15_5/run_native15_5_case.m. Historical full latent inputs/checkpoints remain external."
+  },
+  "uncertainty_chains": {
+    "included": false,
+    "note": "Only completed aggregate diagnostics and interval summaries included",
+    "entry_point": "Algorithms/PosteriorGibbs/run_posterior_gibbs.m"
+  }
+}
