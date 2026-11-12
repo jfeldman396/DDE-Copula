@@ -1,0 +1,41 @@
+{
+  "checked_at": "2026-11-06T19:31:06.102382+00:00",
+  "status": "dependencies_byte_verified_generator_validated_three_cases",
+  "files": [
+    {
+      "path": "Algorithms/DDE/deep/input_generation/Normal_init_D.m",
+      "source": "CopDDE/Utilities/Normal_init_D.m",
+      "sha256": "16aee363b8e1a9dcddb06681a5e6cef624b508052db15bf2b865b82ac59333e5",
+      "bytes": 1399
+    },
+    {
+      "path": "Algorithms/DDE/deep/input_generation/generate_X_cop_D.m",
+      "source": "CopDDE/Utilities/generate_X_cop_D.m",
+      "sha256": "0671018ecc8fb221e15109859d77f5bc5c8a816afb05d3a9e494a3d8c52630a4",
+      "bytes": 2033
+    },
+    {
+      "path": "Algorithms/DDE/deep/input_generation/binary_init.m",
+      "source": "CopDDE/Utilities/binary_init.m",
+      "sha256": "9f5bcf9401e0192ca56a4e3619c6b83ab9dbeea513c04384bc6b3998d489ed1e",
+      "bytes": 1929
+    },
+    {
+      "path": "Algorithms/DDE/deep/input_generation/logit.m",
+      "source": "CopDDE/Utilities/logit.m",
+      "sha256": "df141e66f81841e58134eda3ad6f9c4188d38bef1b7d6c915f480ce022b77f59",
+      "bytes": 73
+    },
+    {
+      "path": "Algorithms/DDE/deep/input_generation/truth.mat",
+      "source": "results/deeper_paper_rerun/truth.mat",
+      "sha256": "7846bae072139c249401288013f927a920b5df945f2840574e756e38064aaa26",
+      "bytes": 36728
+    }
+  ],
+  "limitations": [
+    "Archived truth preserves original random marginal lambda values.",
+    "Input validation covers n500rep1, n16000rep1, and the known n500rep76 initialization failure; not all600.",
+    "These changes have not yet been published."
+  ]
+}

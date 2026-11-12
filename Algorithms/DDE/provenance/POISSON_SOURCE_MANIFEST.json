@@ -1,0 +1,120 @@
+{
+  "status": "one_full_case_exact_parity_passed",
+  "upstream_commit": "45f7360c0017bb8b24ceb72f745f7845320dac7e",
+  "files": [
+    {
+      "path": "Algorithms/DDE/comparators/poisson/main algorithms/Poisson/F_1_SAEM.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/main algorithms/Poisson/F_1_SAEM.m",
+      "sha256": "c966dfcf6ac2b8e2b92a66392624d2c98eb1b179499d2d9575afc5d08375b549",
+      "bytes": 282
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/main algorithms/Poisson/F_2_SAEM.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/main algorithms/Poisson/F_2_SAEM.m",
+      "sha256": "16cf987fea888b423ff5eb892a7041076535279824f10eed18d80740910ed46d",
+      "bytes": 298
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/main algorithms/Poisson/Fun_1_TLP.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/main algorithms/Poisson/Fun_1_TLP.m",
+      "sha256": "aa7023adc1a2a9ffcc1d8aa9d972ce3865ff5bf225f698646753c019db2aa2cf",
+      "bytes": 368
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/main algorithms/Poisson/Fun_2_TLP.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/main algorithms/Poisson/Fun_2_TLP.m",
+      "sha256": "6dba24cb62ee1744c0fd1b702daa5a99426e8f8cc465584f380033bf46818c30",
+      "bytes": 316
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/main algorithms/Poisson/Poi_init.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/main algorithms/Poisson/Poi_init.m",
+      "sha256": "564ff75d677e6c22e8c227e3f4f409366f973d0aa44f29fb989e1c8088137af5",
+      "bytes": 3788
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/main algorithms/Poisson/get_EM_poisson.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/main algorithms/Poisson/get_EM_poisson.m",
+      "sha256": "63de691ab2eb323cb9c8034458dc5733d9d09a748bc5f8f9bbc19d8f9fffccec",
+      "bytes": 3097
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/main algorithms/Poisson/get_SAEM_poisson.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/main algorithms/Poisson/get_SAEM_poisson.m",
+      "sha256": "b33bc0bff7309fb127624d17114fc99f8c2141dd97a466967d99c0a9e9a6f59d",
+      "bytes": 4189
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/TLP.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/TLP.m",
+      "sha256": "d9a1c6720a2560ecc45f6dac0ab8e263dec674c24260c2675fbdfaba8f542f16",
+      "bytes": 88
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/binary.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/binary.m",
+      "sha256": "1af59973991bcf1e547d94f7d5c5f6007ecdd7a896eb18b205b8d10baf952a49",
+      "bytes": 677
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/drchrnd.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/drchrnd.m",
+      "sha256": "8b23cd7b0155277833beb013b01401daaf341253e4ba641147fa3f0e80edad3a",
+      "bytes": 151
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/generate_X_bernoulli.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/generate_X_bernoulli.m",
+      "sha256": "f400c9360a211fbbae7e8518b0250be2c5551415ea6d51f10bf51af252d08b01",
+      "bytes": 390
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/generate_X_normal.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/generate_X_normal.m",
+      "sha256": "ad30f9c9606030cbb54ed6a1921d5f54f186ca723868d63fc0eee446b3adea33",
+      "bytes": 429
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/generate_X_poisson.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/generate_X_poisson.m",
+      "sha256": "e2ac69474adf0871abadfeb96d4f55078c569d5ddad7696667bf63bf2e19492a",
+      "bytes": 453
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/logistic.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/logistic.m",
+      "sha256": "3b8297349a3f69807925da8b8d42dacd5bd90bcfd8442eb42fbbb2fd8674ec9d",
+      "bytes": 76
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/logit.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/logit.m",
+      "sha256": "978fdb49612dae29f9fb94c63b11dd25fed875b118666af646cd8a332b880c01",
+      "bytes": 71
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/munkres.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/munkres.m",
+      "sha256": "5e34493f2c977bae67ab2ea3a0156cdc2e72be727361245b0225bfefaad93136",
+      "bytes": 6956
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/nchoosek_prac.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/nchoosek_prac.m",
+      "sha256": "1ff6c37fb9971aad7bab6f730e0ed3672b0662cc4a2c4d8892bee974f24f2676",
+      "bytes": 91
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/nonlcon.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/nonlcon.m",
+      "sha256": "1474a66b14954a3c57aa8850a18764b6804bb8b378ff0e093bfe9acf778104d0",
+      "bytes": 48
+    },
+    {
+      "path": "Algorithms/DDE/comparators/poisson/utilities/thres.m",
+      "source": "work/manuscript_update_20261103/poisson_upstream/utilities/thres.m",
+      "sha256": "9bbce29d24a311a48f4a312b47e1a6a6ca7b04f115ae349f9515a820bf62c025",
+      "bytes": 95
+    }
+  ]
+}

@@ -12,8 +12,8 @@ historical native15_5_pending.json filename but records COMPLETE_VALIDATED.
 Existing top-level legacy Results files remain historical assets.
 
 CONTENTS AND ENTRY POINTS
-* DDE: existing v2/ estimation code, saved-input interfaces, and provenance.
-  See v2/README.md, v2/deep/README.txt and v2/comparators/*/README.txt.
+* DDE: existing Algorithms/DDE/ estimation code, saved-input interfaces, and provenance.
+  See Algorithms/DDE/README.md, Algorithms/DDE/deep/README.txt and Algorithms/DDE/comparators/*/README.txt.
   data/dde contains MAP dimension recovery and native15/5 truth matrices.
   data/deep contains only the no-floor tempering+VI study:599 fitted endpoints
   and1 initialization failure among600 attempts. Stopped studies are excluded.
@@ -53,7 +53,7 @@ sign/column alignment. The two plotting scales are described in the figures.
 
 OPTIONAL FITTING (NOT RUN TO VALIDATE THIS HANDOFF)
 MATLAB R2026a and Statistics and Machine Learning Toolbox were used for the
-Gaussian comparison. DDE also requires the toolboxes listed in v2/README.md,
+Gaussian comparison. DDE also requires the toolboxes listed in Algorithms/DDE/README.md,
 including Optimization Toolbox. Raw survey inputs are external; see
 EXTERNAL_INPUTS.json for hashes, expected schemas and preprocessing.
 

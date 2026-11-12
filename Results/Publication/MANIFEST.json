@@ -353,8 +353,8 @@
     },
     {
       "path": "Scripts/Publication/config/deep.json",
-      "bytes": 386,
-      "sha256": "35347c21c83f23cab256223f96b555e8165b97fd24c83273259b5b1a36db8e6b"
+      "bytes": 398,
+      "sha256": "740c8d46aca446a9663856c2aa8039109ce3f6f25947767aebe3c6d3af4e7244"
     },
     {
       "path": "Scripts/Publication/config/factor.json",
@@ -463,13 +463,13 @@
     },
     {
       "path": "Results/Publication/MAIN_PAPER_MAP.csv",
-      "bytes": 2540,
-      "sha256": "4717ebad022bc62e1a055e24f59914f8b64175e594888245a5ad3820232d4f74"
+      "bytes": 2552,
+      "sha256": "55c3a4f991fb1de4c9b0bc442f5fcc1ad9d1c28a047f2602f8953c7651c13083"
     },
     {
       "path": "Results/Publication/README.txt",
-      "bytes": 7191,
-      "sha256": "93bb1c889f23e1970c3fb6aaff1bfa72e2fdaf936911e4816c61621065272ae7"
+      "bytes": 7251,
+      "sha256": "f9709506c82d7035faea4291d13f64cd319e03e582ad597778a5cf5ce980809b"
     },
     {
       "path": "Results/Publication/SOURCE_MANIFEST.json",

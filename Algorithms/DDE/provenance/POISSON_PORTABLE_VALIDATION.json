@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "J": 150,
+  "n": 500,
+  "replication": 1,
+  "scope": "Exact prop B1 B2 iteration parity with completed original Poisson endpoint; one full case only",
+  "checked_at": "2026-11-07T02:08:47.355424+00:00",
+  "source_hashes": {
+    "Algorithms/DDE/run_poisson_saved_case.m": "6faf9999d028eb44fc483b1e062d34f094d43f605176d74ba48ec4d7a180a0ce",
+    "Algorithms/DDE/verify_poisson_sources.m": "d6fc13e4b37aa923ba3fbd4e6f4244cb0026e6ab116ce6a37507a84bbead20b6"
+  },
+  "iterations": 50,
+  "limitations": [
+    "One J150 n500rep1 full case; not all600 or other J values.",
+    "Checks prop,B1,B2 and iteration count; no claim of posterior calibration."
+  ]
+}

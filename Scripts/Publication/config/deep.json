@@ -14,6 +14,6 @@
     16000
   ],
   "stopped_comparators_included": false,
-  "code": "v2/deep",
+  "code": "Algorithms/DDE/deep",
   "code_path_base": "repository root"
 }
