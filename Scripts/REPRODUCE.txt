@@ -5,6 +5,11 @@ retain the original repository structure. Survey code and aggregate results
 are included. Contact the author, Joe Feldman, for the original survey data.
 Raw respondent data and manuscript/response/supplement .tex files are excluded.
 
+For the proposed model itself, start with Algorithms/DDE/README.md. Its worked
+MATLAB example uses arm 1: CAVI + tempering in warm-up, then stochastic
+approximation averaging after burn-in for MAP estimation. It explains the
+iteration schedule, outputs and implementation files.
+
 1. QUICK START: ALL SAVED RESULTS, WITHOUT FITTING
 
   git clone --branch estimation-v2 https://github.com/jfeldman396/DDE-Copula.git

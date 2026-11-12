@@ -1,6 +1,6 @@
 {
   "date": "2026-11-12",
-  "scope": "Fresh-clone complete ordinal selection/refits and iVAE training, representative other fits, and archived-result aggregation checks; full remaining verification is in progress",
+  "scope": "Complete fresh ordinal selection/refits and iVAE training; representative simulation/posterior verification in progress; full archived-result aggregation checks",
   "software": {
     "matlab": "R2026a",
     "python": "3.13"
@@ -158,36 +158,127 @@
     "Full Gaussian candidate study",
     "All four full B5 posterior chains"
   ],
-  "remaining_full_runs_status": "Running; no complete-study numerical parity claim for these studies",
+  "remaining_full_runs_status": "Verification reduced at author request; unstarted repetitions beyond the selected subset are skipped, with no full-study verification claim",
   "portable_environment_check": "Fresh Python environment; training import also checked with optional POSIX fcntl unavailable",
   "fresh_partial_check": {
-    "checked_at_utc": "2026-11-12T20:35:36.908249+00:00",
-    "scope": "Completed individual cases only; no complete-grid claim",
+    "checked_at_utc": "2026-11-12T21:01:42.081922+00:00",
+    "scope": "Completed individual cases only; VI and tempering recovery require full-grid comparison",
     "completed_cases_numerically_matched": [
       "comparator_J100_n1000_r1_poisson",
       "comparator_J100_n1000_r1_rl",
+      "comparator_J100_n2000_r1_poisson",
+      "comparator_J100_n2000_r1_rl",
+      "comparator_J100_n4000_r1_poisson",
+      "comparator_J100_n4000_r1_rl",
+      "comparator_J100_n500_r1_poisson",
       "comparator_J100_n500_r1_rl",
+      "comparator_J150_n1000_r1_poisson",
       "comparator_J150_n1000_r1_rl",
+      "comparator_J150_n2000_r1_rl",
+      "comparator_J150_n4000_r1_rl",
       "comparator_J150_n500_r1_rl",
       "comparator_J50_n1000_r1_poisson",
       "comparator_J50_n1000_r1_rl",
       "comparator_J50_n2000_r1_poisson",
       "comparator_J50_n2000_r1_rl",
+      "comparator_J50_n4000_r1_poisson",
+      "comparator_J50_n4000_r1_rl",
       "comparator_J50_n500_r1_poisson",
       "comparator_J50_n500_r1_rl",
+      "comparator_J50_n8000_r1_poisson",
+      "comparator_J50_n8000_r1_rl",
+      "deep_J108_n1000_r1",
+      "deep_J108_n2000_r1",
+      "deep_J108_n4000_r1",
       "deep_J108_n500_r1",
       "shallow_J100_n1000_r1_map",
+      "shallow_J100_n2000_r1_map",
+      "shallow_J100_n4000_r1_map",
       "shallow_J100_n500_r1_map",
       "shallow_J150_n1000_r1_map",
+      "shallow_J150_n2000_r1_map",
+      "shallow_J150_n4000_r1_map",
       "shallow_J150_n500_r1_map",
       "shallow_J50_n1000_r1_map",
       "shallow_J50_n2000_r1_map",
+      "shallow_J50_n4000_r1_map",
       "shallow_J50_n500_r1_map",
+      "shallow_J50_n8000_r1_map",
       "empirical_gibbs_0",
       "empirical_gibbs_1",
+      "empirical_gibbs_10",
+      "empirical_gibbs_11",
       "empirical_gibbs_2",
-      "empirical_gibbs_3"
+      "empirical_gibbs_3",
+      "empirical_gibbs_4",
+      "empirical_gibbs_5",
+      "empirical_gibbs_6",
+      "empirical_gibbs_7",
+      "empirical_gibbs_8",
+      "empirical_gibbs_9"
     ],
-    "count": 23
+    "count": 52,
+    "mismatches": [],
+    "awaiting_aggregate_comparison": [
+      "shallow_J100_n1000_r1_tempering",
+      "shallow_J100_n1000_r1_vi",
+      "shallow_J100_n2000_r1_tempering",
+      "shallow_J100_n2000_r1_vi",
+      "shallow_J100_n4000_r1_tempering",
+      "shallow_J100_n4000_r1_vi",
+      "shallow_J100_n500_r1_tempering",
+      "shallow_J100_n500_r1_vi",
+      "shallow_J150_n1000_r1_tempering",
+      "shallow_J150_n1000_r1_vi",
+      "shallow_J150_n2000_r1_tempering",
+      "shallow_J150_n2000_r1_vi",
+      "shallow_J150_n4000_r1_tempering",
+      "shallow_J150_n4000_r1_vi",
+      "shallow_J150_n500_r1_tempering",
+      "shallow_J150_n500_r1_vi",
+      "shallow_J50_n1000_r1_tempering",
+      "shallow_J50_n1000_r1_vi",
+      "shallow_J50_n2000_r1_tempering",
+      "shallow_J50_n2000_r1_vi",
+      "shallow_J50_n4000_r1_tempering",
+      "shallow_J50_n4000_r1_vi",
+      "shallow_J50_n500_r1_tempering",
+      "shallow_J50_n500_r1_vi",
+      "shallow_J50_n8000_r1_tempering",
+      "shallow_J50_n8000_r1_vi"
+    ]
+  },
+  "verification_subset": {
+    "simulation_replications": [
+      1
+    ],
+    "simulation_cases": 96,
+    "simulation_fraction": 0.01,
+    "posterior_replications": [
+      1
+    ],
+    "posterior_datasets": 4,
+    "posterior_chains": 16,
+    "posterior_fraction": 0.1,
+    "iteration_budgets_shortened": false,
+    "selection": "One replication at every original simulation configuration and one dataset at each posterior J/n setting",
+    "completed_existing_results_preserved": true,
+    "survey_grid_gaussian_and_b5": "Existing survey-grid, Gaussian and B5 checks continue"
+  },
+  "implementation_schedule_check": {
+    "case": "shallow J50 n500 replication1 MAP",
+    "source": "Fresh-fit trace",
+    "beta_at_1_30": [
+      0.7,
+      1.0
+    ],
+    "lambda_at_1_60": [
+      0.0,
+      1.0
+    ],
+    "accumulator_start_iteration": 81,
+    "first_nonunit_averaging_step_iteration": 91,
+    "rho_at_91": 0.6155722066724582,
+    "CAVI_rows_at_iteration_60": 0
   }
 }

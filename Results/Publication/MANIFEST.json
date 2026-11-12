@@ -401,8 +401,8 @@
     },
     {
       "path": "Algorithms/DDE/README.md",
-      "bytes": 2117,
-      "sha256": "4c9441b7a9f00614edb6a7093e358ca33222a5aa32a32b15a4a5e157621504f6"
+      "bytes": 6585,
+      "sha256": "8e4735ae25bc086f39c0f2068d8b0808f48306f2bbfae1d32d25d3d381724624"
     },
     {
       "path": "Algorithms/DDE/cavi/cmv_cavi.m",
@@ -961,8 +961,8 @@
     },
     {
       "path": "Results/Publication/REPRODUCTION_CHECKS.json",
-      "bytes": 6748,
-      "sha256": "90a464f61cd0b5aa529c1aedddebd4b395ad3add7cc25ea5dc61aea255c176ba"
+      "bytes": 9814,
+      "sha256": "02e7a1f4679b70bc8446d2c91cbc79ef9c9dcb2b6a540f5d538fff407d289f73"
     },
     {
       "path": "Results/Publication/THIRD_PARTY_NOTICES.txt",
@@ -1601,8 +1601,8 @@
     },
     {
       "path": "Scripts/REPRODUCE.txt",
-      "bytes": 19368,
-      "sha256": "100291aca034f17adf46894c0eaf2c82ab4ead5b011c7044b507947e662c98df"
+      "bytes": 19648,
+      "sha256": "b9e133da03ede0651599dc1efc3abc158a5956316c4b414aa780f940ee51cf24"
     },
     {
       "path": "Scripts/Sim_Overspecified.m",
