@@ -10,9 +10,9 @@ from matplotlib.colors import LinearSegmentedColormap
 from paths import output
 ROOT=Path(__file__).resolve().parents[2]
 W=Path(__file__).resolve().parent
-parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);parser.add_argument('--data-dir',type=Path,default=ROOT/'Results/Publication/data/native15_5');args=parser.parse_args()
 O=output(args.output);(O/'images').mkdir()
-D=ROOT/'Results/Publication/data/native15_5'
+D=args.data_dir.resolve()
 s=pd.read_csv(D/'MSE_SUMMARY.csv');means=np.load(D/'AVERAGE_WEIGHT_MATRICES.npz')
 truths={(j,l):means[f'truth_J{j}_B{l}'] for j in [50,100,150] for l in [1,2]}
 plt.rcParams.update({'font.family':'DejaVu Sans','font.size':12,'pdf.fonttype':42})

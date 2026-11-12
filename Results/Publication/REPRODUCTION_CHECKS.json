@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-12",
+  "scope": "Representative executable fits and complete archived-result aggregation checks, not a new run of every experiment",
+  "software": {
+    "matlab": "R2026a",
+    "python": "3.13"
+  },
+  "fresh_fits": [
+    {
+      "study": "shallow MAP",
+      "case": "J50 n500 replication1",
+      "complete": true,
+      "comparison": "Input and both aligned loading matrices bit-identical to saved reference"
+    },
+    {
+      "study": "native15/5 RL and Poisson",
+      "case": "J50 n500 replication1",
+      "complete": true,
+      "comparison": "Both loading matrices bit-identical after preserving serial pool settings"
+    },
+    {
+      "study": "deep no-floor",
+      "case": "J108 n500 replication1",
+      "complete": true,
+      "comparison": "All three MSEs match saved reference"
+    },
+    {
+      "study": "deep initialization failure",
+      "case": "n500 replication76",
+      "complete": true,
+      "comparison": "Original zero-width initialization failure preserved"
+    },
+    {
+      "study": "ordinal rank Gibbs",
+      "case": "Clayton n1000 replication1",
+      "complete": true,
+      "comparison": "Training/test data and5000 predictive Y/U values bit-identical"
+    },
+    {
+      "study": "synthetic uncertainty initializer",
+      "case": "J50 n1000 replication1",
+      "complete": true,
+      "comparison": "Input and full50-step MAP state bit-identical; four one-sweep sampler checks completed"
+    },
+    {
+      "study": "empirical DDE maxima",
+      "case": "config9 alpha12/4",
+      "complete": true,
+      "comparison": "Complete740-iteration full state and all50 pMSE/AUC/Brier scores bit-identical to the saved reference"
+    },
+    {
+      "study": "B5 Gibbs sampler",
+      "case": "replacement chain1, seed35931531",
+      "complete": false,
+      "comparison": "First sweep matches original draws exactly; full chains not rerun"
+    }
+  ],
+  "analysis_checks": [
+    {
+      "study": "native comparisons",
+      "cases": 5400,
+      "summary_rows": 108,
+      "matrix_arrays": 222,
+      "result": "All archived endpoint aggregates match within1e-12"
+    },
+    {
+      "study": "deep",
+      "attempts": 600,
+      "fits": 599,
+      "initialization_failures": 1,
+      "summary_rows": 18,
+      "recovery_rows": 6,
+      "result": "All archived-endpoint aggregate/recovery values match within1e-12"
+    },
+    {
+      "study": "synthetic uncertainty",
+      "raw_datasets_checked": 1,
+      "aggregate_records": 40,
+      "summary_rows": 12,
+      "result": "Full one-dataset chain analysis matches saved diagnostics; all enclosure summary rows match"
+    },
+    {
+      "study": "ordinal",
+      "tail_rows": 96,
+      "joint_rows": 300,
+      "result": "All probabilities match saved references within1e-12"
+    },
+    {
+      "study": "B5 posterior",
+      "pooled_draws": 3762,
+      "shallow_rows": 980,
+      "deep_rows": 20,
+      "result": "Intervals, medians and sign probabilities match saved references; final MAP/posterior plots regenerated"
+    },
+    {
+      "study": "empirical profiles and comparisons",
+      "paired_scores": 50,
+      "profile_rows": 40,
+      "top_anchor_rows": 20,
+      "result": "Recomputed original-fit profile values and combined standardized loadings match within1e-11"
+    },
+    {
+      "study": "iVAE render and tables",
+      "key_item_rows": 30,
+      "result": "Fresh-weight interface with original fitted weights matches every saved key-item row"
+    }
+  ],
+  "not_rerun": [
+    "Complete5400-fit shallow grid",
+    "Complete3600-fit comparator grid",
+    "Complete600-attempt deep grid",
+    "All eight ordinal refits or discarded tuning searches",
+    "All40 datasets x four2000-sweep uncertainty chains",
+    "All24 empirical DDE grid candidates",
+    "Full Gaussian candidate study",
+    "Full iVAE training",
+    "All four full B5 posterior chains"
+  ],
+  "data_access": "Contact the author, Joe Feldman, for the original survey CSV. Code and aggregate results included; raw respondent data excluded.",
+  "interpretation": "Fixed budgets and parity checks do not establish convergence; reported mixing limitations remain.",
+  "saved_result_workflow": {
+    "passed": true,
+    "figure_references": 39,
+    "table_entries": 7
+  },
+  "entry_points_parse_checked": true,
+  "incomplete_endpoint_rejection_checked": true
+}

@@ -1,0 +1,74 @@
+{
+  "n": 1000,
+  "J": 30,
+  "replication": 1,
+  "synthetic_n": 5000,
+  "cap": 600,
+  "cases": [
+    {
+      "family": "clayton",
+      "hp": {
+        "alpha": [
+          9.0,
+          3.0
+        ],
+        "beta0": 0.7,
+        "t1": 0.08,
+        "t2": 0.02,
+        "tau": 0.1
+      },
+      "initial_seed": 831100,
+      "algorithm_seed": 831133,
+      "prediction_seed": 1048100
+    },
+    {
+      "family": "survival_clayton",
+      "hp": {
+        "alpha": [
+          9.0,
+          3.0
+        ],
+        "beta0": 0.7,
+        "t1": 0.02,
+        "t2": 0.02,
+        "tau": 0.1
+      },
+      "initial_seed": 831200,
+      "algorithm_seed": 831233,
+      "prediction_seed": 1048200
+    },
+    {
+      "family": "student_t",
+      "hp": {
+        "alpha": [
+          9.0,
+          3.0
+        ],
+        "beta0": 0.9,
+        "t1": 0.08,
+        "t2": 0.02,
+        "tau": 0.1
+      },
+      "initial_seed": 831300,
+      "algorithm_seed": 831333,
+      "prediction_seed": 1048300
+    },
+    {
+      "family": "gaussian",
+      "hp": {
+        "alpha": [
+          9.0,
+          3.0
+        ],
+        "beta0": 0.7,
+        "t1": 0.08,
+        "t2": 0.02,
+        "tau": 0.1
+      },
+      "initial_seed": 831400,
+      "algorithm_seed": 831433,
+      "prediction_seed": 1048400
+    }
+  ],
+  "scope": "Refit the reported models using frozen selected hyperparameters; does not rerun the discarded tuning candidates."
+}

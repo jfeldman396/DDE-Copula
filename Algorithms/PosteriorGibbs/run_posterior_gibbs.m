@@ -9,6 +9,7 @@ here=fileparts(mfilename('fullpath'));
 shared=fullfile(fileparts(here),'DDE','CopDDE');
 addpath(fullfile(shared,'AdjacentRankPairStudy'),fullfile(shared,'JointSamplerAcceleration'),fullfile(shared,'ExactGibbs'));
 addpath(fullfile(here,'utilities'));
+if any(isnan(a.R),'all'),addpath(fullfile(fileparts(here),'EmpiricalDDE'),'-begin');end
 rng(options.seed);iterations=options.iterations;
 spike1=options.spike1;spike2=options.spike2;alpha1=options.alpha1;alpha2=options.alpha2;
 N=size(a.R,1);d=outputDir;mkdir(d);

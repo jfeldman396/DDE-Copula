@@ -10,8 +10,9 @@ import argparse
 from paths import configure, inputs, output
 parser=configure(argparse.ArgumentParser(description='Render saved standardized DDE/Gaussian loadings; no model fitting.'))
 parser.add_argument('--output-dir',type=Path,required=True)
+parser.add_argument('--loadings',type=Path,help='Fresh combined DDE/Gaussian CSV; omit for saved loadings')
 args=parser.parse_args();settings=inputs(args.config);O=output(args.output_dir)
-frame=pd.read_csv(settings['ivae']/'all_standardized_loadings.csv')
+frame=pd.read_csv(args.loadings or settings['ivae']/'all_standardized_loadings.csv')
 D=frame[[f'DDE_{k}' for k in range(1,11)]].to_numpy()
 G=frame[[f'Gaussian_{k}' for k in range(1,33)]].to_numpy()
 cos=D.T@G/(np.linalg.norm(D,axis=0)[:,None]*np.linalg.norm(G,axis=0)[None,:]);ii,jj=linear_sum_assignment(-abs(cos));sgn=np.sign(cos[ii,jj]);M=G[:,jj]*sgn;un=np.array([k for k in range(32) if k not in jj]);un=un[np.argsort(-np.linalg.norm(G[:,un],axis=0))]

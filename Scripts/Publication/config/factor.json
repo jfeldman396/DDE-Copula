@@ -39,5 +39,6 @@
   "tempering": true,
   "kernel": "missing_safe_exact_rank_Gibbs",
   "selected_id": 6,
-  "posterior_mixing_adequate": false
+  "posterior_mixing_adequate": false,
+  "prepared_values_sha256": "a847674f2491583b5750cc50bed7150c299b2a3829a75fec39e5f62cde6bb820"
 }

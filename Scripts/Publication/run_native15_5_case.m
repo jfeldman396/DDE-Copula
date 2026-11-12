@@ -5,8 +5,10 @@ assert(ismember(method,{'rl','poisson'}));
 assert(java.io.File(inputFile).isAbsolute() && java.io.File(outputDir).isAbsolute());
 assert(isfile(inputFile) && ~isfolder(outputDir) && ~isfile(outputDir));
 here=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','Native15_5');oldpath=path;oldrng=rng;
-cleanup=onCleanup(@()restore_state(oldpath,oldrng));
 assert(isempty(gcp('nocreate')),'Run without an active parallel pool.');
+settings=parallel.Settings;oldAuto=settings.Pool.AutoCreate;settings.Pool.AutoCreate=false;
+cleanup=onCleanup(@()restore_state(oldpath,oldrng,oldAuto));
+restoredefaultpath;
 repo=fileparts(fileparts(here));
 addpath(fullfile(repo,'Utilities'));
 addpath(fullfile(here,'frozen','common'));
@@ -52,4 +54,6 @@ mkdir(outputDir);
 result=struct('native',native,'metrics',metrics,'method',method,'J',J,'n',N,'replication',input.replication);
 save(fullfile(outputDir,'result.mat'),'result','-v7.3');
 end
-function restore_state(p,r),path(p);rng(r);end
+function restore_state(p,r,auto)
+settings=parallel.Settings;settings.Pool.AutoCreate=auto;path(p);rng(r);
+end

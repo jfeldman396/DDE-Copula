@@ -2,24 +2,32 @@
   "survey_csv": {
     "included": false,
     "sha256": "c1ad10149d4a96db6cea044059d9b2edfec9e688d30554edf8d87a7fb1ab847b",
-    "used_by": "Algorithms/iVAE/train.py",
+    "used_by": "prepare_survey.py; collect_empirical.py; Algorithms/iVAE/train.py",
     "schema": "1500rows, original survey columns; item positions3:102 in MATLAB notation excluding46,53; ideology column ideo5",
-    "preprocessing": "Mean imputation of98 item columns; ideology auxiliary; original CSV required"
+    "preprocessing": "98 retained items; missing-aware DDE, value3 for pMSE, item-mean imputation for iVAE. Ideology auxiliary is used only by iVAE training and descriptive DDE plots.",
+    "access": "Contact the author, Joe Feldman, for the original survey data; raw respondent data are not distributed here."
   },
   "factor_train_input": {
     "included": false,
     "sha256": "0b2848f2875580338b4fc71eccd696c0fadb69b5d2c712859f10255c5210233f",
     "used_by": "Scripts/Publication/run_gaussian_study.m",
-    "schema": "MAT variables Y and X, both1500x98; Y has223 missing entries; X replaces missing entries with3"
+    "schema": "MAT variables Y and X, both1500x98; Y has223 missing entries; X replaces missing entries with3",
+    "prepare": "python Scripts/Publication/prepare_survey.py --data ORIGINAL_SURVEY.csv --output-dir NEW_DIRECTORY",
+    "identity": "The wrapper accepts the original MAT file or value-identical output from prepare_survey.py."
   },
   "raw_simulation_endpoints": {
     "included": false,
-    "entry_points": "Current saved-input interfaces in Scripts/DDE and Scripts/Publication",
-    "note": "Completed native15/5 aggregates included. Full paired inputs can be supplied to Scripts/Publication/run_native15_5_case.m. Historical full latent inputs/checkpoints remain external."
+    "entry_points": "Scripts/Publication/run_revision_study.m and Scripts/DDE/run_revision_case.m",
+    "note": "Inputs, fit states and scored endpoints can be generated from scratch; no external paired-input archive is required."
   },
   "uncertainty_chains": {
     "included": false,
-    "note": "Only completed aggregate diagnostics and interval summaries included",
-    "entry_point": "Algorithms/PosteriorGibbs/run_posterior_gibbs.m"
+    "note": "Generated locally from fresh MAP states; full raw draws are not distributed. Saved diagnostics and interval summaries are included.",
+    "entry_points": [
+      "Scripts/Publication/run_uncertainty_case.m",
+      "Scripts/Publication/run_b5_posterior.m",
+      "Scripts/Publication/collect_uncertainty.py",
+      "Scripts/Publication/collect_b5_posterior.py"
+    ]
   }
 }

@@ -1,18 +1,12 @@
 REPRODUCING THE REVISION AND SUPPLEMENT
 
-Start here. Run commands from the repository root. Use Python 3.11+ and a
-new output directory for each command. The examples below write to a new
-reproduced/ directory. No command in sections 1-3 fits a model.
+Start in the repository root. Algorithms, Utilities, Scripts and Results
+retain the original repository structure. Survey code and aggregate results
+are included. Contact the author, Joe Feldman, for the original survey data.
+Raw respondent data and manuscript/response/supplement .tex files are excluded.
 
-The repository layout is:
-  Algorithms/           estimation kernels and model implementations
-  Utilities/            shared numerical helpers
-  Scripts/              reproduction entry points and analysis
-  Results/Publication/  current revision/supplement aggregates and figures
+1. QUICK START: ALL SAVED RESULTS, WITHOUT FITTING
 
-QUICK START: ALL PACKAGED SAVED RESULTS
-
-From a new checkout:
   git clone --branch estimation-v2 https://github.com/jfeldman396/DDE-Copula.git
   cd DDE-Copula
   python3 -m venv .venv
@@ -20,312 +14,256 @@ From a new checkout:
   python -m pip install -r Scripts/Publication/requirements-render.txt
   python Scripts/reproduce.py --output-dir reproduced/revision
 
-Windows: activate the environment with .venv\Scripts\activate instead.
-Use a new destination for each run. This command validates the package,
-regenerates supported plots, recomputes J=100 timing statistics, exports
-all saved numerical inputs and copies preserved artwork. It starts no fits.
-If any command fails, the runner stops and does not write a success report.
+On Windows activate .venv\Scripts\activate instead. Use Python 3.11+ and a
+NEW output directory. The runner validates hashes/counts, renders supported
+saved numerical results, recomputes J=100 timings and exports exact artwork.
+It starts no model fits. Open RESULT_INDEX.csv and REPRODUCTION_REPORT.json
+in the destination for the per-result outputs and reproduction status.
+The inventory covers 39 figure references and seven table entries in the
+uploaded document snapshots; later Overleaf edits may change that mapping.
 
-Open these outputs in reproduced/revision:
-  RESULT_INDEX.csv             every mapped result and its output/status
-  REPRODUCTION_REPORT.json     commands completed and scope of reproduction
-  native15_5/images/           all 12 shallow/comparator figures
-  summaries/                  three deep MSE plots, recovery/uncertainty
-                              CSVs, recomputed timing CSV, and Gaussian
-                              candidate summary + 300 per-replication scores
-  factor/                     Gaussian-vs-DDE loading figure
-  ivae/images/                iVAE-vs-DDE figures
-  numeric_inputs/             all 40 saved numerical/configuration files
-  document_figures/           all 39 figure references under document names
-
-Three different outcomes must not be confused:
-  rendered_from_saved_numbers: plots recomputed from bundled numerical values;
-  saved_numerical_table_inputs: saved estimates/counts exported without refits;
-  preserved_artwork_only: exact saved artwork copied, not newly calculated.
-No manuscript text, .tex files, raw survey data or respondent draws are exported.
-The document names/figure references correspond to the uploaded snapshots;
-later Overleaf changes are not automatically reflected in this inventory.
-
-1. INSTALL AND CHECK
-
-  python -m pip install -r Scripts/Publication/requirements-render.txt
+Individual saved-result commands:
   python Scripts/Publication/validate_handoff.py
-
-The check verifies packaged file hashes, dimensions, selection summaries,
-600 deep outcomes (599 fits and one initialization failure), and comparator
-counts. It does not establish convergence or rerun the simulation grid.
-
-2. WHICH COMMAND PRODUCES WHICH RESULT?
-
-A. Shallow simulation: MAP versus truncated-lasso RL and Poisson DDE
-   J=50,100,150; both loading layers; MSE curves and estimated matrices.
-
-  python Scripts/Publication/render_native15_5.py --output reproduced/native15_5
-
-   Inputs: Results/Publication/data/native15_5/MSE_SUMMARY.csv and
-   AVERAGE_WEIGHT_MATRICES.npz. Outputs: images/J{J}_B{layer}_main_MSE.pdf
-   and images/J{J}_B{layer}_est_updated.pdf (12 PDFs, plus PNG previews).
-   FIGURE_SOURCES.json records each panel's input and retained counts.
-   MAP eligibility requires jointly correct 10/3 dimensions. Comparators
-   use valid replications; upper-IQR trimming is separate by method/J/n/layer.
-   See ELIGIBILITY_AND_EXCLUSIONS.json and the untrimmed replicate CSV.
-
-B. Dimension recovery tables, deeper no-floor MSE, uncertainty table,
-   and average compute times for the J=100 MAP examples.
-
+  python Scripts/Publication/render_native15_5.py --output reproduced/comparison
   python Scripts/Publication/reproduce_summary_results.py --output-dir reproduced/summaries
-
-   Outputs:
-   MAIN_DIMENSION_RECOVERY.csv: shallow recovery for all three DDE arms.
-   DEEP_REFIT_DIMENSION_RECOVERY.csv: no-floor recovery, all 600 attempts.
-   DEEP_REFIT_MSE_SUMMARY.csv: eligible/retained counts and MSE summaries.
-   COVERAGE_SUMMARY.csv: uncertainty enclosure and diagnostic denominators.
-   J100_MAP_RUNTIME_SUMMARY.csv: recomputed from 600 per-replication timings.
-   B1_MSE.pdf, B2_MSE.pdf, B3_MSE.pdf: deeper no-floor MSE curves.
-   Table CSVs are exports of saved aggregates, not new endpoint analyses.
-   Deep plots reproduce numerical curves, not necessarily historical typography.
-   Timing is numerical warmup + post-warmup wall time, excluding overhead;
-   it averages all 100 replications at each n, with no MSE-based exclusions.
-   Uncertainty enclosure is not calibrated coverage; all 40 datasets failed
-   the mixing screen. Reaching a fixed iteration budget is not convergence.
-
-C. Empirical DDE / Gaussian copula loading comparison.
-
   python Scripts/Publication/render_factor_loadings.py --output-dir reproduced/factor
-
-   Input: Results/Publication/data/ivae/all_standardized_loadings.csv.
-   Output: weight_matrix_comparison.pdf (and PNG).
-   The selected Gaussian candidate is c6 by mean pMSE across six candidates;
-   its mixing diagnostics remain inadequate. Candidate scores/diagnostics
-   are consolidated in Results/Publication/data/factor/CANDIDATES.json.
-   Each candidate retains its summary, diagnostics, 50 pMSE records and
-   standardized loading matrix. PLAN.json is the unchanged fitting input.
-
-D. Empirical DDE / iVAE comparison.
-
   python Scripts/Publication/render_ivae.py --output-dir reproduced/ivae
+  python Scripts/Publication/export_document_figures.py --output-dir reproduced/artwork
 
-   Inputs: Results/Publication/data/ivae/{iVAE_plot_matrices_10_1.npz,
-   all_standardized_loadings.csv,item_metadata.csv}, with config in
-   Scripts/Publication/config.json.
-   Output: images/iVAE_comparison_DDE_oriented.pdf, individual panels,
-   display matrices and row/column matches. No network training occurs.
-   The ten columns are hidden units; the iVAE latent dimension is one.
+These produce respectively: integrity checks; 12 shallow/comparator plots;
+recovery/uncertainty/timing tables and three deep MSE plots; Gaussian/DDE
+loadings; iVAE/DDE plots and key_items.json; and all preserved paper figures.
+Preserved artwork is copied, not independently recalculated. No .tex is exported.
 
-E. All existing paper/supplement/response figure files, including artwork
-   whose exact original renderer is not available in this package.
+2. SOFTWARE AND OUTPUT LOCATIONS FOR FRESH FITS
 
-  python Scripts/Publication/export_document_figures.py --output-dir reproduced/document_figures
+MATLAB R2026a, Statistics and Machine Learning Toolbox, Optimization Toolbox,
+a JVM and Parallel Computing Toolbox are used by the research scripts.
+Comparators explicitly disable automatic parallel pools to preserve the
+original serial random-number sequence. Start without an active pool.
 
-   Input: Results/Publication/DOCUMENT_ASSET_MAP.csv and packaged figures.
-   Output: subfolders named for the supplied document snapshots, with their
-   expected relative image filenames. This copies saved figures; it does
-   not recompute them. It exports no manuscript text or .tex files.
-   The map covers 39 references in the supplied snapshots; later Overleaf
-   edits may change filenames or numbering.
-
-3. RESULTS WITH LIMITED REPRODUCTION SUPPORT
-
-Ordinal synthetic/tail plots, B5 posterior interval plots, higher-level
-profiles and some legacy truth artwork are retained as saved figures.
-Their aggregate inputs and limitations are listed in
-Results/Publication/FIGURE_TABLE_MAP.csv and EXTERNAL_INPUTS.json.
-There is no verified standalone command here to regenerate every original
-figure from raw inputs. Use command E to obtain the preserved artwork.
-Full B5 draws/checkpoints and raw survey data are external. Do not interpret
-saved aggregates as a complete substitute for those fitting inputs.
-
-4. RERUNNING ESTIMATION (SEPARATE, EXPENSIVE)
-
-MATLAB requires the toolboxes described in Algorithms/DDE/README.md.
-Use absolute paths for every NEW output location below. Do not use the
-packaged Results directory as an output destination.
-
-Revised DDE, one fresh synthetic dataset:
-  addpath('Algorithms/DDE','Scripts/DDE');
-  run_cavi_case(100,500,1,1,'/absolute/new/dde_case');
-
-Arguments: J, n, replication, arm, new output directory.
-J: 50/100/150; n: 500/1000/2000/4000/8000/16000; replication: 1:100.
-Arm 1: tempering + VI; arm 2: VI only; arm 3: tempering only.
-Output: result.mat, checkpoint.mat, job.mat and isolated source/input copies.
-Repeat the exact grid for a full study; a one-case run is not its reproduction.
-Do not use a shortened iteration limit for final study endpoints.
-
-Deeper no-floor DDE, one fresh input and fit:
-  addpath('Algorithms/DDE','Scripts/DDE');
-  create_deep_nofloor_input(500,1,'/absolute/new_input.mat');
-  run_deep_saved_case('/absolute/new_input.mat','/absolute/new/deep_case',160);
-
-Six sample sizes above, 100 replications each. The n=500, replication=76
-zero-width initialization failure must be retained, not replaced by a
-modified initialization. For full saved-study collection, scoring, and
-eligibility/trimming, see Scripts/DDE/analysis/README.txt. Those collectors
-require the documented historical endpoint layout; they are not a one-click
-collector for arbitrarily named new case directories.
-
-Native 15/5 comparators, using a matching saved synthetic input:
-  addpath('Scripts/Publication');
-  run_native15_5_case('/absolute/paired_input.mat','rl','/absolute/new/rl_case');
-  run_native15_5_case('/absolute/paired_input.mat','poisson','/absolute/new/poisson_case');
-
-The input must contain record.R, record.initial, data_seed and algorithm_seed
-with 15/5 initialization, as documented by the wrapper. This saved-input
-interface does not generate the complete paired-input collection. Seeds are
-in Scripts/Publication/config/paired_simulation_seeds.csv. Full inputs are
-external; aggregate CSVs alone cannot rerun the comparator fits.
-
-Gaussian empirical study:
-  addpath('Scripts/Publication');
-  run_gaussian_study('/absolute/external_train_input.mat','/absolute/new/gaussian');
-
-Requires the original external prepared survey input. Runs the fixed 4k and
-8k stages for all six candidates; see EXTERNAL_INPUTS.json for input schema.
-
-iVAE empirical study (separate Python environment):
+Python analysis uses six packages: NumPy, pandas, SciPy, h5py, Matplotlib and
+Pillow. PyTorch is needed only for iVAE training, in a separate environment:
   python -m pip install -r Scripts/Publication/requirements-ivae.txt
-  python Algorithms/iVAE/train.py --train --data /absolute/external_survey.csv --output-dir /absolute/new/ivae_fit
+The many .m files are internal numerical functions, not separately installed
+packages. Byte-identical helpers already in the original repo are reused.
 
-Checks the original data hash. Without --train it only prints configuration.
-Results are aggregate weights and loss, not respondent embeddings.
+Use NEW absolute paths below. OUT is a placeholder for an absolute directory
+outside the checkout (for example /scratch/dde_revision). Each fitting command
+refuses to overwrite its case directory. The full studies are expensive;
+a shortened run is a diagnostic only. No fresh collector silently substitutes
+saved publication values for missing fits. Completion does not imply mixing.
 
-Posterior Gibbs:
-  addpath('Algorithms/PosteriorGibbs');
-  run_posterior_gibbs(a,fullMapState,options,'/absolute/new/posterior');
+3. SHALLOW RECOVERY, COMPARATORS AND J=100 COMPUTE TIMES
 
-Requires the full model state and data, plus documented seeds, iteration
-budgets and prior settings. options contains seed, iterations, spike1,
-spike2, alpha1 and alpha2. Dataset records and diagnostics are consolidated
-in Results/Publication/data/uncertainty/DATASET_SUMMARIES.json; the B5
-protocol is in Results/Publication/data/b5/SUMMARY.json. This is a
-sampler interface, not a complete reconstruction from aggregate intervals.
+In MATLAB, from this checkout:
+  addpath('Scripts/Publication','Scripts/DDE');
+  OUT='/absolute/new/revision_fits';
+  run_revision_study('shallow',fullfile(OUT,'shallow'));
+  run_revision_study('comparison',fullfile(OUT,'comparators'));
 
-5. PACKAGE SCOPE AND VALIDATION LIMITS
+Shallow: J=[50 100 150], n=[500 1000 2000 4000 8000 16000],
+replication=1:100, three arms; 5400 fits. MAP=tempering+VI, VI=VI only,
+tempering=tempering only. Comparison adds 3600 RL/Poisson fits and reuses
+the 1800 MAP endpoints from shallow. All inputs are regenerated with the
+original data/algorithm seeds and native15/5 initialization; no external
+paired-input archive is needed. Algorithms are not cropped from wider fits.
 
-The original repository is retained. Only the revision/supplement additions
-remain: the older CP experiment, superseded comparator copies and historical
-development reports are archived outside the active repository. Shared
-comparator/Gibbs helpers reuse byte-identical original or DDE functions.
+Then in the terminal (replace OUT with the same absolute directory):
+  python Scripts/Publication/collect_revision_endpoints.py --study shallow --input-dir OUT/shallow --output-dir OUT/shallow_summary
+  python Scripts/Publication/collect_revision_endpoints.py --study comparison --input-dir OUT --output-dir OUT/comparison_summary
+  python Scripts/Publication/render_native15_5.py --data-dir OUT/comparison_summary --output OUT/comparison_figures
 
-Related result records are consolidated without losing values:
-  data/factor/CANDIDATES.json: all six candidates, scores and diagnostics.
-  data/uncertainty/DATASET_SUMMARIES.json: all 40 dataset records.
-  data/ivae/NETWORK_WEIGHTS.json: all eight encoder/decoder weight arrays.
-These paths are relative to Results/Publication. CSV scalar values in the
-candidate and network records remain strings to preserve their exact saved
-precision; convert to numbers when calculating. Network records separate
-CSV column headers from values. Newly generated Gaussian
-fits still write separate candidate output files; the JSON is the compact
-saved-results representation, not an input to fitting.
+Outputs: DIMENSION_RECOVERY.csv; MSE_SUMMARY.csv; untrimmed per-replication
+errors; retained/excluded IDs; average weight matrices; 12 MSE/loading PDFs.
+Recovery columns K1_correct_pct, K2_correct_pct and both_correct_pct supply
+the three-arm supplement tables. MAP MSE eligibility requires joint10/3
+recovery; comparators use valid replications. Upper Q3+1.5 IQR trimming is
+separate by method/J/n/layer, with exclusions retained. Poisson coefficients
+are log-mean parameters, a different estimand from Gaussian latent loadings.
 
-Results/Publication/MANIFEST.json is the single current integrity manifest.
-Scripts/Publication/validate_handoff.py checks the original baseline files,
-current source/result hashes, original-file preservation and result counts.
-The full simulation grid has not been rerun for this trimming. MATLAB could
-not launch on this host; fitting wrappers have static dependency checks,
-not a fresh executable MATLAB validation. No convergence claim follows from
-these packaging checks.
+The collector also writes J100_MAP_RUNTIME_REPLICATES.csv and
+J100_MAP_RUNTIME_SUMMARY.csv whenever all timing fields are present.
+Numerical wall time=warmup+post-warmup, averaged over all100 MAP replications
+per n, without MSE exclusions. Hardware, worker overhead and elapsed-time
+measurements vary; identical new timings are not expected.
 
-6. COMPLETE RESULT-BY-RESULT ROUTES AND CURRENT GAPS
+One complete case, for checking the installation:
+  run_revision_case('shallow',50,500,1,'map','/absolute/new/one_map');
+  run_revision_case('comparator',50,500,1,'rl','/absolute/new/one_rl');
+  run_revision_case('comparator',50,500,1,'poisson','/absolute/new/one_poisson');
+A partial-grid collector requires --preview and labels every output PREVIEW_.
+Incomplete iteration-limited fits are rejected even in preview mode.
 
-The one-command workflow above covers all bundled artifacts. It is NOT a
-command that independently regenerates every underlying experiment. These
-are the explicit routes and the remaining prerequisites for full refits.
-Paths below beginning data/ are under Results/Publication (and are copied
-under numeric_inputs/ by the one-command workflow).
+4. DEEP NO-FLOOR RECOVERY AND MSE
 
-Result                         Saved route             Full-refit requirement
------------------------------  ----------------------  ---------------------------
-Shallow dimension recovery     Section 2B; data/dde/    run_cavi_case grid below;
-(three DDE arms, J=50/100/150)   MAIN_DIMENSION_RECOVERY  end-to-end aggregation of
-                               .csv                    new case outputs not supplied
-Shallow comparator MSE and     Section 2A; native15_5/  Matched saved 15/5 inputs;
-loading heatmaps (12 plots)     MSE_SUMMARY + matrices  run_native15_5_case (rl/poisson);
-                                                       complete paired-input producer
-                                                       and new-run collector not supplied
-J=100 MAP compute times         Section 2B; recomputes  Same software/hardware/worker
-                               all 600 timing records  setup required for comparable
-                                                       timing; exact repeats not claimed
-Deep no-floor recovery/MSE      Section 2B; data/deep/  Fresh input + run_deep_saved_case;
-                                                       score_deep_saved_case; historical
-                                                       endpoint collector route in
-                                                       Scripts/DDE/analysis/README.txt
-Gaussian selection/pMSE         summaries/gaussian_*;  External prepared survey MAT;
-and loading comparison         Section 2C              run_gaussian_study (six candidates)
-iVAE loading figures and        Section 2D; data/ivae/  External original survey CSV;
-loading/key-item table inputs   key_items.json, network train.py --train; original
-                               weights and matrices    figure renderer uses saved arrays
-Empirical DDE pMSE/selection     data/empirical/         Complete empirical inputs and
-and higher-order coefficients   PAIRED_PMSE.csv,        selected fitted state; portable
-                               SELECTION.json and      full empirical DDE refit driver
-                               HIGHER_ORDER*.csv       not supplied
-Higher-level profile and        Section 2E, preserved   Full selected empirical state;
-B5 ideology figures             figures + empirical    exact final-layout renderer
-                               numerical inputs        not supplied
-Ordinal synthetic/tail results  data/ordinal/ CSVs and  Original ordinal simulation
-                               ORDINAL_PROTOCOL.json;  and exact final-layout renderer
-                               Section 2E artwork      not supplied as a verified route
-Synthetic uncertainty enclosure data/uncertainty/;      Exact MAP states, matching data,
-and mixing diagnostics          Section 2B table;       seeds/settings and full chains;
-                               DATASET_SUMMARIES.json  run_posterior_gibbs is only the
-                                                       sampler, not the alignment and
-                                                       interval-analysis pipeline
-B5 posterior interval figures  data/b5/ pooled CSVs    Complete selected MAP state,
-                               and SUMMARY.json;       original inputs and aligned draws;
-                               Section 2E artwork      exact renderer not supplied
-Truth illustrations and         Section 2E preserved   Synthetic truth arrays retained;
-introductory schematic artwork  figures; data/dde/     exact original artwork generators
-                               TRUTH_MATRICES_15_5.npz  not supplied
+MATLAB:
+  addpath('Scripts/Publication','Scripts/DDE');
+  run_revision_study('deep','/absolute/new/deep');
+Terminal:
+  python Scripts/Publication/collect_revision_endpoints.py --study deep --input-dir /absolute/new/deep --output-dir /absolute/new/deep_summary
 
-Do not substitute an arbitrary new input, initialization, seed or fit for a
-missing saved input. EXTERNAL_INPUTS.json describes available schemas/hashes.
-The unavailable analysis routes above are reproducibility gaps, not merely
-commands hidden elsewhere in this repository.
+This generates J=108 inputs, fits all six n values and100 replications,
+scores all three layers, and records initialization failures. Output includes
+DIMENSION_RECOVERY.csv, MSE_SUMMARY.csv and B1_MSE.pdf/B2_MSE.pdf/B3_MSE.pdf.
+Recovery counts all600 attempts. The n=500/r=76 zero-width initialization
+failure is retained; never replace it with a modified initialization.
+Published references contain599 fits plus this one failure. MSE uses joint
+18/6/2 recovery and separate upper-IQR trimming by n/layer. Threshold is
+3*n^(-.3) without a floor; the cap is160. Scoring includes intercepts,
+alignment, width padding and each replication's truth/estimated Z scaling.
 
-7. EXPLICIT SHALLOW SIMULATION GRID (MATLAB; LONG RUN)
+5. ORDINAL SYNTHETIC EXAMPLES AND TAIL PROBABILITIES
 
-This reproduces case fits for the shallow three-arm dimension experiment.
-It does not automatically build all final tables or the fixed-15/5 comparator
-collection. Start MATLAB in the repository root and choose a NEW absolute
-output directory. This loop runs 3*6*100*3 = 5400 fits and is serial.
+MATLAB:
+  addpath('Scripts/Publication');
+  run_revision_study('ordinal','/absolute/new/ordinal');
+Terminal:
+  python Scripts/Publication/collect_ordinal.py --input-dir /absolute/new/ordinal --output-dir /absolute/new/ordinal_summary
 
-  addpath('Algorithms/DDE','Scripts/DDE');
-  out='/absolute/new/shallow_study';
-  assert(~isfolder(out)); mkdir(out);
-  for J=[50 100 150]
-    for n=[500 1000 2000 4000 8000 16000]
-      for replication=1:100
-        for arm=1:3
-          destination=fullfile(out,sprintf('J%d_n%d_r%d_a%d',J,n,replication,arm));
-          run_cavi_case(J,n,replication,arm,destination);
-        end
-      end
-    end
-  end
+Eight models: Clayton, survival Clayton, Student t and Gaussian, each with
+rank Gibbs and group maxima. Original n=1000 training counts and2000 test
+counts are generated afresh; each model generates5000 synthetic observations.
+The reported selected hyperparameters/seeds are frozen in config/ordinal.json.
+This refits the reported models, not the discarded hyperparameter-search
+candidates. Fixed categories are0-1,2-3,4-5,6-7,8+. They are a descriptive
+projection after fitting count models, not a new ordinal estimator.
 
-Each case produces result.mat, checkpoint.mat and job.mat. Check result.complete
-before counting an endpoint. The wrapper uses fixed study seeds internally.
-Do not infer convergence from completion. The saved publication tables remain
-the checked numerical references until a full new-run aggregation is validated.
+Outputs: ordinal_tail_probabilities.csv (96rows), ordinal_joint_examples.csv
+(300rows), R1_2_ordinal_tail_probabilities.pdf and
+R1_2_ordinal_synthetic_examples.pdf. All435 variable pairs enter tail averages;
+they are not independent replications. Joint examples use variables1 and2.
+The saved document filenames are ordinal_tail_probabilities.pdf and
+ordinal_synthetic_vs_truth.pdf; exact historic artwork remains in Results.
 
-8. DEEP STUDY SCORING AND FAILURE ACCOUNTING
+6. SYNTHETIC UNCERTAINTY, ENCLOSURE AND MIXING DIAGNOSTICS
 
-Use the one-case input/fitting commands in section 4. For n in
-[500 1000 2000 4000 8000 16000], repeat replications 1:100. Fit only inputs
-that successfully initialize. Save the identifier and error for every failure;
-the known n=500/r=76 Gap5:InvalidWidth outcome is one of the 600 attempts.
+MATLAB:
+  addpath('Scripts/Publication');
+  run_revision_study('uncertainty','/absolute/new/uncertainty');
+Terminal:
+  python Scripts/Publication/collect_uncertainty.py --datasets-dir /absolute/new/uncertainty --chains-dir /absolute/new/uncertainty --output-dir /absolute/new/uncertainty_summary
 
-For each successful fit:
-  addpath('Algorithms/DDE','Scripts/DDE');
-  metrics=score_deep_saved_case('/absolute/case/result.mat', ...
-    '/absolute/matching_input.mat', ...
-    fullfile(pwd,'Algorithms','DDE','deep','input_generation','truth.mat'));
+Forty datasets: J=50/100, n=1000/2000, replication1:10. Each regenerates
+the original maximal-width input and the50-step MAP initialization, then
+runs four chains of2000 sweeps, discarding1000. This initializer differs
+from the revised15/5 shallow experiment; its minimal legacy numerical
+closure is retained in Algorithms/PosteriorGibbs/initialization for this reason.
 
-Scoring uses the matching input, including its truth scaling. It includes
-intercepts and all three layers. Final MSE conditions on all dimensions
-correct and applies upper Q3+1.5 IQR separately by n/layer. Recovery uses all
-600 attempts including the recorded initialization failure. The historical
-collectors require scored metrics/hyperparameter exports with specific names;
-they cannot directly consume the wrapper's arbitrary result.mat directories.
-Do not claim that those separate interfaces form a verified single-command
-end-to-end rerun until that conversion and aggregation are implemented.
+Outputs: COVERAGE_SUMMARY.csv, DATASET_DIAGNOSTICS.csv, active-dimension
+probabilities and per-dataset summaries. The collector standardizes draws,
+applies the original fixed chain-mean alignment and computes rank/folded
+split Rhat, bulk/tail ESS, retained-half checks and interval enclosure.
+All40 reference datasets failed the mixing screen. Report enclosure, not
+calibrated coverage; the between-dataset MC SE is not an MCMC error estimate.
+--limit is only for a clearly provisional subset. Missing/short chains cannot
+produce a complete-study claim. No preexisting MAP states/chains are required.
+
+7. SURVEY PREPARATION, EMPIRICAL DDE AND GAUSSIAN COMPARISON
+
+Contact Joe Feldman for the original CSV; do not commit it. Both its hash
+and the prepared Y/X values are checked. The exact original column order
+and the ideo5 column are required.
+
+  python Scripts/Publication/prepare_survey.py --data /absolute/survey.csv --output-dir /absolute/new/survey
+
+This writes train_input.mat with1500x98 Y (223 missing responses) and X
+(missing replaced by3 for pMSE). Empirical DDE fitting retains missingness.
+iVAE separately uses item-mean imputation. Ideology is used only for the
+DDE descriptive plot, but is an auxiliary training variable for iVAE.
+
+MATLAB, selected empirical model and complete Gaussian candidate study:
+  addpath('Scripts/Publication');
+  run_empirical_case('/absolute/new/survey/train_input.mat','maxima',9,'/absolute/new/dde_selected');
+  run_gaussian_study('/absolute/new/survey/train_input.mat','/absolute/new/gaussian');
+
+The DDE selection is the author's frozen choice: maxima config9 in the12/4
+concentration grid, third-ranked10/1 fit, not the minimum-pMSE model.
+The script performs full fitting and50 pMSE replicates. Expected endpoint:
+740iterations, MODEL_it0740_target0800.mat. It saves the full12/4 checkpoint
+as well as the selected10/1 model. To rerun the full selection grid, call
+run_empirical_case for sampler={'gibbs','maxima'} and index=0:11, each in a
+new directory. All24 settings/seeds are in config/empirical.json.
+
+Gaussian runs all six candidates through4000+4000 iterations per chain,
+with50 pMSE replicates each. Select by mean pMSE; the reference winner is c6.
+Its poor invariant-correlation mixing remains a limitation. Fixed budgets
+are not convergence diagnostics. Gaussian outputs are under stage8k/c1...c6.
+
+Terminal, derive the full-sample empirical summaries and figures:
+  python Scripts/Publication/collect_empirical.py --model /absolute/new/dde_selected/fit/MODEL_it0740_target0800.mat --data /absolute/survey.csv --dde-scores /absolute/new/dde_selected/PMSE_REPLICATES.csv --gaussian-dir /absolute/new/gaussian/stage8k --output-dir /absolute/new/empirical_summary
+  python Scripts/Publication/render_factor_loadings.py --loadings /absolute/new/empirical_summary/all_standardized_loadings.csv --output-dir /absolute/new/factor_figure
+
+Outputs:50 paired pMSE scores; positive-contrast anchors; higher-order profile
+values/figures; A1_IDEOLOGY.pdf and group means; NORMALIZED_POINT.npz;
+all_standardized_loadings.csv; Gaussian selection table; loading comparison.
+HIGHER_ORDER_TOP_ANCHORS.pdf supplies the one-anchor-per-factor figure
+called higher_level_profiles.pdf in the documents. A1_IDEOLOGY.pdf supplies
+B5_10_1_ideology.pdf. Layout/font differences may occur across environments.
+
+Normalization matters: profile/key-item/uncertainty calculations use beta/sd(Z),
+leaving binary factors0/1. The supplied factor/iVAE comparison figure uses
+beta*sd(A)/sd(Z). Both are reconstructed separately, matching the saved values.
+Observed profile means omit missing responses and use exact model-based
+posterior membership; these are descriptive, not heldout validation.
+Local analysis outputs contain respondent posteriors; keep them private.
+
+8. iVAE FIT, FIGURES AND KEY-ITEM TABLES
+
+Use the separate PyTorch environment described in section2:
+  python Algorithms/iVAE/train.py --train --data /absolute/survey.csv --output-dir /absolute/new/ivae_fit
+  python Scripts/Publication/render_ivae.py --weights-dir /absolute/new/ivae_fit --dde-normalized /absolute/new/empirical_summary/NORMALIZED_POINT.npz --loadings /absolute/new/empirical_summary/all_standardized_loadings.csv --output-dir /absolute/new/ivae_figures
+
+The ten columns are hidden units; latent dimension is one. Training uses
+seed0,2000 iterations, batch256 and the original Gaussian-broadcasting patch.
+Saved outputs are encoder/decoder weights, biases and loss; no respondent
+embeddings are exported by train.py. Version/hardware differences may affect
+training numerics. The renderer exports all four panels, row/unit matches
+and key_items.json for all30 supplement table rows. Tables retain original
+factor/unit order; figure matching permutes iVAE units without sign flips.
+These methods use unequal information because iVAE also sees ideology.
+
+9. B5 POSTERIOR FIGURES FROM THE FULL SELECTED MAP STATE
+
+After section7's selected DDE fit, MATLAB:
+  addpath('Scripts/Publication');
+  run_b5_posterior('/absolute/new/dde_selected/fit','/absolute/new/b5_chains');
+Terminal:
+  python Scripts/Publication/collect_b5_posterior.py --checkpoint /absolute/new/dde_selected/fit/RAW_CHECKPOINT.mat --chains-dir /absolute/new/b5_chains --output-dir /absolute/new/b5_summary
+
+All parameters and latent states initialize at the full12/4 endpoint.
+The displayed window uses sweeps1001-2000, replacement seed35931531 for
+chain1 and original seeds for chains2-4; longer unused windows need not run.
+Condition on CSP active counts10/1, align each draw and propagate binary
+complements, then standardize including inactive factors' contributions.
+Expected qualifying counts:1000,768,1000,994 (3762 pooled draws).
+
+Outputs: aligned pooled shallow/deep CSVs, alignment audits, deep intervals,
+interval-masked heatmaps and shallow_map_posterior.pdf/deep_map_posterior.pdf.
+The documents prefix the latter filenames with b5_. White posterior cells
+have marginal95% intervals containing zero; sampling is not thresholded.
+Window/replacement choices followed trace inspection. Conditional alignment
+and filtering do not establish convergence or interval calibration.
+
+10. VALIDATION AND REMAINING LIMITS
+
+Algorithms and existing original files were retained; duplicate helpers are
+reused. The single integrity manifest is Results/Publication/MANIFEST.json.
+Validation evidence is in Results/Publication/REPRODUCTION_CHECKS.json.
+Executable MATLAB checks and analysis parity checks are distinguished there
+from studies that have not been rerun in full. Do not infer whole-study
+validation from a representative exact fit or from saved-result rendering.
+
+All statistical result families above now have explicit input-generation,
+fitting and analysis routes. Survey replication requires author-provided data;
+there is no public raw-data download bundled here. The full multi-thousand-fit
+simulation grid, full Gaussian/iVAE training and all posterior chains were
+not rerun for packaging. Ordinal refits use frozen selected settings rather
+than reproducing the discarded search. Timings and stochastic results may
+vary with numerical libraries/hardware. Existing poor-mixing caveats remain.
+
+Introductory schematic artwork (MargY, Marg_Z, biv_Y, spec_clust) and exact
+legacy truth-figure typography are preserved assets. Synthetic truth arrays
+are included as model specifications. Their exact artwork generators are not
+required to estimate the revision/supplement results; obtaining identical
+original artwork uses section1's exporter. No manuscript text is changed.

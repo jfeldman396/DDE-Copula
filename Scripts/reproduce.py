@@ -92,7 +92,7 @@ def main():
     report = dict(status='completed', experiments_started=False, completed_scripts=completed,
                   document_figure_references=39, index_entries=len(index),
                   scope='Saved numerical results and preserved artwork; not full model refits',
-                  limitations='External raw data, complete states/draws and some verified end-to-end analysis routes are unavailable; see Scripts/REPRODUCE.txt')
+                  limitations='Survey data are available from the author. Fresh-fit routes and their validation limits are in Scripts/REPRODUCE.txt; this command only uses saved results.')
     (out/'REPRODUCTION_REPORT.json').write_text(json.dumps(report, indent=2)+'\n')
     print(f'Completed. Open {out / "RESULT_INDEX.csv"}')
 

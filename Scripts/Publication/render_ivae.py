@@ -14,16 +14,31 @@ import argparse
 from paths import configure, inputs, output
 parser=configure(argparse.ArgumentParser(description='Render saved width-10 iVAE and DDE matrices; no training.'))
 parser.add_argument('--output-dir',type=Path,required=True)
+parser.add_argument('--weights-dir',type=Path,help='Fresh train.py output; omit for saved weights')
+parser.add_argument('--loadings',type=Path,help='Fresh combined DDE/Gaussian CSV; omit for saved loadings')
+parser.add_argument('--dde-normalized',type=Path,help='Fresh collect_empirical NORMALIZED_POINT.npz for key-item tables')
 args=parser.parse_args();settings=inputs(args.config)
 O=output(args.output_dir);I=O/'images';I.mkdir()
 ref=settings['ivae'];weights=ref/'iVAE_plot_matrices_10_1.npz'
-frame = pd.read_csv(ref / "all_standardized_loadings.csv")
+frame = pd.read_csv(args.loadings or ref / "all_standardized_loadings.csv")
 D = frame[[f"DDE_{k}" for k in range(1, 11)]].to_numpy()
 G = frame[[f"Gaussian_{k}" for k in range(1, 33)]].to_numpy()
-saved = np.load(weights)
+saved = np.load(weights) if args.weights_dir is None else {'encoder':pd.read_csv(args.weights_dir/'encoder_W1.csv').to_numpy()[:,:98].T,'decoder':pd.read_csv(args.weights_dir/'decoder_W2.csv').to_numpy()}
 assert D.shape == saved["encoder"].shape == saved["decoder"].shape == (98, 10)
 meta = pd.read_csv(ref / "item_metadata.csv")
 assert frame["item_id"].tolist() == meta["item_id"].tolist()
+# Tables retain native factor/unit order and use beta/sd(Z) for the DDE,
+# whereas the comparison figure CSV uses beta*sd(A)/sd(Z).
+if args.weights_dir is not None and args.dde_normalized is None:
+    parser.error('--weights-dir requires --dde-normalized to generate fully fresh key-item tables')
+table_dde=np.load(args.dde_normalized)['B1'][:,1:] if args.dde_normalized else saved['dde']
+records=[]
+for key,method,matrix in [('dde','DDE copula',table_dde),('encoder','iVAE encoder',saved['encoder']),('decoder','iVAE decoder',saved['decoder'])]:
+    for k in range(10):
+        contrast=matrix[:,k]-np.max(np.delete(matrix,k,axis=1),axis=1)
+        ids=np.argsort(-contrast,kind='stable');ids=ids[contrast[ids]>0][:3]
+        records.append(dict(method=method,factor=k+1,items=[str(meta.iloc[i].wording) for i in ids],indices=[int(i+1) for i in ids]))
+(O/'key_items.json').write_text(json.dumps(records,indent=2)+'\n')
 group = np.argmax(abs(D), axis=1)
 order = np.lexsort((np.arange(98), -abs(D[np.arange(98), group]), group))
 assert np.array_equal(np.sort(order), np.arange(98))
