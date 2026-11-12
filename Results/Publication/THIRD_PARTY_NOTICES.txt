@@ -3,12 +3,12 @@ The code under Algorithms/iVAE/vendor is the local research copy of the iVAE
 implementation by Ilyes Khemakhem, with its existing MIT License and copyright
 notice preserved in Algorithms/iVAE/vendor/LICENSE. Local architecture options
 and runtime adaptations are included as used by this study. A verified upstream
-commit identifier was not available; SOURCE_MANIFEST.json records source hashes.
+commit identifier was not available; MANIFEST.json records the packaged source hashes.
 
 Runtime dependencies
 NumPy, SciPy, pandas, h5py, Matplotlib, Pillow and PyTorch are dependencies,
 not vendored distributions. Their own licenses apply. Tested versions are
-recorded in Scripts/Publication/requirements-*.txt and VALIDATION_REPORT.json.
+recorded in Scripts/Publication/requirements-*.txt.
 MATLAB and its toolboxes are proprietary runtime dependencies and are not bundled.
 
 Project code and data

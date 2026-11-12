@@ -14,7 +14,7 @@
   },
   "raw_simulation_endpoints": {
     "included": false,
-    "entry_points": "v2 saved-input interfaces",
+    "entry_points": "Current saved-input interfaces in Scripts/DDE and Scripts/Publication",
     "note": "Completed native15/5 aggregates included. Full paired inputs can be supplied to Scripts/Publication/run_native15_5_case.m. Historical full latent inputs/checkpoints remain external."
   },
   "uncertainty_chains": {

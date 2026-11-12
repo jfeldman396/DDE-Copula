@@ -19,16 +19,25 @@ def main():
         assert hashlib.sha256(p.read_bytes()).hexdigest() == record['sha256'], p
         assert p.stat().st_size == record['bytes'], p
     included = {x['path'] for x in manifest['files']} | {'Results/Publication/MANIFEST.json'}
-    managed = ['Algorithms/GaussianCopula','Algorithms/iVAE','Algorithms/Native15_5','Algorithms/PosteriorGibbs','Utilities/GaussianCopula','Scripts/Publication','Results/Publication']
+    managed = ['Algorithms','Utilities','Scripts','Results']
     actual = {p.relative_to(ROOT).as_posix() for name in managed for p in (ROOT/name).rglob('*') if p.is_file() and '__pycache__' not in p.parts}
+    actual |= {'.gitignore', '.DS_Store', 'README.md'}
+    original = {e['path']: e for e in manifest['original_files']}
+    for name, entry in original.items():
+        if name != '.gitignore':
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest() == entry['sha256'], name
+        else:
+            assert (ROOT/name).read_bytes().startswith(entry['content'].encode()), name
     assert actual == included, ('Unexpected files', actual-included)
     for name in sorted(actual):
         p = ROOT/name
         if not p.is_file() or '__pycache__' in p.parts:
             continue
+        if name in original:
+            continue
         assert p.stat().st_size < 5_000_000, p
         assert p.suffix not in ('.ipynb', '.pt', '.pkl', '.zip'), p
-        if p.suffix=='.mat': assert 'Native15_5/frozen/truth/' in name, p
+        if p.suffix=='.mat': assert any(x in name for x in ('Native15_5/frozen/truth/', 'DDE/cavi/truth/', 'DDE/deep/input_generation/truth.mat')), p
         assert p.name not in ('data.csv', 'Z_embeddings.csv', 'training_evidence.npz', 'main_draft.pdf'), p
         if p.suffix in ('.py','.m','.csv','.json','.txt','.md'):
             text=p.read_text()
@@ -38,16 +47,22 @@ def main():
     factor=pd.read_csv(ROOT/'Results/Publication/data/ivae/all_standardized_loadings.csv')
     matrices=np.load(ROOT/'Results/Publication/data/ivae/iVAE_plot_matrices_10_1.npz',allow_pickle=False)
     assert matrices['encoder'].shape==matrices['decoder'].shape==(98,10)
-    selected=np.loadtxt(ROOT/'Results/Publication/data/factor/c6/STANDARDIZED_POINT_LOADINGS.csv',delimiter=',')
+    candidates=json.loads((ROOT/'Results/Publication/data/factor/CANDIDATES.json').read_text())['candidates']
+    assert [x['id'] for x in candidates] == list(range(1,7))
+    selected=np.asarray(candidates[5]['loadings'],dtype=float)
     assert np.allclose(factor[[f'Gaussian_{k}' for k in range(1,33)]],selected)
     summaries=[]
-    for i in range(1,7):
-        scores=pd.read_csv(ROOT/f'Results/Publication/data/factor/c{i}/PMSE_REPLICATES.csv')
-        summary=json.loads((ROOT/f'Results/Publication/data/factor/c{i}/COMPLETE.json').read_text())
+    for candidate in candidates:
+        scores=pd.DataFrame(candidate['scores']).astype(float)
+        summary=candidate['summary']
         assert len(scores)==50
         assert np.isclose(scores.pMSE.mean(),summary['pMSE_mean'],rtol=1e-12)
         summaries.append(summary)
     assert min(summaries,key=lambda x:x['pMSE_mean'])['id']==6
+    datasets=json.loads((ROOT/'Results/Publication/data/uncertainty/DATASET_SUMMARIES.json').read_text())
+    assert len(datasets)==40 and all(k==v['dataset'] for k,v in datasets.items())
+    weights=json.loads((ROOT/'Results/Publication/data/ivae/NETWORK_WEIGHTS.json').read_text())
+    assert len(weights)==8 and all(np.isfinite(np.asarray(v['values'],dtype=float)).all() for v in weights.values())
     deep=pd.read_csv(ROOT/'Results/Publication/data/deep/DEEP_REFIT_DIMENSION_RECOVERY.csv')
     assert len(deep)==6 and (deep.variant=='nofloor').all()
     assert deep.successful_fits.sum()==599 and deep.initialization_failed.sum()==1

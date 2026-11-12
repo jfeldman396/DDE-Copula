@@ -8,7 +8,7 @@ validateattributes(replication,{'numeric'},{'scalar','integer','>=',1,'<=',100})
 validateattributes(armID,{'numeric'},{'scalar','integer','>=',1,'<=',3});
 outputDir=char(outputDir);outFile=java.io.File(outputDir);assert(outFile.isAbsolute(),'V2:AbsoluteOutput','Use an absolute output path.');
 assert(~isfolder(outputDir)&&~isfile(outputDir),'V2:FreshOutput','Output must not exist.');
-baselineManifest=verify_v2_sources;manifest=verify_cavi_sources;root=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','DDE');
+manifest=verify_revision_sources;baselineManifest=manifest;root=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','DDE');
 oldpath=path;oldcwd=pwd;oldrng=rng;cleanup=onCleanup(@()restore(oldpath,oldcwd,oldrng));
 [ok,msg]=mkdir(outputDir);assert(ok,msg);outFile=java.io.File(outputDir);outputDir=char(outFile.getCanonicalPath());
 % Copy only the published source into this run so legacy configuration mkdir

@@ -1,7 +1,7 @@
 function metrics=score_deep_saved_case(resultFile,inputFile,truthFile)
 % Score an archived synthetic fit against its matching input and truth.
 % Does not write to input, result, or production directories.
-verify_v2_sources;verify_deep_sources;
+verify_revision_sources;
 root=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','DDE');oldpath=path;
 cleanup=onCleanup(@()path(oldpath));
 addpath(genpath(fullfile(root,'CopDDE')));addpath(fullfile(root,'deep'),'-begin');

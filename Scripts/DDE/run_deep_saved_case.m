@@ -7,7 +7,7 @@ inputFile=char(inputFile);outputDir=char(outputDir);
 assert(java.io.File(inputFile).isAbsolute()&&java.io.File(outputDir).isAbsolute(),'V2:AbsolutePaths','Use absolute paths.');
 assert(isfile(inputFile),'V2:MissingInput','Saved input does not exist.');
 assert(~isfolder(outputDir)&&~isfile(outputDir),'V2:FreshOutput','Output must not exist.');
-baseline=verify_v2_sources;cavi=verify_cavi_sources;deep=verify_deep_sources;
+baseline=verify_revision_sources;cavi=baseline;deep=baseline;
 s=load(inputFile,'input');input=s.input;
 assert(input.J==108&&numel(input.initial.A)==3);
 assert(isequal(input.initial.widths,[size(input.initial.A{1},2),size(input.initial.A{2},2),size(input.initial.A{3},2)]));

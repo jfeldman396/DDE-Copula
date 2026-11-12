@@ -5,7 +5,10 @@ function run_posterior_gibbs(a,f,options,outputDir)
 % Use the seeds and settings recorded in the associated study protocol.
 assert(java.io.File(outputDir).isAbsolute() && ~isfolder(outputDir) && ~isfile(outputDir));
 oldpath=path;oldrng=rng;cleanup=onCleanup(@()restore_state(oldpath,oldrng));
-addpath(fullfile(fileparts(mfilename('fullpath')),'utilities'));
+here=fileparts(mfilename('fullpath'));
+shared=fullfile(fileparts(here),'DDE','CopDDE');
+addpath(fullfile(shared,'AdjacentRankPairStudy'),fullfile(shared,'JointSamplerAcceleration'),fullfile(shared,'ExactGibbs'));
+addpath(fullfile(here,'utilities'));
 rng(options.seed);iterations=options.iterations;
 spike1=options.spike1;spike2=options.spike2;alpha1=options.alpha1;alpha2=options.alpha2;
 N=size(a.R,1);d=outputDir;mkdir(d);

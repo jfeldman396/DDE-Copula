@@ -1,8 +1,0 @@
-{
-  "reason": "All6 have max correlation Rhat1.34\u20131.56 and minESS3.7\u20136.0 at4k",
-  "budget": "Additional4000 iterations per chain, all6 candidates; no result-dependent early selection",
-  "scores": "50 matched seeds per candidate, same scorer; separately saved8k point models",
-  "old_preserved": true,
-  "fixed_rotation_frame": true,
-  "pilot": "Inherited validated unchanged kernel, resume and scoring tests; only horizon/window/output paths differ"
-}

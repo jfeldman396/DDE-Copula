@@ -9,7 +9,6 @@ The repository layout is:
   Utilities/            shared numerical helpers
   Scripts/              reproduction entry points and analysis
   Results/Publication/  current revision/supplement aggregates and figures
-  Results/DDE/legacy_cp/ earlier CP study, separate from the revised VI study
 
 1. INSTALL AND CHECK
 
@@ -62,7 +61,9 @@ C. Empirical DDE / Gaussian copula loading comparison.
    Output: weight_matrix_comparison.pdf (and PNG).
    The selected Gaussian candidate is c6 by mean pMSE across six candidates;
    its mixing diagnostics remain inadequate. Candidate scores/diagnostics
-   are in Results/Publication/data/factor/c1 through c6.
+   are consolidated in Results/Publication/data/factor/CANDIDATES.json.
+   Each candidate retains its summary, diagnostics, 50 pMSE records and
+   standardized loading matrix. PLAN.json is the unchanged fitting input.
 
 D. Empirical DDE / iVAE comparison.
 
@@ -157,20 +158,34 @@ Posterior Gibbs:
   run_posterior_gibbs(a,fullMapState,options,'/absolute/new/posterior');
 
 Requires the full model state and data, plus documented seeds, iteration
-budgets and prior settings; see Results/Publication/README.txt. This is a
+budgets and prior settings. options contains seed, iterations, spike1,
+spike2, alpha1 and alpha2. Dataset records and diagnostics are consolidated
+in Results/Publication/data/uncertainty/DATASET_SUMMARIES.json; the B5
+protocol is in Results/Publication/data/b5/SUMMARY.json. This is a
 sampler interface, not a complete reconstruction from aggregate intervals.
 
-5. HISTORICAL MATERIAL AND VALIDATION LIMITS
+5. PACKAGE SCOPE AND VALIDATION LIMITS
 
-Scripts/DDE/reproduce_tables.py and plot_results.R concern the earlier
-21,600-fit CP study, not the revised tempering+VI results. They are retained
-for provenance and must not be substituted for the commands above.
-Historical packaging reports are consolidated, by original filename, in
-Algorithms/DDE/provenance/HISTORICAL_VALIDATION.json. Source manifests remain
-separate for integrity checks. Duplicate preview images and original
-individual validation reports were archived locally; Git history retains them.
+The original repository is retained. Only the revision/supplement additions
+remain: the older CP experiment, superseded comparator copies and historical
+development reports are archived outside the active repository. Shared
+comparator/Gibbs helpers reuse byte-identical original or DDE functions.
 
-Saved-result checks and renderers can be tested without MATLAB. The full
-simulation grid has not been rerun as part of this repository restructuring.
-The available MATLAB runtime failed to launch on this host; moved fitting
-wrappers have path/source checks, not a fresh executable MATLAB validation.
+Related result records are consolidated without losing values:
+  data/factor/CANDIDATES.json: all six candidates, scores and diagnostics.
+  data/uncertainty/DATASET_SUMMARIES.json: all 40 dataset records.
+  data/ivae/NETWORK_WEIGHTS.json: all eight encoder/decoder weight arrays.
+These paths are relative to Results/Publication. CSV scalar values in the
+candidate and network records remain strings to preserve their exact saved
+precision; convert to numbers when calculating. Network records separate
+CSV column headers from values. Newly generated Gaussian
+fits still write separate candidate output files; the JSON is the compact
+saved-results representation, not an input to fitting.
+
+Results/Publication/MANIFEST.json is the single current integrity manifest.
+Scripts/Publication/validate_handoff.py checks the original baseline files,
+current source/result hashes, original-file preservation and result counts.
+The full simulation grid has not been rerun for this trimming. MATLAB could
+not launch on this host; fitting wrappers have static dependency checks,
+not a fresh executable MATLAB validation. No convergence claim follows from
+these packaging checks.

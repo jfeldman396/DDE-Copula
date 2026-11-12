@@ -7,9 +7,11 @@ assert(isfile(inputFile) && ~isfolder(outputDir) && ~isfile(outputDir));
 here=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','Native15_5');oldpath=path;oldrng=rng;
 cleanup=onCleanup(@()restore_state(oldpath,oldrng));
 assert(isempty(gcp('nocreate')),'Run without an active parallel pool.');
+repo=fileparts(fileparts(here));
+addpath(fullfile(repo,'Utilities'));
 addpath(fullfile(here,'frozen','common'));
 if strcmp(method,'rl')
- addpath(fullfile(here,'frozen','original_rl'),'-begin');
+ addpath(fullfile(repo,'Algorithms'),'-begin');
 else
  addpath(fullfile(here,'frozen','poisson','utilities'),'-begin');
  addpath(fullfile(here,'frozen','poisson','main algorithms','Poisson'),'-begin');

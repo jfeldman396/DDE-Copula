@@ -1,6 +1,6 @@
 PAPER FIGURES: NATIVE 15/5 SIMULATION COMPARISONS
 
-12 figures, supplied as vector PDFs and PNG previews. Paper_plots_all_12.pdf is the combined review copy. Individual PDFs in images/ retain the filenames expected by the existing paper/supplement plan.
+12 figures are retained as vector PDFs in Results/Publication/figures/native15_5. The renderer regenerates PDFs and PNG previews in its new output directory.
 
 For each J = 50, 100, 150:
   J*_B1_main_MSE.pdf and J*_B2_main_MSE.pdf: entry-wise coefficient MSE versus sample size.

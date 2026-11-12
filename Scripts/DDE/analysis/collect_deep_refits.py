@@ -6,7 +6,7 @@ import numpy as np,pandas as pd
 from scipy.io import loadmat
 parser=argparse.ArgumentParser();parser.add_argument('--root',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);args=parser.parse_args();root=args.root;out=args.output;out.mkdir(parents=True,exist_ok=True);rows=[];errors=[];counts={};failures=[]
 with h5py.File(root/'results/deeper_paper_rerun/truth.mat') as f:truth=[f[x][()].T for x in f['record/B_padded'][()].ravel()]
-for variant in ['tau','gap5','nofloor']:
+for variant in ['nofloor']:
  seen=set()
  for p in sorted((root/f'results/manuscript_deep_{variant}_20261104').glob('full*_result.mat')):
   try:

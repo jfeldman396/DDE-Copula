@@ -6,7 +6,7 @@ validateattributes(rep,{'numeric'},{'scalar','integer','>=',1,'<=',100});
 outputFile=char(outputFile);
 assert(java.io.File(outputFile).isAbsolute(),'V2:AbsolutePaths','Use an absolute output path.');
 assert(~isfile(outputFile)&&~isfolder(outputFile),'V2:FreshOutput','Output must not exist.');
-verify_v2_sources;verify_deep_input_sources;
+verify_revision_sources;
 root=fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))),'Algorithms','DDE');oldpath=path;oldrng=rng;
 cleanup=onCleanup(@()restore(oldpath,oldrng));
 addpath(genpath(fullfile(root,'CopDDE')));
