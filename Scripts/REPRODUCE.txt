@@ -5,7 +5,10 @@ retain the original repository structure. Survey code and aggregate results
 are included. Contact the author, Joe Feldman, for the original survey data.
 Raw respondent data and manuscript/response/supplement .tex files are excluded.
 
-For the proposed model itself, start with Algorithms/DDE/README.md. Its worked
+For the proposed model itself, start with Algorithms/DDE/README.md.
+Simulation and survey fits share Algorithms/DDE/cavi/full_cavi_fit.m;
+Scripts/DDE/run_cavi_case.m and Scripts/DDE/run_survey_case.m select the
+respective data and settings. Its worked
 MATLAB example uses arm 1: CAVI + tempering in warm-up, then stochastic
 approximation averaging after burn-in for MAP estimation. It explains the
 iteration schedule, outputs and implementation files.
@@ -123,7 +126,7 @@ alignment, width padding and each replication's truth/estimated Z scaling.
 5. ORDINAL SYNTHETIC EXAMPLES AND TAIL PROBABILITIES
 
 MATLAB:
-  addpath('Scripts/Publication');
+  addpath('Scripts/Publication','Scripts/DDE');
   run_revision_study('ordinal','/absolute/new/ordinal');
 Terminal:
   python Scripts/Publication/collect_ordinal.py --input-dir /absolute/new/ordinal --output-dir /absolute/new/ordinal_summary
@@ -150,7 +153,7 @@ ordinal_synthetic_vs_truth.pdf; exact historic artwork remains in Results.
 6. SYNTHETIC UNCERTAINTY, ENCLOSURE AND MIXING DIAGNOSTICS
 
 MATLAB:
-  addpath('Scripts/Publication');
+  addpath('Scripts/Publication','Scripts/DDE');
   run_revision_study('uncertainty','/absolute/new/uncertainty');
 Terminal:
   python Scripts/Publication/collect_uncertainty.py --datasets-dir /absolute/new/uncertainty --chains-dir /absolute/new/uncertainty --output-dir /absolute/new/uncertainty_summary
@@ -184,8 +187,8 @@ iVAE separately uses item-mean imputation. Ideology is used only for the
 DDE descriptive plot, but is an auxiliary training variable for iVAE.
 
 MATLAB, selected empirical model and complete Gaussian candidate study:
-  addpath('Scripts/Publication');
-  run_empirical_case('/absolute/new/survey/train_input.mat','maxima',9,'/absolute/new/dde_selected');
+  addpath('Scripts/Publication','Scripts/DDE');
+  run_survey_case('/absolute/new/survey/train_input.mat','maxima',9,'/absolute/new/dde_selected');
   run_gaussian_study('/absolute/new/survey/train_input.mat','/absolute/new/gaussian');
 
 The DDE selection is the author's frozen choice: maxima config9 in the12/4
@@ -193,7 +196,7 @@ concentration grid, third-ranked10/1 fit, not the minimum-pMSE model.
 The script performs full fitting and50 pMSE replicates. Expected endpoint:
 740iterations, MODEL_it0740_target0800.mat. It saves the full12/4 checkpoint
 as well as the selected10/1 model. To rerun the full selection grid, call
-run_empirical_case for sampler={'gibbs','maxima'} and index=0:11, each in a
+run_survey_case for sampler={'gibbs','maxima'} and index=0:11, each in a
 new directory. All24 settings/seeds are in config/empirical.json.
 
 Gaussian runs all six candidates through4000+4000 iterations per chain,
@@ -237,7 +240,7 @@ These methods use unequal information because iVAE also sees ideology.
 9. B5 POSTERIOR FIGURES FROM THE FULL SELECTED MAP STATE
 
 After section7's selected DDE fit, MATLAB:
-  addpath('Scripts/Publication');
+  addpath('Scripts/Publication','Scripts/DDE');
   run_b5_posterior('/absolute/new/dde_selected/fit','/absolute/new/b5_chains');
 Terminal:
   python Scripts/Publication/collect_b5_posterior.py --checkpoint /absolute/new/dde_selected/fit/RAW_CHECKPOINT.mat --chains-dir /absolute/new/b5_chains --output-dir /absolute/new/b5_summary

@@ -8,7 +8,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from paths import output,PACKAGE
-sys.path.insert(0,str(PACKAGE/'Algorithms/EmpiricalDDE'))
+sys.path.insert(0,str(PACKAGE/'Algorithms/DDE'))
 from dde_predict import DDEModel,calibrate,states
 from dde_embeddings import DDEEmbedder
 p=argparse.ArgumentParser(description=__doc__)

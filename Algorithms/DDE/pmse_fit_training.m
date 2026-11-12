@@ -5,9 +5,6 @@ cpdde_paths(root);options=cpdde_options(options,size(train.Y,2));
 assert(options.permit_fitting,'ConditionalDDE:FittingNotReleased','Stage1 data and predictive scoring must be validated before fitting.');
 if ~isfolder(folder),mkdir(folder);end
 sources=cpdde_sources(root);
-for name={'full_cavi_binary_partitioned','cpdde_engine_partitioned','pmse_fit_training','cma_column','r1st_cma_observed'}
- path=which(name{1});sources(end+1)=struct('name',name{1},'path',path,'sha256',partition_sha(path));
-end
 identity_file=fullfile(folder,'TRAINING_IDENTITY.mat');
 [input,training_audit,marginals]=cpdde_initial(train,options);
 assert(isequal(options.max_widths,[12 4])&&isfield(options,'layer_partitions')&&isequal(options.layer_partitions,{[6 6],[4]}));
@@ -31,7 +28,7 @@ if isfile(checkpoint)
  assert(f.arm.cap==arm.cap&&strcmp(f.arm.scheme,arm.scheme)&&f.arm.CP&&f.arm.tempering&&f.arm.warmup==60&&f.arm.SA_start==81);
  assert(f.iteration<=options.target,'ConditionalDDE:LaterCheckpoint','A later endpoint cannot replace an earlier requested budget.');
 end
-raw=cpdde_engine_partitioned(input,arm,checkpoint,options.target,true,false,true,options.cfg);
+raw=full_cavi_fit(input,arm,checkpoint,options.target,true,false,true,options.cfg);
 if options.depth==1,assert(isempty(raw.A2)&&size(raw.A2,1)==input.n&&size(raw.B2,2)==1&&isempty(raw.prop));end
 dde_assert_rank_consistency(raw.Z,input.R);
 [model,audit,full_selected]=cpdde_export(raw,training_audit,marginals,sources);
@@ -47,6 +44,3 @@ fid=fopen(fullfile(folder,sprintf('AUDIT_it%04d_target%04d.json',raw.iteration,o
 fprintf(fid,'%s\n',jsonencode(audit,'PrettyPrint',true));
 end
 
-function h=partition_sha(path)
-md=java.security.MessageDigest.getInstance('SHA-256');fid=fopen(path,'rb');assert(fid>=0);cleanup=onCleanup(@()fclose(fid));md.update(fread(fid,Inf,'*uint8'));h=lower(reshape(dec2hex(typecast(md.digest(),'uint8'),2)',1,[]));
-end

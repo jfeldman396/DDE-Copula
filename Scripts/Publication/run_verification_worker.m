@@ -25,10 +25,10 @@ for i=1:numel(plan.jobs)
     run_gaussian_study(plan.survey_input,out);
     assert(isfile(fullfile(out,'stage8k','RANKING.csv')));
    case 'empirical'
-    r=run_empirical_case(plan.survey_input,j.method,j.rep,out);assert(r.complete);
+    r=run_survey_case(plan.survey_input,j.method,j.rep,out);assert(r.complete);
    case 'b5'
     fit=fullfile(out,'selected');chains=fullfile(out,'chains');
-    r=run_empirical_case(plan.survey_input,'maxima',9,fit);assert(r.complete);
+    r=run_survey_case(plan.survey_input,'maxima',9,fit);assert(r.complete);
     run_b5_posterior(fullfile(fit,'fit'),chains);
     for c=1:4,assert(isfile(fullfile(chains,sprintf('B5_chain%d',c),'COMPLETE.json')));end
    case 'uncertainty'

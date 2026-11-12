@@ -1,4 +1,15 @@
 function [z,info]=cma_column(z,R,mu,gamma,sweeps,order)
+% Missing responses are unconstrained; observed rows retain the same kernel.
+observed=~isnan(R);
+if ~all(observed)
+ if any(observed)
+  [z(observed),info]=cma_column(z(observed),R(observed),mu(observed),gamma,sweeps,order);
+ else
+  info=struct('random_TN_draws',0,'regenerated_observations',0,'groups',0,'seconds',0);
+ end
+ z(~observed)=mu(~observed)+sqrt(gamma)*randn(sum(~observed),1);
+ info.missing_unconstrained_draws=sum(~observed);dde_assert_rank_consistency(z,R);return;
+end
 clock=tic;[levels,~,group]=unique(R,'sorted');L=numel(levels);groups=cell(L,1);means=groups;counts=groups;mapping=groups;M=zeros(L-1,1);
 for l=1:L
  groups{l}=find(group==l);[means{l},~,mapping{l}]=unique(mu(groups{l}));counts{l}=accumarray(mapping{l},1);if l<L,M(l)=max(z(groups{l}));end

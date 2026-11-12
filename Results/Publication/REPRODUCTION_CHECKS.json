@@ -280,5 +280,40 @@
     "first_nonunit_averaging_step_iteration": 91,
     "rho_at_91": 0.6155722066724582,
     "CAVI_rows_at_iteration_60": 0
+  },
+  "consolidation": {
+    "date": "2026-11-12",
+    "reference_commit": "07370b1349ce8c5f7e438837397b07325bb82160",
+    "shared_two_layer_engine": "Algorithms/DDE/cavi/full_cavi_fit.m",
+    "simulation_entry": "Scripts/DDE/run_cavi_case.m",
+    "survey_entry": "Scripts/DDE/run_survey_case.m",
+    "duplicate_implementation_files_removed": 6,
+    "package_files": 312,
+    "checks": {
+      "simulation_ordinal_posterior": {
+        "passed": true,
+        "complete_simulation_arms": 3,
+        "complete_ordinal_cases": 1,
+        "b5_missing_data_sweeps": 1
+      },
+      "shared_helpers": {
+        "passed": true,
+        "shared_engine_iterations": 95,
+        "unequal_block_partitions": true,
+        "missing_data_patterns": 3,
+        "RNG_identical": true,
+        "empty_upper_layer": true
+      },
+      "survey": {
+        "passed": true,
+        "iterations": 740,
+        "pMSE_replicates": 50
+      }
+    },
+    "comparison": "Exact model states, parameter histories, RNG states and predictive values; elapsed times and source-location metadata excluded",
+    "python_prediction_modules": "Relocated byte-for-byte; imports checked from the new path",
+    "saved_result_workflow": "Passed for 39 figure references and 10 included tables",
+    "ongoing_subset_run": "Continues in the untouched pre-consolidation checkout; separate fresh fits validate the shared engine",
+    "full_grid_verified": false
   }
 }

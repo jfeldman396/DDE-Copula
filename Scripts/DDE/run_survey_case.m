@@ -1,10 +1,10 @@
-function base=run_empirical_case(data_input,sampler,index,out,target)
+function base=run_survey_case(data_input,sampler,index,out,target)
 % Exact 12/4 empirical grid case; original data are available from the author.
 % Omit TARGET for full fitting and all50 pMSE replicates; specify only for smoke tests.
 assert(ismember(sampler,{'gibbs','maxima'})&&ismember(index,0:11));
 assert(java.io.File(out).isAbsolute()&&~isfolder(out)&&~isfile(out));
 repo=fileparts(fileparts(fileparts(mfilename('fullpath'))));oldpath=path;oldrng=rng;cleanup=onCleanup(@()restore(oldpath,oldrng));
-addpath(fullfile(repo,'Algorithms','DDE'),fullfile(repo,'Algorithms','EmpiricalDDE'));verify_revision_sources;cpdde_paths(repo);
+addpath(fullfile(repo,'Algorithms','DDE'));verify_revision_sources;cpdde_paths(repo);
 plan=jsondecode(fileread(fullfile(repo,'Scripts','Publication','config','empirical.json')));
 train=load(data_input);assert(isequal(size(train.Y),[1500 98])&&sum(isnan(train.Y),'all')==223&&isequal(train.X,fillmissing(train.Y,'constant',3)));
 % Verify the value identity rather than timestamp-dependent MAT container bytes.

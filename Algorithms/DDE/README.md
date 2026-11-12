@@ -5,6 +5,12 @@ followed by stochastic approximation averaging after burn-in**. Use **arm 1**
 (`map`) for the combined method. Arms 2 and 3 are the CAVI-only and
 tempering-only warm-up ablations used in the supplement.
 
+The simulation and survey scripts both call the single shared fitting loop
+in `cavi/full_cavi_fit.m`. Block partitions, tuning settings and missing
+responses are handled through its inputs and shared helpers. Survey
+preparation and exports also live in this folder; study orchestration lives
+in `Scripts/DDE`. The deeper model is the depth extension under `deep/`.
+
 ## Run one complete example
 
 Start MATLAB in the repository root, with the required toolboxes installed.
@@ -66,19 +72,40 @@ CAVI warm-up used by the proposed estimator, which remains included.
   [pilot_mix.m](cavi/pilot_mix.m): CAVI/exact-conditional mixture.
 - [pfs_arm.m](CopDDE/PaperFactorialStudy/pfs_arm.m): arm settings,
   warm-up length, averaging start and iteration cap.
-- [cpdde_engine_partitioned.m](../EmpiricalDDE/cpdde_engine_partitioned.m):
-  empirical fitting engine with explicit tuning parameters and partitions.
+- [run_survey_case.m](../../Scripts/DDE/run_survey_case.m): survey-data
+  preparation checks and settings for the same fitting engine.
 
 The shallow runner invokes the engine with `fullAverage=true`,
 `forceOne=false` and `useCAVI=true` for arm 1. Keep these settings to retain
 averaging of both the Gaussian and binary objectives.
+
+## Simulation and survey scripts
+
+- Simulation: `Scripts/DDE/run_cavi_case.m` (worked example above).
+- Survey: `Scripts/DDE/run_survey_case.m` (prepared data from the author).
+
+After preparing the original survey data as described in section 7 of the
+reproduction guide, run:
+
+```matlab
+addpath('Scripts/DDE');
+run_survey_case('/absolute/new/survey/train_input.mat', ...
+                'maxima', 9, '/absolute/new/dde_survey');
+```
+
+Both routes use CAVI + tempering in warm-up and stochastic averaging for
+MAP estimation. The survey route selects the original 12/4 initial widths,
+6+6/4 block partitions and published tuning settings; the simulation route
+selects its own original settings. Consolidation does not substitute one
+study's settings for another's. The ordinal two-layer examples also call
+the shared engine.
 
 ## Reproduce the paper's other settings
 
 Use [Scripts/REPRODUCE.txt](../../Scripts/REPRODUCE.txt): section 3 gives
 shallow simulations and comparisons, section 4 the deeper model, section 5
 ordinal examples, and section 7 the selected survey model. The selected
-survey command is `run_empirical_case(..., 'maxima', 9, ...)`; it also uses
+survey command is `run_survey_case(..., 'maxima', 9, ...)`; it also uses
 CAVI, tempering and stochastic averaging, with the survey-specific tuning
 configuration. Contact Joe Feldman for its original data.
 
@@ -90,7 +117,7 @@ a general-purpose `fit(Y)` interface.
 
 MATLAB R2026a, Statistics and Machine Learning Toolbox, Optimization Toolbox, and a JVM are required. Comparator entry points also use Parallel Computing Toolbox functions to check for an active pool. Numerical functions retain their research-source names and dependency folders to avoid changing function resolution. Names containing CP or earlier study labels can still identify helpers used by the current estimator; they do not mean the obsolete CP experiment is included.
 
-`verify_revision_sources.m` checks MATLAB code and synthetic truth inputs against the single [package manifest](../../Results/Publication/MANIFEST.json). Numerical kernels were preserved during packaging; the full simulation grid has not been rerun to completion. The current verification uses a representative subset at the author's request. The saved-result checks are separate from fitting validation and convergence assessment.
+`verify_revision_sources.m` checks MATLAB code and synthetic truth inputs against the single [package manifest](../../Results/Publication/MANIFEST.json). The shared engine retains each study's update order and settings; the consolidation is checked against pre-consolidation fits. The full simulation grid has not been rerun to completion. The current verification uses a representative subset at the author's request. The saved-result checks are separate from fitting validation and convergence assessment.
 
 For the deep model, input generation uses gap+5 widths and records a zero top-layer width as an initialization failure. Fitting uses beta0=.9, 60 warmup iterations, averaging from iteration 81, spikes [.01 .03 .005], concentrations [36 12 4], threshold 3*n^(-.3) without a floor, and cap 160. Do not replace the known n=500, replication=76 initialization failure with a different initialization.
 

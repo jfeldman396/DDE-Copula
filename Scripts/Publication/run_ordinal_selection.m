@@ -7,7 +7,7 @@ assert(java.io.File(out).isAbsolute()&&all(ismember(indices,1:4)));
 repo=fileparts(fileparts(fileparts(mfilename('fullpath'))));
 oldpath=path;oldrng=rng;oldroot=getenv('DDE_ORDINAL_SELECTION_ROOT');
 cleanup=onCleanup(@()restore_selection(oldpath,oldrng,oldroot));
-addpath(fullfile(repo,'Algorithms','DDE'),fullfile(repo,'Algorithms','EmpiricalDDE'));verify_revision_sources;cpdde_paths(repo);
+addpath(fullfile(repo,'Algorithms','DDE'));verify_revision_sources;cpdde_paths(repo);
 addpath(fullfile(repo,'Algorithms','DDE','CopDDE','JointSamplerAcceleration'),'-begin');
 addpath(fullfile(repo,'Algorithms','OrdinalDDE'));
 setenv('DDE_ORDINAL_SELECTION_ROOT',out);
@@ -165,7 +165,7 @@ input=struct('initial',initial,'n',size(initial.Z,1),'J',size(initial.Z,2),'R',i
 if D==2
  input.initial=struct('A1',initial.A{1},'A2',initial.A{2},'B1',initial.B{1},'B2',initial.B{2},'Z',initial.Z,'gamma',initial.gamma,'prop',initial.prop);
  arm=struct('scheme','Z','cap',600,'tempering',true,'CP',true,'warmup',60,'SA_start',81);
- cfg=struct('tau',hp.tau,'spike1',hp.t1,'spike2',hp.t2,'beta0',hp.beta0,'alpha1',hp.alpha(1),'alpha2',hp.alpha(2));raw=r1tune_fit(input,arm,checkpoint,target,true,false,true,cfg);
+ cfg=struct('tau',hp.tau,'spike1',hp.t1,'spike2',hp.t2,'beta0',hp.beta0,'alpha1',hp.alpha(1),'alpha2',hp.alpha(2));raw=full_cavi_fit(input,arm,checkpoint,target,true,false,true,cfg);
  f=struct('A',{{raw.A1,raw.A2}},'B',{{raw.B1,raw.B2}},'gamma',raw.gamma,'prop',raw.prop,'Z',raw.Z,'active',{{raw.active1,raw.active2}},'iteration',raw.iteration,'CPU',raw.CPU,'wall',raw.wall,'stabilized',raw.stabilized,'trace',{raw.trace},'stable_checks',raw.stable_checks,'hp',hp);
 else,f=r1tt_fit_deep(input,hp,checkpoint,target);end
 elapsed=toc(timer);dde_assert_rank_consistency(f.Z,input.R);

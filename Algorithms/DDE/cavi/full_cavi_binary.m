@@ -13,6 +13,15 @@ if ~isfield(options,'record_blocks'), options.record_blocks=false; end
 [N,~,K1,K2]=dde_assert_binary_model(A1,A2,Z,B1,B2,gamma,prop);
 assert(beta>0 && isfinite(beta) && sweeps>=1 && sweeps==fix(sweeps));
 assert(numel(b)==2 && all(b>=1) && all(b==fix(b) | isinf(b))); b=reshape(b,1,2);
+partitioned=isfield(options,'layer_partitions');
+if partitioned
+ assert(iscell(options.layer_partitions)&&numel(options.layer_partitions)==2);
+ for layer=1:2
+  sizes=reshape(double(options.layer_partitions{layer}),1,[]);width=[K1 K2];
+  assert(all(sizes>=1)&&all(sizes==fix(sizes))&&sum(sizes)==width(layer),'Partitioned:CoverageMismatch','Partition sizes must cover each raw layer exactly.');
+  options.layer_partitions{layer}=sizes;
+ end
+end
 timer=tic; A1=double(A1); A2=double(A2);
 vi=zeros(1,8); % rows, CP KL sum, VI KL sum, max gain, sweeps sum, max residual, seconds, max width
 L=B1(:,2:end); W=L./gamma(:); Q=L'*W;
@@ -39,9 +48,13 @@ for sweep=1:sweeps
         if K==0, continue; end
         if options.random_order, [~,order]=sort(rand(N,K),2);
         else, order=repmat(1:K,N,1); end
-        step=min(b(layer),K);
-        for start=1:step:K
-            S=order(:,start:min(start+step-1,K)); m=size(S,2);
+        if partitioned
+            sizes=options.layer_partitions{layer};ends=cumsum(sizes);starts=[1 ends(1:end-1)+1];
+        else
+            step=min(b(layer),K);starts=1:step:K;ends=min(starts+step-1,K);
+        end
+        for block=1:numel(starts)
+            S=order(:,starts(block):ends(block)); m=size(S,2);
             bits=double(dec2bin(0:2^m-1,m)-'0'); C=size(bits,1);
             if options.record_blocks, before1=A1; before2=A2; end
             if layer==2
@@ -123,6 +136,7 @@ for sweep=1:sweeps
     end
     if options.record_states, stats.states(:,:,sweep)=[A1 A2]; end
 end
+if partitioned,stats.layer_partitions=options.layer_partitions;end
 stats.switching1=stats.switchCount1/max(1,N*K1*sweeps);
 stats.switching2=stats.switchCount2/max(1,N*K2*sweeps);
 stats.multi_fraction=stats.multi_blocks/max(1,stats.eligible_multi_blocks);
