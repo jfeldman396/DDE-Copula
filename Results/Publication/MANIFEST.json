@@ -956,8 +956,8 @@
     },
     {
       "path": "Results/Publication/data/dde/CSP_AVERAGING_CHECK.csv",
-      "bytes": 6844,
-      "sha256": "be5069de0715abc37549cc241df9b62f9952394743fa235684648267a3cd402c"
+      "bytes": 6813,
+      "sha256": "94368a13a37960bec6966095e2b31fd4707eb3401a93b77dd9edcd4f7d33759a"
     },
     {
       "path": "Results/Publication/data/dde/MAIN_DIMENSION_RECOVERY.csv",
