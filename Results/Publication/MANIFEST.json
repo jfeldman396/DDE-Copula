@@ -401,8 +401,8 @@
     },
     {
       "path": "Algorithms/DDE/README.md",
-      "bytes": 7832,
-      "sha256": "88cea6127bf24c089d227b02ab55cea2d76d0866ce8e152d2e5f5b53bf20d709"
+      "bytes": 10221,
+      "sha256": "7887b12bb73f5d65d968164c085058830d14732096aed7d9788df54c24c754e9"
     },
     {
       "path": "Algorithms/DDE/cavi/cmv_cavi.m",
@@ -416,8 +416,8 @@
     },
     {
       "path": "Algorithms/DDE/cavi/full_cavi_fit.m",
-      "bytes": 5243,
-      "sha256": "bc3a869650e2e9085a3da5aef8d3388402483eec2f4a487d667826af0eaa7ed6"
+      "bytes": 6724,
+      "sha256": "e7340571f535187a108c384aebaf96e6e4dbced8e2b44188edd02c4ea2b2c93d"
     },
     {
       "path": "Algorithms/DDE/cavi/pilot_mix.m",
@@ -431,8 +431,8 @@
     },
     {
       "path": "Algorithms/DDE/cavi/r1tune_config.m",
-      "bytes": 478,
-      "sha256": "4bf4ff176239e145498b15e7a80966d441018b87d0936b148c6db0511ede3773"
+      "bytes": 660,
+      "sha256": "647de8e3df61265e1d27261d49a2d79138d64bd02084d8aa25aa1faddee124c3"
     },
     {
       "path": "Algorithms/DDE/cavi/truth/truth_J100.mat",
@@ -456,8 +456,8 @@
     },
     {
       "path": "Algorithms/DDE/cpdde_export.m",
-      "bytes": 2557,
-      "sha256": "5852ee686096a295cea8007f47e2a635b3964328d3c653a8b8556b55f29a2a6a"
+      "bytes": 2607,
+      "sha256": "577323c27ff9c4228e12d8b8bc41610ef77d477f26782d8dcf114124f984ab13"
     },
     {
       "path": "Algorithms/DDE/cpdde_initial.m",
@@ -851,8 +851,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3126,
-      "sha256": "485c2a904c0a824b0c0ff73a3025aefb7a57da1efd6741e29e2961825103e728"
+      "bytes": 3481,
+      "sha256": "17bedb4eb4b011cd6c99530161f87892c3a0f40c5958c0db275dd2bc1ff4d4b0"
     },
     {
       "path": "Results/B5_analysis.mat",
@@ -931,8 +931,8 @@
     },
     {
       "path": "Results/Publication/REPRODUCTION_CHECKS.json",
-      "bytes": 11237,
-      "sha256": "37c240819f1d6dca6c336f9cc797aca50686fd1bda60ca73234d78cf4b49592d"
+      "bytes": 16166,
+      "sha256": "8b674e81c28ed62592a43e6e110eb28a827b7ac07cd30ca3a0acd2e7aa2fb0c0"
     },
     {
       "path": "Results/Publication/THIRD_PARTY_NOTICES.txt",
@@ -953,6 +953,11 @@
       "path": "Results/Publication/data/b5/original_four_pooled_shallow.csv",
       "bytes": 102702,
       "sha256": "1b2c83edee37a6e668fa757eced4768d57b469e8b93bcd74d167d8fea6f3910d"
+    },
+    {
+      "path": "Results/Publication/data/dde/CSP_AVERAGING_CHECK.csv",
+      "bytes": 6844,
+      "sha256": "be5069de0715abc37549cc241df9b62f9952394743fa235684648267a3cd402c"
     },
     {
       "path": "Results/Publication/data/dde/MAIN_DIMENSION_RECOVERY.csv",
@@ -1360,14 +1365,19 @@
       "sha256": "4255816b1da40cbbe08c2dd35027c40c1e9570d099786fa7481746876b933273"
     },
     {
+      "path": "Scripts/DDE/check_csp_penalty_averaging.m",
+      "bytes": 4414,
+      "sha256": "0a745f1dd5b2a5b0786b9e906f8a5c7b9e8441863449b795841834f638be067f"
+    },
+    {
       "path": "Scripts/DDE/create_deep_nofloor_input.m",
       "bytes": 2592,
       "sha256": "3c59ffda4ed570957e7557602d36acaeff13076de5d831940cba1d5a6e9ca967"
     },
     {
       "path": "Scripts/DDE/run_cavi_case.m",
-      "bytes": 2587,
-      "sha256": "43618ddfa074aba8b6436bf1a4d4b5e2b9c8a7cbf209be38441e9db330805082"
+      "bytes": 2625,
+      "sha256": "b832a0417c96aa5358f9100015c42ef614594861e906e080b5d68d413e136354"
     },
     {
       "path": "Scripts/DDE/run_deep_saved_case.m",
@@ -1376,13 +1386,13 @@
     },
     {
       "path": "Scripts/DDE/run_revision_case.m",
-      "bytes": 5050,
-      "sha256": "e12bbd64bb9cbdc277dc607760f2c8332944d6d405d4eec6f2197d32c9b14ed2"
+      "bytes": 5109,
+      "sha256": "b62e0cd768a8f1c6fd2eca8aaef0dd40ce10ef9e8bdce096edca61598e02f89a"
     },
     {
       "path": "Scripts/DDE/run_survey_case.m",
-      "bytes": 3794,
-      "sha256": "67059aef2a09a102a64a1847ac76330b4a3409da68b8e5f39610a778d1a6c856"
+      "bytes": 3896,
+      "sha256": "d348235c64dd3456909818e0cc24b6442a0e2339c759db8cef4f86a548f55634"
     },
     {
       "path": "Scripts/DDE/score_deep_saved_case.m",
@@ -1411,8 +1421,8 @@
     },
     {
       "path": "Scripts/Publication/collect_empirical.py",
-      "bytes": 10811,
-      "sha256": "005fc8a38f4f28cf4bac0b20edb1e2a5fa29687e3c12c21bd6a8f65296fc3293"
+      "bytes": 10836,
+      "sha256": "15693ecb44e72307de1ff6c9bdb6cc0d29b89311159b463fc48c2f460172f7b8"
     },
     {
       "path": "Scripts/Publication/collect_ordinal.py",
@@ -1428,6 +1438,11 @@
       "path": "Scripts/Publication/collect_uncertainty.py",
       "bytes": 11284,
       "sha256": "46916c5eeab6e83482253318994dcef99361fbcdfb44b16285b3da86ed7c9b99"
+    },
+    {
+      "path": "Scripts/Publication/config.json",
+      "bytes": 52,
+      "sha256": "f09a2870add57d27665f7f9f7a2765df140abb706c5dec2a4d2f2776e4f209c7"
     },
     {
       "path": "Scripts/Publication/config/deep.json",
@@ -1463,11 +1478,6 @@
       "path": "Scripts/Publication/config/paired_simulation_seeds.csv",
       "bytes": 44615,
       "sha256": "a4cd838909d9c54e1a7c1ea6061d8608e72ebf2490d11a61ec450f92f8997477"
-    },
-    {
-      "path": "Scripts/Publication/config.json",
-      "bytes": 52,
-      "sha256": "f09a2870add57d27665f7f9f7a2765df140abb706c5dec2a4d2f2776e4f209c7"
     },
     {
       "path": "Scripts/Publication/export_document_figures.py",
@@ -1521,8 +1531,8 @@
     },
     {
       "path": "Scripts/Publication/run_b5_posterior.m",
-      "bytes": 928,
-      "sha256": "7958cfb5774433c534c3bd0b2cebe30f6ef00d024eee1c93e8bc461325d2582c"
+      "bytes": 920,
+      "sha256": "b86298085eef277904b59ee29de8f0e453f389943de8c68dbf88572092d294c6"
     },
     {
       "path": "Scripts/Publication/run_gaussian_study.m",
@@ -1571,8 +1581,8 @@
     },
     {
       "path": "Scripts/REPRODUCE.txt",
-      "bytes": 19871,
-      "sha256": "fa8c162fb9e4f5014a7fbae0bf9c848e07af8d7a6972ce40cd0439bfc7dc1748"
+      "bytes": 22084,
+      "sha256": "7cd7dd4f3a2f510753a01d62a18ed97bcfe24efb489e4479042c189200768392"
     },
     {
       "path": "Scripts/Sim_Overspecified.m",

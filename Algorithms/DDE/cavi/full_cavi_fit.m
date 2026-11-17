@@ -9,6 +9,17 @@ if ~isempty(path)&&isfile(path),s=load(path,'record');f=s.record;else
  f=input.initial;K1=size(f.A1,2);K2=size(f.A2,2);f.B1=min(max(f.B1,-10),10);f.B2=min(max(f.B2,[-5 -10*ones(1,K2)]),10);f.prop=min(max(f.prop,1e-6),1-1e-6);f.state1=[];f.state2=[];f.active1=true(1,K1);f.active2=true(1,K2);f.accum=[];f.iteration=0;f.stable_checks=0;f.stabilized=false;f.history={};f.trace={};f.stoplog={};f.CPU=0;f.wall=0;f.warm_CPU=0;f.warm_wall=0;f.arm=arm;f.seed=input.algorithm_seed;f.J=input.J;f.n=input.n;f.replication=input.replication;
 end
 if ~isfield(f,"objective_accum"),f.objective_accum=[];end
+% A changed averaging mode cannot reuse an incompatible stochastic history.
+averageCSP=cfg.csp_penalty_averaging && ~strcmp(arm.scheme,'H0');
+if isfield(f,'csp_penalty_averaging')
+ assert(f.csp_penalty_averaging==cfg.csp_penalty_averaging,'CAVI:CSPModeMismatch','Checkpoint CSP averaging mode differs from the requested mode.');
+elseif averageCSP && f.iteration>=arm.SA_start
+ error('CAVI:MissingCSPHistory','Old post-SAEM checkpoint has no CSP penalty history; restart from initialization or a checkpoint before SAEM.');
+end
+f.csp_penalty_averaging=cfg.csp_penalty_averaging;
+if ~isfield(f,'csp_penalty_accum'),f.csp_penalty_accum=[];end
+assert(~averageCSP || f.iteration<arm.SA_start || ~isempty(f.csp_penalty_accum),'CAVI:MissingCSPHistory','CSP penalty accumulator is missing after SAEM has started.');
+
 if explicitConfig
  if isfield(f,'tuning_config'),assert(isequaln(f.tuning_config,cfg),'Tuning:ResumeConfigMismatch','Checkpoint hyperparameters differ from requested settings.');else,f.tuning_config=cfg;end
 end
@@ -27,6 +38,19 @@ for it=f.iteration+1:min(target,arm.cap)
   if isempty(f.accum),f.accum=S;else,for key=["G" "H" "ZZ"],f.accum.(key)=(1-rho)*f.accum.(key)+rho*S.(key);end;end;S=f.accum;
  end
  rng(mod(input.algorithm_seed+10007*it+3,2^32-1),'twister');tc=tic;[f.theta2,f.state2,f.active2]=pcs_csp_update(f.B2,cfg.spike2,f.state2,sum(f.active1),cfg.alpha2);[f.theta,f.state1,f.active1]=pcs_csp_update(f.B1,cfg.spike1,f.state1,J,cfg.alpha1);w1=[zeros(J,1),1./f.theta];w2=[zeros(size(f.B2,1),1),1./f.theta2];
+ % The Laplace penalty is |B|/theta: average reciprocal scales, not theta.
+ % Intercepts remain unpenalized. Use the likelihood's exact SAEM step size.
+ if averageCSP && it>=arm.SA_start
+  if isempty(f.csp_penalty_accum)||rho==1
+   f.csp_penalty_accum=struct('w1',w1,'w2',w2);
+  else
+   assert(isequal(size(f.csp_penalty_accum.w1),size(w1))&&isequal(size(f.csp_penalty_accum.w2),size(w2)),'CAVI:CSPDimensions');
+   f.csp_penalty_accum.w1=(1-rho)*f.csp_penalty_accum.w1+rho*w1;
+   f.csp_penalty_accum.w2=(1-rho)*f.csp_penalty_accum.w2+rho*w2;
+  end
+  w1=f.csp_penalty_accum.w1;w2=f.csp_penalty_accum.w2;
+ end
+
  [f.B1,s1]=sob_cm(X,f.Z,f.B1,w1,f.gamma/beta,S);rss=S.ZZ-2*sum(f.B1.*S.H',2)+sum((f.B1*S.G).*f.B1,2);assert(all(rss>=-1e-7*(1+S.ZZ)),'PFS:NegativeRSS');f.gamma=(1+.5*beta*max(rss,0))/(2+.5*beta*N);
  if fullAverage && ~strcmp(arm.scheme,'H0') && it>=arm.SA_start
   ta=tic;f.objective_accum=foa_accumulate(f.objective_accum,f.A1,f.A2,rho);accumSeconds=toc(ta);
@@ -46,7 +70,7 @@ for it=f.iteration+1:min(target,arm.cap)
  f.history{it}=struct('B1',p1,'B2',p2,'gamma',f.gamma,'prop',f.prop,'active1',f.active1,'active2',f.active2);
  [stable,stop]=lsa_stop(f.history,it,arm,c);if stop.eligible,if stable,f.stable_checks=f.stable_checks+1;else,f.stable_checks=0;end;end
  mem=whos('f');aMem=0;nc=0;if ~isempty(f.objective_accum),a2=f.objective_accum;wm=whos('a2');aMem=wm.bytes;nc=size(a2.config,1);end
- f.trace{it}=struct('accumulator_bytes',aMem,'state_bytes',mem.bytes,'configurations',nc,'accumulation_seconds',accumSeconds,'beta',beta,'lambda',lambda,'rho',rho,'K1',sum(f.active1),'K2',sum(f.active2),'CPU',f.CPU,'wall',f.wall,'binary_seconds',binary,'gaussian_seconds',gaussian,'parameter_seconds',parameter,'flags',sum(~s1.converged)+sum(~s2.converged),'KKT',max([s1.scaled_kkt_residual;s2.scaled_kkt_residual]));f.trace{it}.vi=binaryStats.vi;f.stoplog{it}=stop;f.iteration=it;f.rng=rng;
+ f.trace{it}=struct('accumulator_bytes',aMem,'state_bytes',mem.bytes,'configurations',nc,'accumulation_seconds',accumSeconds,'beta',beta,'lambda',lambda,'rho',rho,'K1',sum(f.active1),'K2',sum(f.active2),'CPU',f.CPU,'wall',f.wall,'binary_seconds',binary,'gaussian_seconds',gaussian,'parameter_seconds',parameter,'flags',sum(~s1.converged)+sum(~s2.converged),'KKT',max([s1.scaled_kkt_residual;s2.scaled_kkt_residual]));f.trace{it}.vi=binaryStats.vi;f.trace{it}.csp_penalties_averaged=averageCSP&&it>=arm.SA_start;f.stoplog{it}=stop;f.iteration=it;f.rng=rng;
  f.stabilized=f.stable_checks>=c.required_checks;
  if ~isempty(path)&&(mod(it,c.checkpoint_every)==0||it==target||f.stabilized),cf_save(path,f);end
  if f.stabilized,break;end

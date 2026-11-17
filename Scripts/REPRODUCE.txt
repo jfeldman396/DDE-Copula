@@ -13,6 +13,46 @@ MATLAB example uses arm 1: CAVI + tempering in warm-up, then stochastic
 approximation averaging after burn-in for MAP estimation. It explains the
 iteration schedule, outputs and implementation files.
 
+ESTIMATOR VERSION: CURRENT FITS VERSUS SAVED PAPER REFERENCES
+
+As of November 17, 2026, the shared two-layer DDE engine averages both
+layers' CSP penalty coefficients (1/theta) using the same SAEM weights as
+the likelihood statistics. Simulation and survey entry points use this
+update by default; the ordinal two-layer models inherit it as well.
+The simulation threshold remains max(.3,3*n^(-.3)); survey thresholds retain
+their original tuning values. New fits can have different coefficients,
+dimensions or stopping iterations from the saved paper references.
+
+Section 1 still reproduces the saved figures/tables from this branch.
+For EXACT HISTORICAL FRESH-FIT reproduction against those saved references,
+use a separate clone and select the last pre-change commit before running
+the fitting commands in sections 3-11:
+
+  git clone --branch estimation-v2 https://github.com/jfeldman396/DDE-Copula.git DDE-Copula-paper
+  cd DDE-Copula-paper
+  git switch --detach 6a3e02d51565ee12adf0f8a824935ef82d4523ff
+
+The fixed endpoint/selection expectations and exact-match checker below
+refer to that historical version. To fit the UPDATED estimator, remain on
+estimation-v2 and use the same simulation/survey commands with new output
+directories; inspect the actual model filenames and returned iterations.
+The fresh-result checker compares historical numerical references, so an
+updated fit is not expected to pass that equality check. Neither a changed
+endpoint nor completing a budget is evidence of convergence.
+
+New checkpoints save both CSP penalty accumulators. Do not resume an old
+post-SAEM checkpoint with the updated estimator: its penalty history was
+not recorded. Start a new fit. The shared engine rejects missing histories
+and changes of averaging mode; the survey adapter also checks source/data
+identity. A short implementation check is available in MATLAB:
+
+  addpath('Scripts/DDE');
+  check_csp_penalty_averaging('/absolute/new/csp_check');
+
+The five-replication J=100 comparison and current implementation checks are
+in Results/Publication/REPRODUCTION_CHECKS.json. Per-replication sensitivity
+results are in Results/Publication/data/dde/CSP_AVERAGING_CHECK.csv.
+
 1. QUICK START: ALL SAVED RESULTS, WITHOUT FITTING
 
   git clone --branch estimation-v2 https://github.com/jfeldman396/DDE-Copula.git
@@ -193,7 +233,8 @@ MATLAB, selected empirical model and complete Gaussian candidate study:
 
 The DDE selection is the author's frozen choice: maxima config9 in the12/4
 concentration grid, third-ranked10/1 fit, not the minimum-pMSE model.
-The script performs full fitting and50 pMSE replicates. Expected endpoint:
+The script performs full fitting and50 pMSE replicates. Historical endpoint
+(at the pre-change commit above):
 740iterations, MODEL_it0740_target0800.mat. It saves the full12/4 checkpoint
 as well as the selected10/1 model. To rerun the full selection grid, call
 run_survey_case for sampler={'gibbs','maxima'} and index=0:11, each in a

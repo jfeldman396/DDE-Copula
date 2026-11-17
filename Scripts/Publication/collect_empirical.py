@@ -12,7 +12,7 @@ sys.path.insert(0,str(PACKAGE/'Algorithms/DDE'))
 from dde_predict import DDEModel,calibrate,states
 from dde_embeddings import DDEEmbedder
 p=argparse.ArgumentParser(description=__doc__)
-p.add_argument('--model',type=Path,required=True,help='MODEL_it0740_target0800.mat from selected maxima config9')
+p.add_argument('--model',type=Path,required=True,help='MODEL_it*_target*.mat from selected maxima config9; use the actual fitting output')
 p.add_argument('--data',type=Path,required=True,help='Original author-provided survey CSV')
 p.add_argument('--dde-scores',type=Path,required=True,help='Fresh selected DDE PMSE_REPLICATES.csv')
 p.add_argument('--gaussian-dir',type=Path,required=True,help='Fresh run_gaussian_study stage8k directory')

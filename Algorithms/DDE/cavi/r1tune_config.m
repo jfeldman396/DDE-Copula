@@ -1,10 +1,11 @@
 function cfg=r1tune_config(cfg)
-% Default settings reproduce the frozen current estimator exactly.
+% Shared MAP defaults; CSP penalties join likelihood averaging in SAEM.
 if nargin<1,cfg=struct;end
-defaults=struct('spike1',.05,'spike2',.1,'tau',NaN,'beta0',.7,'alpha1',15,'alpha2',5);
+defaults=struct('spike1',.05,'spike2',.1,'tau',NaN,'beta0',.7,'alpha1',15,'alpha2',5,'csp_penalty_averaging',true);
 for key=string(fieldnames(defaults))'
  if ~isfield(cfg,key),cfg.(key)=defaults.(key);end
 end
+assert(islogical(cfg.csp_penalty_averaging)&&isscalar(cfg.csp_penalty_averaging),'CAVI:CSPMode','csp_penalty_averaging must be a logical scalar.');
 assert(cfg.spike1>0 && cfg.spike2>0 && cfg.alpha1>0 && cfg.alpha2>0);
 assert(cfg.beta0>0 && cfg.beta0<=1);
 assert(isnan(cfg.tau) || (isfinite(cfg.tau) && cfg.tau>=0));

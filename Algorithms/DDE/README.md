@@ -1,7 +1,8 @@
 # Proposed DDE model: fitting and implementation
 
 The proposed MAP estimator combines **CAVI and tempering during warm-up,
-followed by stochastic approximation averaging after burn-in**. Use **arm 1**
+followed by stochastic approximation averaging of likelihood statistics and
+CSP penalties after burn-in**. Use **arm 1**
 (`map`) for the combined method. Arms 2 and 3 are the CAVI-only and
 tempering-only warm-up ablations used in the supplement.
 
@@ -48,19 +49,56 @@ from reaching the iteration cap.
 2. **Post-warm-up burn-in, iterations 61–80.** Updates use beta=1 and
    lambda=1. Parameters are still updated from the current latent draw.
 3. **Stochastic averaging, from iteration 81.** The Gaussian sufficient
-   statistics and the binary complete-data objective are accumulated and
+   statistics, binary complete-data objective and both layers' CSP penalty
+   coefficients are accumulated and
    used in the penalized conditional maximization steps for MAP estimation.
    With `k = iteration - 80`, the step size is 1 for k=1,...,10, then
    `rho = (k - 9)^(-0.7)`. Thus the accumulator is initialized from iteration
    81, and averaging across successive draws begins at iteration 91.
 
 The averaged quantities include the Gaussian cross-products, the binary
-configuration counts/response totals and top-layer occupancies. This is
+configuration counts/response totals, top-layer occupancies and reciprocal
+CSP scales. For each loading layer, `w = [0, 1./theta]` and
+`w_bar = (1-rho)*w_bar + rho*w`; conditional maximization uses `w_bar`.
+The zero intercept column stays unpenalized. The current CSP state/scales
+remain available for the next CSP update; only the penalty coefficients
+enter this accumulator. This is
 stochastic approximation of the MAP objective; it does not produce posterior
 credible intervals or an arithmetic average of the fitted B matrices.
 The separate posterior-sampling scripts handle the supplement's interval
 analyses. The excluded variational-interval pilot is separate from the
 CAVI warm-up used by the proposed estimator, which remains included.
+
+## CSP penalty averaging and checkpoints
+
+CSP penalty averaging is enabled by default for simulation and survey fits.
+`fit.csp_penalty_accum.w1` and `.w2` retain the two accumulators, and
+`fit.trace{iteration}.csp_penalties_averaged` records when they are used.
+They start with the same SAEM schedule as the likelihood accumulators.
+The shallow simulation threshold remains `max(.3,3*n^(-.3))`; survey fits
+retain their configured thresholds, missing responses and block partitions.
+
+Resume a new fit using its own checkpoint. An old checkpoint after SAEM
+started lacks the needed CSP penalty history and is rejected; begin a new
+fit. The survey adapter also binds resumes to the data, settings and source
+identity. Setting `cfg.csp_penalty_averaging=false` explicitly when calling
+the shared engine retains the previous instantaneous-penalty update for
+controlled comparisons; changing modes within a fit is rejected.
+
+A small deterministic check covers both layers, missing responses, unequal
+partitions, the weighted-sum identity, exact resume and unsafe-checkpoint
+rejection:
+
+```matlab
+addpath('Scripts/DDE');
+check_csp_penalty_averaging('/absolute/new/csp_check');
+```
+
+The 30-fit J=100 sensitivity comparison is recorded in
+[REPRODUCTION_CHECKS.json](../../Results/Publication/REPRODUCTION_CHECKS.json)
+and [CSP_AVERAGING_CHECK.csv](../../Results/Publication/data/dde/CSP_AVERAGING_CHECK.csv).
+All five replications at each of six sample sizes recovered 10/3 dimensions.
+This check does not replace the complete simulation study.
 
 ## Where the implementation lives
 
@@ -108,6 +146,14 @@ ordinal examples, and section 7 the selected survey model. The selected
 survey command is `run_survey_case(..., 'maxima', 9, ...)`; it also uses
 CAVI, tempering and stochastic averaging, with the survey-specific tuning
 configuration. Contact Joe Feldman for its original data.
+
+Saved paper results predate the CSP penalty averaging update. For exact
+historical numerical reproduction, use commit
+`6a3e02d51565ee12adf0f8a824935ef82d4523ff` as described in the reproduction
+guide. Current fits use the updated estimator and can have different
+coefficients and stopping iterations. The ordinal two-layer fits also use
+the updated shared engine. The deep extension and separate posterior
+sampler/initializer are unchanged by this update.
 
 The example above generates a paper simulation; it is not an arbitrary-data
 loader. The survey reproduction wrapper checks the exact original data.

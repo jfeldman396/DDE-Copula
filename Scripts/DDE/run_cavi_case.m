@@ -19,7 +19,7 @@ mkdir(fullfile('results','layer_specific_saem_study','inputs'));
 mkdir(fullfile('results','paper_cp_comparison'));copyfile(fullfile(outputDir,'cavi','truth','*.mat'),fullfile('results','paper_cp_comparison'));
 
 arm=pfs_arm(armID);if nargin<6,iterationLimit=arm.cap;end;validateattributes(iterationLimit,{'numeric'},{'scalar','integer','>=',1,'<=',arm.cap});
-job=struct('protocol','maxima_CAVI_full_objective_v1','J',J,'n',N,'replication',replication,'arm',arm,'source_manifest',manifest,'baseline_manifest',baselineManifest,'iteration_limit',iterationLimit,'entry_point','run_cavi_case','shared_prefix_used',false);
+job=struct('protocol','maxima_CAVI_full_objective_CSP_SAEM_v2','J',J,'n',N,'replication',replication,'arm',arm,'source_manifest',manifest,'baseline_manifest',baselineManifest,'iteration_limit',iterationLimit,'entry_point','run_cavi_case','shared_prefix_used',false,'csp_penalty_averaging',true);
 save('job.mat','job');
 input=lsa_input(J,N,replication);
 fit=full_cavi_fit(input,arm,fullfile(outputDir,'checkpoint.mat'),iterationLimit,true,false,armID~=3);
