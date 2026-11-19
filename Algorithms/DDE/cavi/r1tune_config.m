@@ -1,5 +1,5 @@
 function cfg=r1tune_config(cfg)
-% Shared MAP defaults; CSP penalties join likelihood averaging in SAEM.
+% Shared MAP defaults; B.4-B.5 statistics use the likelihood's SAEM weights.
 if nargin<1,cfg=struct;end
 defaults=struct('spike1',.05,'spike2',.1,'tau',NaN,'beta0',.7,'alpha1',15,'alpha2',5,'csp_penalty_averaging',true);
 for key=string(fieldnames(defaults))'

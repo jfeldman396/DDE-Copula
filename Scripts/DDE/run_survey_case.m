@@ -21,7 +21,7 @@ for budget=targets
  options.target=budget;[model,audit]=pmse_fit_training(repo,train,options,fullfile(out,'fit'));
  if audit.stabilized||budget==plan.cap,break;end
 end
-base=struct('csp_penalty_averaging',model.cfg.csp_penalty_averaging,'sampler',sampler,'config_id',index,'cfg',e.cfg,'fit_seed',e.fit_seed,'widths',model.widths,'iterations',model.iterations,'stabilized',audit.stabilized,'eligible',audit.eligible,'CM_flags',audit.CM_flags,'complete',nargin<5);
+base=struct('csp_update_version',audit.csp_update_version,'csp_penalty_averaging',model.cfg.csp_penalty_averaging,'sampler',sampler,'config_id',index,'cfg',e.cfg,'fit_seed',e.fit_seed,'widths',model.widths,'iterations',model.iterations,'stabilized',audit.stabilized,'eligible',audit.eligible,'CM_flags',audit.CM_flags,'complete',nargin<5);
 if nargin>=5,base.status='SMOKE_ONLY_NO_SCORES';writejson(fullfile(out,'STATUS.json'),base);return;end
 if ~audit.eligible||~audit.stabilized,base.status='PRESERVED_NOT_RANKABLE';writejson(fullfile(out,'COMPLETE.json'),base);return;end
 rows=struct([]);

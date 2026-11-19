@@ -2,7 +2,7 @@
 
 The proposed MAP estimator combines **CAVI and tempering during warm-up,
 followed by stochastic approximation averaging of likelihood statistics and
-CSP penalties after burn-in**. Use **arm 1**
+CSP objective statistics after burn-in**. Use **arm 1**
 (`map`) for the combined method. Arms 2 and 3 are the CAVI-only and
 tempering-only warm-up ablations used in the supplement.
 
@@ -49,56 +49,68 @@ from reaching the iteration cap.
 2. **Post-warm-up burn-in, iterations 61–80.** Updates use beta=1 and
    lambda=1. Parameters are still updated from the current latent draw.
 3. **Stochastic averaging, from iteration 81.** The Gaussian sufficient
-   statistics, binary complete-data objective and both layers' CSP penalty
-   coefficients are accumulated and
+   statistics, binary complete-data objective and both layers' CSP statistics
+   from B.4-B.5 are accumulated and
    used in the penalized conditional maximization steps for MAP estimation.
    With `k = iteration - 80`, the step size is 1 for k=1,...,10, then
    `rho = (k - 9)^(-0.7)`. Thus the accumulator is initialized from iteration
    81, and averaging across successive draws begins at iteration 91.
 
-The averaged quantities include the Gaussian cross-products, the binary
-configuration counts/response totals, top-layer occupancies and reciprocal
-CSP scales. For each loading layer, `w = [0, 1./theta]` and
-`w_bar = (1-rho)*w_bar + rho*w`; conditional maximization uses `w_bar`.
-The zero intercept column stays unpenalized. The current CSP state/scales
-remain available for the next CSP update; only the penalty coefficients
-enter this accumulator. This is
-stochastic approximation of the MAP objective; it does not produce posterior
-credible intervals or an arithmetic average of the fitted B matrices.
-The separate posterior-sampling scripts handle the supplement's interval
-analyses. The excluded variational-interval pilot is separate from the
-CAVI warm-up used by the proposed estimator, which remains included.
+The CSP update implements equations B.4-B.5. Given the entering allocation,
+it draws the sticks and **every** slab scale, including inactive scales from
+InverseGamma(1,5). The number of coefficient prior factors is the number of
+rows in the loading matrix, including rows fixed at zero. After burn-in it
+accumulates `log(omega)`, `log(slab)` and `1/slab` using the likelihood's step
+size. Before accumulation, it uses the current draws (rho=1).
 
-## CSP penalty averaging and checkpoints
+Each candidate allocation selects the spike or slab branch of this same
+accumulated prior objective. The selected allocation sets the loading penalty
+to `1/spike` or the accumulated slab precision. Allocations/activity indicators
+remain discrete MAP decisions; neither they nor fitted B matrices are averaged.
+In particular, the algorithm does NOT average penalties already selected by
+historical activity indicators. Intercepts remain unpenalized.
 
-CSP penalty averaging is enabled by default for simulation and survey fits.
-`fit.csp_penalty_accum.w1` and `.w2` retain the two accumulators, and
-`fit.trace{iteration}.csp_penalties_averaged` records when they are used.
-They start with the same SAEM schedule as the likelihood accumulators.
-The shallow simulation threshold remains `max(.3,3*n^(-.3))`; survey fits
-retain their configured thresholds, missing responses and block partitions.
+Hard loading thresholding, inactive-child row gating, and final column pruning
+retain the existing study rules. These operations are distinct from the
+conditional CSP maximization in B.5. The numerical checks verify the CSP block;
+they are not a convergence proof for the entire thresholded/gated algorithm.
+Separate posterior-sampling scripts handle interval analyses. The excluded
+variational-interval pilot is separate from CAVI warm-up, which remains included.
 
-Resume a new fit using its own checkpoint. An old checkpoint after SAEM
-started lacks the needed CSP penalty history and is rejected; begin a new
-fit. The survey adapter also binds resumes to the data, settings and source
-identity. Setting `cfg.csp_penalty_averaging=false` explicitly when calling
-the shared engine retains the previous instantaneous-penalty update for
-controlled comparisons; changing modes within a fit is rejected.
+## CSP statistics and checkpoints
 
-A small deterministic check covers both layers, missing responses, unequal
-partitions, the weighted-sum identity, exact resume and unsafe-checkpoint
-rejection:
+Both simulation and survey fits use `csp_update_version='B4_B5_v1'`.
+`fit.state1.average` and `fit.state2.average` contain the three accumulated
+statistics (`logomega`, `logslab`, `precision`). Each state also records the
+latest draw, conditioning allocation, slab conditional parameters and B.5
+candidate scores. `fit.csp_penalty_weights.w1` and `.w2` contain the selected
+CM weights, including a zero intercept column. `theta`/`theta2` are effective
+CM scales; the sampled slab scales are `state1.slab`/`state2.slab`.
+
+The simulation threshold remains `max(.3,3*n^(-.3))`; the selected survey
+threshold is 0.4. Missing responses and block partitions are unchanged.
+
+Resume only a checkpoint produced by this implementation. **All older
+checkpoints, including warm-up checkpoints, are rejected:** B.4-B.5 also changes
+warm-up. Restart from initialization. The survey adapter additionally checks
+source/data identity. `cfg.csp_penalty_averaging=false` disables accumulation
+of the CSP statistics for controlled comparisons, but still uses B.4-B.5 with
+current draws. It does not restore either historical estimator.
+
+Run the independent B.4-B.5 checks (direct complete-prior enumeration, inactive
+scales, zero rows, both layers, missing data, unequal partitions, exact resume,
+and incompatible checkpoints):
 
 ```matlab
 addpath('Scripts/DDE');
 check_csp_penalty_averaging('/absolute/new/csp_check');
 ```
 
-The 30-fit J=100 sensitivity comparison is recorded in
-[REPRODUCTION_CHECKS.json](../../Results/Publication/REPRODUCTION_CHECKS.json)
-and [CSP_AVERAGING_CHECK.csv](../../Results/Publication/data/dde/CSP_AVERAGING_CHECK.csv).
-All five replications at each of six sample sizes recovered 10/3 dimensions.
-This check does not replace the complete simulation study.
+The J=100 comparison and selected survey comparison are recorded under
+`csp_b45` in [REPRODUCTION_CHECKS.json](../../Results/Publication/REPRODUCTION_CHECKS.json).
+The earlier penalty-only check remains separately labeled as historical.
+See [Scripts/REPRODUCE.txt](../../Scripts/REPRODUCE.txt) for the exact 30-fit commands.
+A five-replication sensitivity check does not replace the complete study.
 
 ## Where the implementation lives
 
@@ -106,6 +118,8 @@ This check does not replace the complete simulation study.
   example, input generation and combined-method selection.
 - [full_cavi_fit.m](cavi/full_cavi_fit.m): complete MAP fitting loop,
   warm-up schedule, accumulators and parameter updates.
+- [csp_b45_update.m](cavi/csp_b45_update.m): B.4 draws, accumulated prior
+  statistics and B.5 allocation/penalty updates.
 - [full_cavi_binary.m](cavi/full_cavi_binary.m) and
   [pilot_mix.m](cavi/pilot_mix.m): CAVI/exact-conditional mixture.
 - [pfs_arm.m](CopDDE/PaperFactorialStudy/pfs_arm.m): arm settings,
@@ -147,7 +161,7 @@ survey command is `run_survey_case(..., 'maxima', 9, ...)`; it also uses
 CAVI, tempering and stochastic averaging, with the survey-specific tuning
 configuration. Contact Joe Feldman for its original data.
 
-Saved paper results predate the CSP penalty averaging update. For exact
+Saved paper results predate both CSP updates (penalty-only and B.4-B.5). For exact
 historical numerical reproduction, use commit
 `6a3e02d51565ee12adf0f8a824935ef82d4523ff` as described in the reproduction
 guide. Current fits use the updated estimator and can have different

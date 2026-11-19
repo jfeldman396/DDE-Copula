@@ -401,13 +401,18 @@
     },
     {
       "path": "Algorithms/DDE/README.md",
-      "bytes": 10221,
-      "sha256": "7887b12bb73f5d65d968164c085058830d14732096aed7d9788df54c24c754e9"
+      "bytes": 11214,
+      "sha256": "105cd3071e286697ed831a9ad4af4b093274025cd26c02443a910ba7c7614cf1"
     },
     {
       "path": "Algorithms/DDE/cavi/cmv_cavi.m",
       "bytes": 3164,
       "sha256": "d7ef10c67fb0aee9632f3b29b8d685039ff017b8f6ff94a632fec6216a23b73a"
+    },
+    {
+      "path": "Algorithms/DDE/cavi/csp_b45_update.m",
+      "bytes": 2635,
+      "sha256": "a89b83fb5a34efc94bb9d002ce730c6ae39daea567dacdc356bc6eccca1a2732"
     },
     {
       "path": "Algorithms/DDE/cavi/full_cavi_binary.m",
@@ -416,8 +421,8 @@
     },
     {
       "path": "Algorithms/DDE/cavi/full_cavi_fit.m",
-      "bytes": 6724,
-      "sha256": "e7340571f535187a108c384aebaf96e6e4dbced8e2b44188edd02c4ea2b2c93d"
+      "bytes": 6335,
+      "sha256": "c297113829960399102a57f4bbfbfac23e7dccf1f642174e86cb1f7dfbc5647b"
     },
     {
       "path": "Algorithms/DDE/cavi/pilot_mix.m",
@@ -431,8 +436,8 @@
     },
     {
       "path": "Algorithms/DDE/cavi/r1tune_config.m",
-      "bytes": 660,
-      "sha256": "647de8e3df61265e1d27261d49a2d79138d64bd02084d8aa25aa1faddee124c3"
+      "bytes": 665,
+      "sha256": "8bd49ee23654d1b77cb322817f19b0171c598d852320925d982dd49d39dcd203"
     },
     {
       "path": "Algorithms/DDE/cavi/truth/truth_J100.mat",
@@ -456,8 +461,8 @@
     },
     {
       "path": "Algorithms/DDE/cpdde_export.m",
-      "bytes": 2607,
-      "sha256": "577323c27ff9c4228e12d8b8bc41610ef77d477f26782d8dcf114124f984ab13"
+      "bytes": 2695,
+      "sha256": "8e7b8548b7ea3830182498cdcd39312ac1d1a29eb9c37178a7895ed916321dd3"
     },
     {
       "path": "Algorithms/DDE/cpdde_initial.m",
@@ -477,7 +482,7 @@
     {
       "path": "Algorithms/DDE/cpdde_sources.m",
       "bytes": 1217,
-      "sha256": "ae0dedb79c52a1e1a457932fe05ab96298172176d4de3b996578620a1f73aca0"
+      "sha256": "9566baefe2f1a59ea571343e3dc8b713da97f856814e1b38df445d0e40834945"
     },
     {
       "path": "Algorithms/DDE/dde_embeddings.py",
@@ -851,8 +856,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3481,
-      "sha256": "17bedb4eb4b011cd6c99530161f87892c3a0f40c5958c0db275dd2bc1ff4d4b0"
+      "bytes": 3552,
+      "sha256": "053a51fa3d372a075c81d316bb899b823112e053bcf463fb40e9af1def301f6e"
     },
     {
       "path": "Results/B5_analysis.mat",
@@ -931,8 +936,8 @@
     },
     {
       "path": "Results/Publication/REPRODUCTION_CHECKS.json",
-      "bytes": 16166,
-      "sha256": "8b674e81c28ed62592a43e6e110eb28a827b7ac07cd30ca3a0acd2e7aa2fb0c0"
+      "bytes": 145498,
+      "sha256": "104fcc97a2c0e3d86f0f313a4463c48131a633b142efaeb4bca6900f857bebfe"
     },
     {
       "path": "Results/Publication/THIRD_PARTY_NOTICES.txt",
@@ -1340,6 +1345,11 @@
       "sha256": "ae84a3fb059a96a882d85e72eaf6a218d39cd93ea25de1c332fb7679c4e26f0f"
     },
     {
+      "path": "Scripts/DDE/analysis/compare_csp_b45.py",
+      "bytes": 7786,
+      "sha256": "645bec51dd195e881518a68372b51320677b88b9992f02e4f184f432825e4137"
+    },
+    {
       "path": "Scripts/DDE/analysis/nofloor_weight_review.py",
       "bytes": 2848,
       "sha256": "e7cc3017a68358abd40a08017a4c14edf020e81687a3ff97609433b7d25640e2"
@@ -1366,8 +1376,8 @@
     },
     {
       "path": "Scripts/DDE/check_csp_penalty_averaging.m",
-      "bytes": 4414,
-      "sha256": "0a745f1dd5b2a5b0786b9e906f8a5c7b9e8441863449b795841834f638be067f"
+      "bytes": 5769,
+      "sha256": "23d901738553a222b44be3b353c4abaff50bfb6f99aedeeea3b6cea84d058bf2"
     },
     {
       "path": "Scripts/DDE/create_deep_nofloor_input.m",
@@ -1376,8 +1386,8 @@
     },
     {
       "path": "Scripts/DDE/run_cavi_case.m",
-      "bytes": 2625,
-      "sha256": "b832a0417c96aa5358f9100015c42ef614594861e906e080b5d68d413e136354"
+      "bytes": 2643,
+      "sha256": "d0fb68df348cbac504c9c637231a2cbb716a17ddce3b37c23dab0aab2e79253a"
     },
     {
       "path": "Scripts/DDE/run_deep_saved_case.m",
@@ -1386,13 +1396,13 @@
     },
     {
       "path": "Scripts/DDE/run_revision_case.m",
-      "bytes": 5109,
-      "sha256": "b62e0cd768a8f1c6fd2eca8aaef0dd40ce10ef9e8bdce096edca61598e02f89a"
+      "bytes": 5162,
+      "sha256": "ab781d8da9cbeb608f07233a55fb4fffeca115a0e0a876a0734937ef3fc95fb6"
     },
     {
       "path": "Scripts/DDE/run_survey_case.m",
-      "bytes": 3896,
-      "sha256": "d348235c64dd3456909818e0cc24b6442a0e2339c759db8cef4f86a548f55634"
+      "bytes": 3942,
+      "sha256": "f7f31d27ac2715074f4ede022ac2dedbd0c39cb501a587603909d459a4d07eed"
     },
     {
       "path": "Scripts/DDE/score_deep_saved_case.m",
@@ -1581,8 +1591,8 @@
     },
     {
       "path": "Scripts/REPRODUCE.txt",
-      "bytes": 22084,
-      "sha256": "7cd7dd4f3a2f510753a01d62a18ed97bcfe24efb489e4479042c189200768392"
+      "bytes": 23982,
+      "sha256": "2314fd5ac00006936900fa873690f3dc85cbbf264c5a6c9462c08b1d0d340c1e"
     },
     {
       "path": "Scripts/Sim_Overspecified.m",

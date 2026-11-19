@@ -12,13 +12,14 @@ python Scripts/reproduce.py --output-dir reproduced/revision
 The proposed model has one shared two-layer MAP engine under
 [Algorithms/DDE](Algorithms/DDE/README.md), including CAVI and tempering in
 warm-up and stochastic averaging of likelihood statistics and both layers'
-CSP penalty coefficients after burn-in. Use
+CSP objective statistics after burn-in (equations B.4-B.5). Use
 [run_cavi_case.m](Scripts/DDE/run_cavi_case.m) for simulations and
 [run_survey_case.m](Scripts/DDE/run_survey_case.m) for the survey analysis.
 These scripts supply their original data preparation and tuning settings to
 the same engine. The deeper model remains its extension under Algorithms/DDE/deep.
 
-The current estimator includes CSP penalty averaging (November 17, 2026).
+The current two-layer estimator implements the complete CSP statistics and
+allocation update in B.4-B.5 (November 19, 2026).
 Saved paper references were produced before this change; the reproduction
 guide identifies the exact earlier commit for matching those results.
 New simulation and survey fits use the updated estimator by default.
