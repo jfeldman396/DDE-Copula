@@ -15,7 +15,7 @@ mkdir(out);endpoint=struct('study',study,'method',method,'J',J,'n',N,'replicatio
 if strcmp(study,'shallow')
  methods={'map','vi','tempering'};arm=find(strcmp(method,methods));assert(isscalar(arm));
  if nargin<7,r=run_cavi_case(J,N,rep,arm,fullfile(out,'fit'));else,r=run_cavi_case(J,N,rep,arm,fullfile(out,'fit'),limit);end
- endpoint.csp_update_version=r.fit.csp_update_version;endpoint.csp_penalty_averaging=r.fit.csp_penalty_averaging;endpoint.arm=arm;endpoint.complete=r.complete;endpoint.K1=r.metrics.K1;endpoint.K2=r.metrics.K2;
+ endpoint.csp_penalty_averaging=r.fit.csp_penalty_averaging;endpoint.arm=arm;endpoint.complete=r.complete;endpoint.K1=r.metrics.K1;endpoint.K2=r.metrics.K2;
  endpoint.eligible=r.metrics.joint_correct;endpoint.CPU=r.fit.CPU;endpoint.numerical_wall=r.fit.wall;
  endpoint.warmup_wall=r.fit.warm_wall;endpoint.post_wall=r.fit.wall-r.fit.warm_wall;
  % Use the native 15/5 comparison only when the actual fit has those widths.

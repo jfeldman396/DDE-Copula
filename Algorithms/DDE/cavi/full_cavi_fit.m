@@ -9,19 +9,16 @@ if ~isempty(path)&&isfile(path),s=load(path,'record');f=s.record;else
  f=input.initial;K1=size(f.A1,2);K2=size(f.A2,2);f.B1=min(max(f.B1,-10),10);f.B2=min(max(f.B2,[-5 -10*ones(1,K2)]),10);f.prop=min(max(f.prop,1e-6),1-1e-6);f.state1=[];f.state2=[];f.active1=true(1,K1);f.active2=true(1,K2);f.accum=[];f.iteration=0;f.stable_checks=0;f.stabilized=false;f.history={};f.trace={};f.stoplog={};f.CPU=0;f.wall=0;f.warm_CPU=0;f.warm_wall=0;f.arm=arm;f.seed=input.algorithm_seed;f.J=input.J;f.n=input.n;f.replication=input.replication;
 end
 if ~isfield(f,"objective_accum"),f.objective_accum=[];end
-% B.4-B.5 changes warm-up too; no legacy checkpoint is a valid continuation.
+% A changed averaging mode cannot reuse an incompatible stochastic history.
 averageCSP=cfg.csp_penalty_averaging && ~strcmp(arm.scheme,'H0');
-if f.iteration>0
- assert(isfield(f,'csp_update_version')&&strcmp(f.csp_update_version,'B4_B5_v1'),'CAVI:CSPVersionMismatch','Restart from initialization: checkpoint predates B.4-B.5.');
- for key=["state1","state2"]
-  assert(isfield(f.(key),'average')&&~isempty(f.(key).average),'CAVI:MissingCSPHistory','B.4-B.5 checkpoint has no CSP sufficient-statistic history.');
- end
-end
-f.csp_update_version='B4_B5_v1';
 if isfield(f,'csp_penalty_averaging')
  assert(f.csp_penalty_averaging==cfg.csp_penalty_averaging,'CAVI:CSPModeMismatch','Checkpoint CSP averaging mode differs from the requested mode.');
+elseif averageCSP && f.iteration>=arm.SA_start
+ error('CAVI:MissingCSPHistory','Old post-SAEM checkpoint has no CSP penalty history; restart from initialization or a checkpoint before SAEM.');
 end
 f.csp_penalty_averaging=cfg.csp_penalty_averaging;
+if ~isfield(f,'csp_penalty_accum'),f.csp_penalty_accum=[];end
+assert(~averageCSP || f.iteration<arm.SA_start || ~isempty(f.csp_penalty_accum),'CAVI:MissingCSPHistory','CSP penalty accumulator is missing after SAEM has started.');
 
 if explicitConfig
  if isfield(f,'tuning_config'),assert(isequaln(f.tuning_config,cfg),'Tuning:ResumeConfigMismatch','Checkpoint hyperparameters differ from requested settings.');else,f.tuning_config=cfg;end
@@ -40,14 +37,19 @@ for it=f.iteration+1:min(target,arm.cap)
   k=it-arm.SA_start+1;if k>10 && ~forceOne,rho=(k-9)^(-.7);end
   if isempty(f.accum),f.accum=S;else,for key=["G" "H" "ZZ"],f.accum.(key)=(1-rho)*f.accum.(key)+rho*S.(key);end;end;S=f.accum;
  end
- rng(mod(input.algorithm_seed+10007*it+3,2^32-1),'twister');tc=tic;
- cspRho=1;if averageCSP&&it>=arm.SA_start,cspRho=rho;end
- [w2,f.state2,f.active2]=csp_b45_update(f.B2,cfg.spike2,f.state2,cfg.alpha2,cspRho);
- [w1,f.state1,f.active1]=csp_b45_update(f.B1,cfg.spike1,f.state1,cfg.alpha1,cspRho);
- % Effective CM scales reflect the current allocation and accumulated slab
- % precision. They are not instantaneous sampled scales; those are state.slab.
- f.theta=1./w1(:,2:end);f.theta2=1./w2(:,2:end);
- f.csp_penalty_weights=struct('w1',w1,'w2',w2);
+ rng(mod(input.algorithm_seed+10007*it+3,2^32-1),'twister');tc=tic;[f.theta2,f.state2,f.active2]=pcs_csp_update(f.B2,cfg.spike2,f.state2,sum(f.active1),cfg.alpha2);[f.theta,f.state1,f.active1]=pcs_csp_update(f.B1,cfg.spike1,f.state1,J,cfg.alpha1);w1=[zeros(J,1),1./f.theta];w2=[zeros(size(f.B2,1),1),1./f.theta2];
+ % The Laplace penalty is |B|/theta: average reciprocal scales, not theta.
+ % Intercepts remain unpenalized. Use the likelihood's exact SAEM step size.
+ if averageCSP && it>=arm.SA_start
+  if isempty(f.csp_penalty_accum)||rho==1
+   f.csp_penalty_accum=struct('w1',w1,'w2',w2);
+  else
+   assert(isequal(size(f.csp_penalty_accum.w1),size(w1))&&isequal(size(f.csp_penalty_accum.w2),size(w2)),'CAVI:CSPDimensions');
+   f.csp_penalty_accum.w1=(1-rho)*f.csp_penalty_accum.w1+rho*w1;
+   f.csp_penalty_accum.w2=(1-rho)*f.csp_penalty_accum.w2+rho*w2;
+  end
+  w1=f.csp_penalty_accum.w1;w2=f.csp_penalty_accum.w2;
+ end
 
  [f.B1,s1]=sob_cm(X,f.Z,f.B1,w1,f.gamma/beta,S);rss=S.ZZ-2*sum(f.B1.*S.H',2)+sum((f.B1*S.G).*f.B1,2);assert(all(rss>=-1e-7*(1+S.ZZ)),'PFS:NegativeRSS');f.gamma=(1+.5*beta*max(rss,0))/(2+.5*beta*N);
  if fullAverage && ~strcmp(arm.scheme,'H0') && it>=arm.SA_start
